@@ -100,22 +100,19 @@ def extract_codes_from_tables(html: str) -> set[str]:
             if code:
                 codes.add(code)
 
-    try:
-        for df in pd.read_html(StringIO(html)):
-            for col in df.columns:
-                col_str = str(col).strip().lower()
-                if "district" in col_str or "code" in col_str or "number" in col_str:
-                    series = df[col].dropna().astype(str)
-                    for value in series:
-                        code = normalize_code(value)
-                        if code:
-                            codes.add(code)
-            for value in df.astype(str).values.ravel().tolist():
-                code = normalize_code(value)
-                if code:
-                    codes.add(code)
-    except ValueError:
-        pass
+    for df in read_html_tables(html):
+        for col in df.columns:
+            col_str = str(col).strip().lower()
+            if "district" in col_str or "code" in col_str or "number" in col_str:
+                series = df[col].dropna().astype(str)
+                for value in series:
+                    code = normalize_code(value)
+                    if code:
+                        codes.add(code)
+        for value in df.astype(str).values.ravel().tolist():
+            code = normalize_code(value)
+            if code:
+                codes.add(code)
 
     for match in re.findall(r"/schoolview/explore/cmasela/(\d{4})", html):
         codes.add(match)
@@ -189,9 +186,8 @@ def extract_district_name(soup: BeautifulSoup, district_code: str) -> str | None
 
 
 def extract_metrics_from_tables(html: str, latest_year: str | None) -> tuple[float | None, float | None]:
-    try:
-        tables = pd.read_html(StringIO(html))
-    except ValueError:
+    tables = read_html_tables(html)
+    if not tables:
         return None, None
 
     met_val: float | None = None
@@ -233,7 +229,6 @@ def extract_metrics_from_tables(html: str, latest_year: str | None) -> tuple[flo
                 part_val = values[1]
 
         # Column-based fallback for tables with explicit metric columns.
-        cols_lower = [c.lower() for c in df.columns]
         metric_col = next((c for c in df.columns if "met" in c.lower() and "exceed" in c.lower()), None)
         part_col = next((c for c in df.columns if "participation" in c.lower()), None)
         grade_col = next((c for c in df.columns if "grade" in c.lower()), None)
@@ -247,6 +242,44 @@ def extract_metrics_from_tables(html: str, latest_year: str | None) -> tuple[flo
                     part_val = to_float_or_none(subset.iloc[0][part_col])
 
     return met_val, part_val
+
+
+def table_tag_to_df(table: BeautifulSoup) -> pd.DataFrame | None:
+    rows: list[list[str]] = []
+    for tr in table.select("tr"):
+        cells = tr.select("th,td")
+        if not cells:
+            continue
+        rows.append([c.get_text(" ", strip=True) for c in cells])
+
+    if not rows:
+        return None
+
+    width = max(len(r) for r in rows)
+    normalized = [r + [""] * (width - len(r)) for r in rows]
+    header = normalized[0]
+
+    if any(h.strip() for h in header) and len(normalized) > 1:
+        columns = [h.strip() or f"col_{i + 1}" for i, h in enumerate(header)]
+        return pd.DataFrame(normalized[1:], columns=columns)
+
+    return pd.DataFrame(normalized)
+
+
+def read_html_tables(html: str) -> list[pd.DataFrame]:
+    try:
+        return pd.read_html(StringIO(html))
+    except (ValueError, ImportError):
+        # Fallback when optional parsers like lxml/html5lib are unavailable.
+        pass
+
+    soup = BeautifulSoup(html, "html.parser")
+    tables: list[pd.DataFrame] = []
+    for table in soup.select("table"):
+        df = table_tag_to_df(table)
+        if df is not None:
+            tables.append(df)
+    return tables
 
 
 def extract_metrics_by_regex(html: str, latest_year: str | None) -> tuple[float | None, float | None]:
