@@ -38,6 +38,7 @@ streamlit run app.py
 ## Notes
 
 - The fetcher uses retries, timeout handling, and raw-response caching to `data/raw/`.
+- The district-code source is currently an official `.xlsx` file at the CDE URL and is parsed automatically.
 - Suppressed/missing values like `--` are written as blank values in the CSV.
 - If district pages change structure, the parser uses multiple extraction strategies and keeps missing fields as nulls instead of failing the full run.
 - The scraper includes a BeautifulSoup table-parser fallback, so it works even if optional `pandas.read_html` engines (like `lxml`) are not installed.

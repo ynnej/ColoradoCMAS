@@ -11,11 +11,13 @@ This script:
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import logging
 import re
 import sys
+import zipfile
 from dataclasses import dataclass
-from io import StringIO
+from io import BytesIO, StringIO
 from pathlib import Path
 from typing import Iterable
 
@@ -74,6 +76,32 @@ def fetch_html(session: requests.Session, url: str, cache_path: Path, timeout: i
     return html
 
 
+def fetch_bytes(session: requests.Session, url: str, cache_path: Path, timeout: int = 30) -> bytes:
+    cache_path.parent.mkdir(parents=True, exist_ok=True)
+    if cache_path.exists():
+        return cache_path.read_bytes()
+
+    logging.info("Fetching %s", url)
+    response = session.get(url, timeout=timeout)
+    response.raise_for_status()
+    data = response.content
+    cache_path.write_bytes(data)
+    return data
+
+
+def is_xlsx_bytes(data: bytes) -> bool:
+    if not data.startswith(b"PK\x03\x04"):
+        return False
+
+    try:
+        with zipfile.ZipFile(BytesIO(data)) as workbook:
+            names = set(workbook.namelist())
+    except zipfile.BadZipFile:
+        return False
+
+    return "[Content_Types].xml" in names and "xl/workbook.xml" in names
+
+
 def normalize_code(value: object) -> str | None:
     text = str(value).strip()
     if not text:
@@ -120,9 +148,82 @@ def extract_codes_from_tables(html: str) -> set[str]:
     return codes
 
 
+def extract_codes_from_excel_bytes(data: bytes) -> set[str]:
+    try:
+        sheets = pd.read_excel(BytesIO(data), sheet_name=None, header=None, dtype=str)
+    except ImportError as exc:
+        raise RuntimeError(
+            "District code source is Excel; install openpyxl (pip install openpyxl) to parse it."
+        ) from exc
+
+    codes: set[str] = set()
+    for _, df in sheets.items():
+        if df.empty:
+            continue
+
+        header_row_idx: int | None = None
+        district_col_idxs: list[int] = []
+
+        for row_idx in range(len(df)):
+            row_values = [str(v).strip() if pd.notna(v) else "" for v in df.iloc[row_idx].tolist()]
+            row_lower = [v.lower() for v in row_values]
+            if "district code" in row_lower:
+                header_row_idx = row_idx
+                district_col_idxs = [i for i, cell in enumerate(row_lower) if cell == "district code"]
+                break
+
+        if header_row_idx is None or not district_col_idxs:
+            continue
+
+        for row_idx in range(header_row_idx + 1, len(df)):
+            for col_idx in district_col_idxs:
+                code = normalize_code(df.iat[row_idx, col_idx])
+                if code:
+                    codes.add(code)
+
+    return codes
+
+
+def load_district_code_source(session: requests.Session) -> tuple[str, str | bytes]:
+    xlsx_cache = RAW_DIR / "district_codes_page.xlsx"
+    legacy_html_cache = RAW_DIR / "district_codes_page.html"
+
+    if xlsx_cache.exists():
+        data = xlsx_cache.read_bytes()
+        if is_xlsx_bytes(data):
+            return "xlsx", data
+
+    if legacy_html_cache.exists():
+        legacy_data = legacy_html_cache.read_bytes()
+        if is_xlsx_bytes(legacy_data):
+            xlsx_cache.parent.mkdir(parents=True, exist_ok=True)
+            xlsx_cache.write_bytes(legacy_data)
+            return "xlsx", legacy_data
+
+    response = session.get(DISTRICT_CODES_URL, timeout=30)
+    response.raise_for_status()
+    content_type = (response.headers.get("content-type") or "").lower()
+    data = response.content
+
+    if "spreadsheetml" in content_type or "excel" in content_type or is_xlsx_bytes(data):
+        xlsx_cache.parent.mkdir(parents=True, exist_ok=True)
+        xlsx_cache.write_bytes(data)
+        return "xlsx", data
+
+    html = response.text
+    legacy_html_cache.parent.mkdir(parents=True, exist_ok=True)
+    legacy_html_cache.write_text(html, encoding="utf-8")
+    return "html", html
+
+
 def extract_district_codes(session: requests.Session) -> list[str]:
-    html = fetch_html(session, DISTRICT_CODES_URL, RAW_DIR / "district_codes_page.html")
-    codes = sorted(extract_codes_from_tables(html))
+    source_type, payload = load_district_code_source(session)
+    if source_type == "xlsx":
+        blob = payload if isinstance(payload, bytes) else payload.encode("utf-8")
+        codes = sorted(extract_codes_from_excel_bytes(blob))
+    else:
+        html = payload if isinstance(payload, str) else payload.decode("utf-8", errors="ignore")
+        codes = sorted(extract_codes_from_tables(html))
     if not codes:
         raise RuntimeError("No district codes found on official district code page.")
     logging.info("Found %d district codes", len(codes))
@@ -155,32 +256,49 @@ def pick_latest_school_year(years: Iterable[str]) -> str | None:
         a, b = y.split("-")
         return int(a), int(b)
 
-    years = list(years)
-    if not years:
+    years_list = list(years)
+    if not years_list:
         return None
-    return max(years, key=key)
+
+    current_year = dt.date.today().year
+    plausible = []
+    for year in years_list:
+        try:
+            start, end = key(year)
+        except ValueError:
+            continue
+        if start >= 2000 and end == start + 1 and start <= current_year + 1:
+            plausible.append(year)
+
+    candidates = plausible if plausible else years_list
+    return max(candidates, key=key)
 
 
 def extract_district_name(soup: BeautifulSoup, district_code: str) -> str | None:
-    title = soup.title.get_text(" ", strip=True) if soup.title else ""
-    for candidate in [
-        soup.select_one("h1"),
-        soup.select_one("h2"),
-        soup.select_one("meta[property='og:title']"),
-    ]:
-        if not candidate:
-            continue
-        if candidate.name == "meta":
-            text = candidate.get("content", "").strip()
-        else:
-            text = candidate.get_text(" ", strip=True)
-        if text:
-            return re.sub(r"\s+", " ", text)
+    def clean_name(text: str) -> str:
+        name = re.sub(r"\s+", " ", text).strip()
+        name = re.sub(rf"\(\s*{re.escape(district_code)}\s*\)", "", name).strip()
+        return name.strip(" -|")
 
+    code_marker = f"({district_code})"
+    for heading in soup.select("h1,h2,h3"):
+        text = heading.get_text(" ", strip=True)
+        if code_marker in text:
+            cleaned = clean_name(text)
+            if cleaned:
+                return cleaned
+
+    district_link = soup.select_one(f"a.address-name[href$='/{district_code}']")
+    if district_link:
+        cleaned = clean_name(district_link.get_text(" ", strip=True))
+        if cleaned:
+            return cleaned
+
+    title = soup.title.get_text(" ", strip=True) if soup.title else ""
     if title:
         text = re.sub(r"\s+", " ", title)
-        text = re.sub(r"\bCMAS\b.*$", "", text, flags=re.IGNORECASE).strip(" -|")
-        if text and text != district_code:
+        text = re.sub(r"^SchoolView:\s*", "", text, flags=re.IGNORECASE).strip(" -|")
+        if text and text.lower() not in {"school and district data", "cmas english language arts"}:
             return text
     return None
 
