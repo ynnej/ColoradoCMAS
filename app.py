@@ -8,12 +8,17 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
+from fetch_cmas_co import run as build_dataset
+
 DATA_PATH = Path("data/cmas_ela_grade3_district.csv")
+SUMMARY_PATH = Path("data/CMAS_Summary_CMAS_ELA_and_Math.csv")
 
 
 @st.cache_data(show_spinner=False)
 def load_data(path: str) -> pd.DataFrame:
-    df = pd.read_csv(path)
+    df = pd.read_csv(path, dtype={"district_code": "string"})
+    if "district_code" in df.columns:
+        df["district_code"] = df["district_code"].astype(str).str.zfill(4)
     for col in [
         "grade_3_percent_met_or_exceeded_district",
         "grade_3_participation_rate_district",
@@ -21,6 +26,20 @@ def load_data(path: str) -> pd.DataFrame:
         if col in df.columns:
             df[col] = pd.to_numeric(df[col], errors="coerce")
     return df
+
+
+def ensure_data_file() -> Path:
+    if DATA_PATH.exists():
+        return DATA_PATH
+
+    if SUMMARY_PATH.exists():
+        build_dataset(summary_csv=SUMMARY_PATH)
+        if DATA_PATH.exists():
+            return DATA_PATH
+
+    raise FileNotFoundError(
+        f"Missing {DATA_PATH}. Provide {SUMMARY_PATH} or run `python fetch_cmas_co.py`."
+    )
 
 
 def apply_filters(
@@ -66,11 +85,13 @@ def main() -> None:
     st.set_page_config(page_title="Colorado CMAS District Dashboard", layout="wide")
     st.title("Colorado CMAS ELA Grade 3 District Dashboard")
 
-    if not DATA_PATH.exists():
-        st.error(f"Missing data file: {DATA_PATH}. Run `python fetch_cmas_co.py` first.")
+    try:
+        data_path = ensure_data_file()
+    except Exception as exc:
+        st.error(str(exc))
         st.stop()
 
-    df = load_data(str(DATA_PATH))
+    df = load_data(str(data_path))
 
     st.sidebar.header("Filters")
     min_participation = st.sidebar.slider(

@@ -31,6 +31,7 @@ DISTRICT_CODES_URL = "https://www.cde.state.co.us/datapipeline/administrativeuni
 CMAS_ELA_URL_TEMPLATE = "https://www.cde.state.co.us/schoolview/explore/cmasela/{district_code}"
 OUTPUT_CSV = Path("data/cmas_ela_grade3_district.csv")
 RAW_DIR = Path("data/raw")
+SUMMARY_SOURCE_CSV = Path("data/CMAS_Summary_CMAS_ELA_and_Math.csv")
 
 
 @dataclass
@@ -233,8 +234,13 @@ def extract_district_codes(session: requests.Session) -> list[str]:
 def to_float_or_none(value: object) -> float | None:
     if value is None:
         return None
-    s = str(value).strip().replace("%", "").replace(",", "")
-    if not s or s in {"--", "*", "n<16", "N/A", "NA", "nan", "None"}:
+    s = str(value).strip()
+    if not s:
+        return None
+    s = s.replace("%", "").replace(",", "").strip()
+    if "<" in s:
+        return None
+    if s.lower() in {"--", "- -", "*", "n<16", "n/a", "na", "nan", "none"}:
         return None
     m = re.search(r"-?\d+(?:\.\d+)?", s)
     if not m:
@@ -466,7 +472,116 @@ def records_to_df(records: list[DistrictRecord]) -> pd.DataFrame:
     return df
 
 
-def run(limit: int | None = None) -> Path:
+def infer_assessment_year(columns: Iterable[str]) -> int | None:
+    current_year = dt.date.today().year
+    years: list[int] = []
+    for col in columns:
+        text = str(col).strip()
+        m = re.fullmatch(r"(20\d{2})", text)
+        if m:
+            year = int(m.group(1))
+            if 2000 <= year <= current_year + 1:
+                years.append(year)
+            continue
+        m = re.fullmatch(r"Participation Rate (20\d{2})", text)
+        if m:
+            year = int(m.group(1))
+            if 2000 <= year <= current_year + 1:
+                years.append(year)
+
+    return max(years) if years else None
+
+
+def school_year_from_assessment_year(assessment_year: int | None) -> str | None:
+    if assessment_year is None:
+        return None
+    return f"{assessment_year - 1}-{assessment_year}"
+
+
+def extract_records_from_summary_csv(summary_csv: Path, limit: int | None = None) -> list[DistrictRecord]:
+    if not summary_csv.exists():
+        raise FileNotFoundError(f"Summary CSV not found: {summary_csv}")
+
+    # The CDE summary export includes a preamble; row 18 (0-index 17) contains the table columns.
+    summary_df = pd.read_csv(summary_csv, header=17, dtype=str)
+    summary_df = summary_df.dropna(how="all")
+
+    required_cols = {"Level", "District Code", "District Name", "Content", "Grade"}
+    missing = required_cols.difference(summary_df.columns)
+    if missing:
+        missing_list = ", ".join(sorted(missing))
+        raise RuntimeError(f"Summary CSV missing expected columns: {missing_list}")
+
+    assessment_year = infer_assessment_year(summary_df.columns)
+    school_year = school_year_from_assessment_year(assessment_year)
+    met_col = str(assessment_year) if assessment_year is not None else None
+    participation_col = (
+        f"Participation Rate {assessment_year}"
+        if assessment_year is not None and f"Participation Rate {assessment_year}" in summary_df.columns
+        else None
+    )
+
+    level = summary_df["Level"].fillna("").astype(str).str.strip().str.upper()
+    content = summary_df["Content"].fillna("").astype(str).str.strip().str.lower()
+    grade = summary_df["Grade"].fillna("").astype(str).str.strip().str.zfill(2)
+
+    district_rows = summary_df[
+        (level == "DISTRICT")
+        & (content == "english language arts")
+        & (grade == "03")
+    ].copy()
+
+    if "School Code" in district_rows.columns:
+        school_code = district_rows["School Code"].fillna("").astype(str).str.strip()
+        district_rows = district_rows[school_code.isin({"", "0", "0000"})]
+
+    records: list[DistrictRecord] = []
+    seen_codes: set[str] = set()
+
+    for _, row in district_rows.iterrows():
+        code = normalize_code(row.get("District Code"))
+        if not code or code in seen_codes:
+            continue
+        seen_codes.add(code)
+
+        district_name_raw = str(row.get("District Name", "")).strip()
+        district_name = district_name_raw if district_name_raw else None
+
+        met_value = to_float_or_none(row.get(met_col)) if met_col else None
+        part_value = to_float_or_none(row.get(participation_col)) if participation_col else None
+
+        records.append(
+            DistrictRecord(
+                district_name=district_name,
+                district_code=code,
+                school_year=school_year,
+                grade_3_percent_met_or_exceeded_district=met_value,
+                grade_3_participation_rate_district=part_value,
+            )
+        )
+
+    if limit is not None:
+        records = records[:limit]
+
+    logging.info(
+        "Extracted %d district records from local summary CSV (%s)",
+        len(records),
+        summary_csv,
+    )
+    return records
+
+
+def run(limit: int | None = None, summary_csv: Path | None = None, force_web: bool = False) -> Path:
+    if not force_web:
+        candidate_summary = summary_csv if summary_csv is not None else SUMMARY_SOURCE_CSV
+        if candidate_summary.exists():
+            records = extract_records_from_summary_csv(candidate_summary, limit=limit)
+            df = records_to_df(records)
+            OUTPUT_CSV.parent.mkdir(parents=True, exist_ok=True)
+            df.to_csv(OUTPUT_CSV, index=False)
+            logging.info("Wrote %s (%d rows)", OUTPUT_CSV, len(df))
+            return OUTPUT_CSV
+
     session = build_session()
     district_codes = extract_district_codes(session)
     if limit is not None:
@@ -508,6 +623,16 @@ def run(limit: int | None = None) -> Path:
 def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Fetch Colorado CMAS ELA Grade 3 district metrics.")
     parser.add_argument("--limit", type=int, default=None, help="Only process first N district codes (debug helper).")
+    parser.add_argument(
+        "--summary-csv",
+        default=str(SUMMARY_SOURCE_CSV),
+        help="Local CMAS summary CSV path. If present, this is used instead of web scraping.",
+    )
+    parser.add_argument(
+        "--force-web",
+        action="store_true",
+        help="Ignore local summary CSV and force the web scraping path.",
+    )
     parser.add_argument("--log-level", default="INFO", help="Logging level (default: INFO).")
     return parser.parse_args(argv)
 
@@ -515,7 +640,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
 def main(argv: list[str]) -> int:
     args = parse_args(argv)
     logging.basicConfig(level=getattr(logging, args.log_level.upper(), logging.INFO), format="%(levelname)s: %(message)s")
-    run(limit=args.limit)
+    run(limit=args.limit, summary_csv=Path(args.summary_csv), force_web=args.force_web)
     return 0
 
 
