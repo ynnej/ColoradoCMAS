@@ -2,6 +2,10 @@
 
 This project builds a Colorado CMAS ELA Grade 3 district dataset and serves a Streamlit dashboard.
 
+## Live App
+
+- [Colorado CMAS Dashboard](https://coloradocmas-rfvwhu5u7yah5j7wk2mjku.streamlit.app/)
+
 ## Files
 
 - `fetch_cmas_co.py`: scraper/ETL script.
