@@ -1,0 +1,52 @@
+state,state_name,year,grade,subject,state_below_basic_pct,state_basic_pct,state_proficient_pct,state_advanced_pct,state_below_proficient_pct,national_public_below_basic_pct,national_public_basic_pct,national_public_proficient_pct,national_public_advanced_pct,national_public_below_proficient_pct,below_basic_difference_from_national_percentage_points,source_page_url
+AL,Alabama,2024,4,Reading,42.44,29.52,20.64,7.41,71.96,40.67,28.83,22.23,8.27,69.5,1.77,https://www.nationsreportcard.gov/profiles/
+AK,Alaska,2024,4,Reading,52.57,25.7,16.88,4.85,78.27,40.67,28.83,22.23,8.27,69.5,11.9,https://www.nationsreportcard.gov/profiles/
+AZ,Arizona,2024,4,Reading,46.53,27.02,18.95,7.5,73.55,40.67,28.83,22.23,8.27,69.5,5.86,https://www.nationsreportcard.gov/profiles/
+AR,Arkansas,2024,4,Reading,43.82,28.08,21.23,6.87,71.9,40.67,28.83,22.23,8.27,69.5,3.15,https://www.nationsreportcard.gov/profiles/
+CA,California,2024,4,Reading,43.74,27.61,21.29,7.37,71.35,40.67,28.83,22.23,8.27,69.5,3.07,https://www.nationsreportcard.gov/profiles/
+CO,Colorado,2024,4,Reading,35.12,29.22,24.65,11.0,64.34,40.67,28.83,22.23,8.27,69.5,-5.55,https://www.nationsreportcard.gov/profiles/
+CT,Connecticut,2024,4,Reading,36.79,27.06,24.41,11.75,63.85,40.67,28.83,22.23,8.27,69.5,-3.88,https://www.nationsreportcard.gov/profiles/
+DE,Delaware,2024,4,Reading,44.62,28.9,20.04,6.44,73.52,40.67,28.83,22.23,8.27,69.5,3.95,https://www.nationsreportcard.gov/profiles/
+DC,District of Columbia,2024,4,Reading,48.01,22.35,18.61,11.02,70.36,40.67,28.83,22.23,8.27,69.5,7.34,https://www.nationsreportcard.gov/profiles/
+FL,Florida,2024,4,Reading,37.56,29.45,23.64,9.35,67.01,40.67,28.83,22.23,8.27,69.5,-3.11,https://www.nationsreportcard.gov/profiles/
+GA,Georgia,2024,4,Reading,40.59,28.97,21.89,8.55,69.56,40.67,28.83,22.23,8.27,69.5,-0.08,https://www.nationsreportcard.gov/profiles/
+HI,Hawaii,2024,4,Reading,39.05,29.35,23.19,8.4,68.41,40.67,28.83,22.23,8.27,69.5,-1.62,https://www.nationsreportcard.gov/profiles/
+ID,Idaho,2024,4,Reading,38.6,29.53,24.32,7.55,68.13,40.67,28.83,22.23,8.27,69.5,-2.07,https://www.nationsreportcard.gov/profiles/
+IL,Illinois,2024,4,Reading,40.68,28.88,21.33,9.1,69.57,40.67,28.83,22.23,8.27,69.5,0.01,https://www.nationsreportcard.gov/profiles/
+IN,Indiana,2024,4,Reading,34.74,30.79,24.47,10.0,65.54,40.67,28.83,22.23,8.27,69.5,-5.93,https://www.nationsreportcard.gov/profiles/
+IA,Iowa,2024,4,Reading,39.48,31.37,22.35,6.81,70.84,40.67,28.83,22.23,8.27,69.5,-1.19,https://www.nationsreportcard.gov/profiles/
+KS,Kansas,2024,4,Reading,40.09,31.63,22.59,5.69,71.72,40.67,28.83,22.23,8.27,69.5,-0.58,https://www.nationsreportcard.gov/profiles/
+KY,Kentucky,2024,4,Reading,37.7,29.59,22.97,9.74,67.29,40.67,28.83,22.23,8.27,69.5,-2.97,https://www.nationsreportcard.gov/profiles/
+LA,Louisiana,2024,4,Reading,39.58,28.59,22.43,9.41,68.16,40.67,28.83,22.23,8.27,69.5,-1.09,https://www.nationsreportcard.gov/profiles/
+ME,Maine,2024,4,Reading,44.48,29.46,20.46,5.6,73.93,40.67,28.83,22.23,8.27,69.5,3.81,https://www.nationsreportcard.gov/profiles/
+MD,Maryland,2024,4,Reading,40.78,25.66,21.52,12.03,66.45,40.67,28.83,22.23,8.27,69.5,0.11,https://www.nationsreportcard.gov/profiles/
+MA,Massachusetts,2024,4,Reading,31.72,27.88,25.8,14.59,59.6,40.67,28.83,22.23,8.27,69.5,-8.95,https://www.nationsreportcard.gov/profiles/
+MI,Michigan,2024,4,Reading,45.38,30.07,19.28,5.28,75.44,40.67,28.83,22.23,8.27,69.5,4.71,https://www.nationsreportcard.gov/profiles/
+MN,Minnesota,2024,4,Reading,39.12,30.19,24.12,6.58,69.3,40.67,28.83,22.23,8.27,69.5,-1.55,https://www.nationsreportcard.gov/profiles/
+MS,Mississippi,2024,4,Reading,35.39,32.63,25.18,6.81,68.02,40.67,28.83,22.23,8.27,69.5,-5.28,https://www.nationsreportcard.gov/profiles/
+MO,Missouri,2024,4,Reading,42.05,30.79,20.83,6.33,72.84,40.67,28.83,22.23,8.27,69.5,1.38,https://www.nationsreportcard.gov/profiles/
+MT,Montana,2024,4,Reading,37.83,30.29,24.24,7.64,68.12,40.67,28.83,22.23,8.27,69.5,-2.84,https://www.nationsreportcard.gov/profiles/
+NE,Nebraska,2024,4,Reading,42.18,29.84,21.67,6.3,72.02,40.67,28.83,22.23,8.27,69.5,1.51,https://www.nationsreportcard.gov/profiles/
+NV,Nevada,2024,4,Reading,41.44,28.54,22.6,7.43,69.97,40.67,28.83,22.23,8.27,69.5,0.77,https://www.nationsreportcard.gov/profiles/
+NH,New Hampshire,2024,4,Reading,33.27,30.55,26.33,9.85,63.82,40.67,28.83,22.23,8.27,69.5,-7.4,https://www.nationsreportcard.gov/profiles/
+NJ,New Jersey,2024,4,Reading,33.68,28.01,25.01,13.31,61.69,40.67,28.83,22.23,8.27,69.5,-6.99,https://www.nationsreportcard.gov/profiles/
+NM,New Mexico,2024,4,Reading,53.13,26.58,16.34,3.95,79.71,40.67,28.83,22.23,8.27,69.5,12.46,https://www.nationsreportcard.gov/profiles/
+NY,New York,2024,4,Reading,40.69,28.46,21.69,9.16,69.15,40.67,28.83,22.23,8.27,69.5,0.02,https://www.nationsreportcard.gov/profiles/
+NC,North Carolina,2024,4,Reading,41.74,28.18,21.58,8.51,69.92,40.67,28.83,22.23,8.27,69.5,1.07,https://www.nationsreportcard.gov/profiles/
+ND,North Dakota,2024,4,Reading,38.43,32.91,23.72,4.94,71.34,40.67,28.83,22.23,8.27,69.5,-2.24,https://www.nationsreportcard.gov/profiles/
+OH,Ohio,2024,4,Reading,38.2,29.4,24.17,8.22,67.6,40.67,28.83,22.23,8.27,69.5,-2.47,https://www.nationsreportcard.gov/profiles/
+OK,Oklahoma,2024,4,Reading,46.44,30.87,18.93,3.77,77.3,40.67,28.83,22.23,8.27,69.5,5.77,https://www.nationsreportcard.gov/profiles/
+OR,Oregon,2024,4,Reading,48.26,25.14,19.45,7.15,73.39,40.67,28.83,22.23,8.27,69.5,7.59,https://www.nationsreportcard.gov/profiles/
+PA,Pennsylvania,2024,4,Reading,37.8,29.26,24.8,8.14,67.05,40.67,28.83,22.23,8.27,69.5,-2.87,https://www.nationsreportcard.gov/profiles/
+RI,Rhode Island,2024,4,Reading,39.3,28.14,22.74,9.82,67.44,40.67,28.83,22.23,8.27,69.5,-1.37,https://www.nationsreportcard.gov/profiles/
+SC,South Carolina,2024,4,Reading,40.33,27.2,23.28,9.2,67.53,40.67,28.83,22.23,8.27,69.5,-0.34,https://www.nationsreportcard.gov/profiles/
+SD,South Dakota,2024,4,Reading,39.87,32.15,22.06,5.92,72.02,40.67,28.83,22.23,8.27,69.5,-0.8,https://www.nationsreportcard.gov/profiles/
+TN,Tennessee,2024,4,Reading,38.89,29.32,23.02,8.77,68.22,40.67,28.83,22.23,8.27,69.5,-1.78,https://www.nationsreportcard.gov/profiles/
+TX,Texas,2024,4,Reading,42.89,29.57,20.97,6.57,72.46,40.67,28.83,22.23,8.27,69.5,2.22,https://www.nationsreportcard.gov/profiles/
+UT,Utah,2024,4,Reading,35.55,28.13,26.33,9.99,63.68,40.67,28.83,22.23,8.27,69.5,-5.12,https://www.nationsreportcard.gov/profiles/
+VT,Vermont,2024,4,Reading,41.84,27.65,22.71,7.8,69.5,40.67,28.83,22.23,8.27,69.5,1.17,https://www.nationsreportcard.gov/profiles/
+VA,Virginia,2024,4,Reading,41.53,27.75,21.96,8.77,69.28,40.67,28.83,22.23,8.27,69.5,0.86,https://www.nationsreportcard.gov/profiles/
+WA,Washington,2024,4,Reading,39.5,28.49,22.81,9.21,67.99,40.67,28.83,22.23,8.27,69.5,-1.17,https://www.nationsreportcard.gov/profiles/
+WV,West Virginia,2024,4,Reading,47.36,28.02,19.72,4.91,75.37,40.67,28.83,22.23,8.27,69.5,6.69,https://www.nationsreportcard.gov/profiles/
+WI,Wisconsin,2024,4,Reading,38.84,29.84,23.38,7.93,68.69,40.67,28.83,22.23,8.27,69.5,-1.83,https://www.nationsreportcard.gov/profiles/
+WY,Wyoming,2024,4,Reading,32.23,31.92,27.01,8.84,64.15,40.67,28.83,22.23,8.27,69.5,-8.44,https://www.nationsreportcard.gov/profiles/

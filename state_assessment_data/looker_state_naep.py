@@ -4,6 +4,7 @@ import datetime as dt
 import json
 import shutil
 from pathlib import Path
+from urllib.parse import urlencode
 
 import pandas as pd
 import requests
@@ -22,6 +23,28 @@ NAEP_QUERY_URL = (
     "&wantextdecplaces=false"
 )
 NAEP_RAW_RELATIVE_PATH = Path("datasets/naep/2024/raw/naep_2024_grade4_reading_state_map_datatable.json")
+NAEP_ACHIEVEMENT_SERVICE_URL = "https://www.nationsreportcard.gov/DataService/GetAdhocData.aspx"
+NAEP_ACHIEVEMENT_JURISDICTIONS = (
+    "AL,AK,AZ,AR,CA,CO,CT,DE,DC,FL,GA,HI,ID,IL,IN,IA,KS,KY,LA,ME,MD,MA,MI,MN,"
+    "MS,MO,MT,NE,NV,NH,NJ,NM,NY,NC,ND,OH,OK,OR,PA,RI,SC,SD,TN,TX,UT,VT,VA,WA,"
+    "WV,WI,WY,NP"
+)
+NAEP_ACHIEVEMENT_QUERY_PARAMS = {
+    "type": "data",
+    "subject": "RED",
+    "cohort": "1",
+    "subscale": "RRPCM",
+    "variable": "TOTAL",
+    "jurisdiction": NAEP_ACHIEVEMENT_JURISDICTIONS,
+    "stattype": "ALC:BB,ALD:BA,ALD:PR,ALD:AD",
+    "Year": "2024R3",
+}
+NAEP_ACHIEVEMENT_QUERY_URL = (
+    f"{NAEP_ACHIEVEMENT_SERVICE_URL}?{urlencode(NAEP_ACHIEVEMENT_QUERY_PARAMS)}"
+)
+NAEP_ACHIEVEMENT_RAW_RELATIVE_PATH = Path(
+    "datasets/naep/2024/raw/naep_2024_grade4_reading_achievement_levels.json"
+)
 
 LOOKER_MINIMAL_RELATIVE_PATH = Path("datasets/summary/state_assessment_vs_naep_looker_minimal.csv")
 LOOKER_ENRICHED_RELATIVE_PATH = Path("datasets/summary/state_assessment_vs_naep_looker_enriched.csv")
@@ -56,6 +79,33 @@ def _copy_or_download_naep_json(
             "wantse": "false",
             "wantextdecplaces": "false",
         },
+        timeout=120,
+    )
+    response.raise_for_status()
+    destination.write_text(response.text, encoding="utf-8")
+    return destination
+
+
+def _copy_or_download_naep_achievement_json(
+    repo_root: Path,
+    session: requests.Session,
+    local_override: Path | None,
+) -> Path:
+    destination = repo_root / NAEP_ACHIEVEMENT_RAW_RELATIVE_PATH
+    ensure_parent(destination)
+
+    if local_override is not None:
+        source = local_override.resolve()
+        if source != destination.resolve():
+            shutil.copyfile(source, destination)
+        return destination
+
+    if destination.exists():
+        return destination
+
+    response = session.get(
+        NAEP_ACHIEVEMENT_SERVICE_URL,
+        params=NAEP_ACHIEVEMENT_QUERY_PARAMS,
         timeout=120,
     )
     response.raise_for_status()
@@ -120,8 +170,14 @@ def build_looker_state_naep_comparison(
     tiers_path: Path,
     published_reference_path: Path,
     naep_raw_json: Path | None = None,
+    naep_achievement_json: Path | None = None,
 ) -> dict[str, Path]:
     naep_raw_path = _copy_or_download_naep_json(repo_root, session, naep_raw_json)
+    naep_achievement_path = _copy_or_download_naep_achievement_json(
+        repo_root,
+        session,
+        naep_achievement_json,
+    )
 
     below_basic_df = pd.read_csv(below_basic_path)
     tiers_df = pd.read_csv(tiers_path)
@@ -138,7 +194,41 @@ def build_looker_state_naep_comparison(
         row["JurisdictionCode"]: row
         for row in naep_payload["result"]["StateMap_DataTableData"]["Statedata"]
     }
-    national_public_row = naep_rows["NP"]
+
+    achievement_payload = json.loads(naep_achievement_path.read_text(encoding="utf-8"))
+    achievement_rows = {
+        (str(row["jurisdiction"]), str(row["stattype"])): row
+        for row in achievement_payload["result"]
+        if int(row["isStatDisplayable"]) == 1 and int(row["errorFlag"]) == 0
+    }
+    achievement_specs = [
+        ("Percent Below Basic", "ALC:BB", "naep_below_basic", 1),
+        ("Percent Basic", "ALD:BA", "naep_achievement_level", 2),
+        ("Percent Proficient", "ALD:PR", "naep_achievement_level", 3),
+        ("Percent Advanced", "ALD:AD", "naep_achievement_level", 4),
+    ]
+    expected_jurisdictions = set(state_name_map) | {"NP"}
+    expected_achievement_keys = {
+        (jurisdiction, stattype)
+        for jurisdiction in expected_jurisdictions
+        for _, stattype, _, _ in achievement_specs
+    }
+    missing_achievement_keys = sorted(expected_achievement_keys - set(achievement_rows))
+    if missing_achievement_keys:
+        missing_labels = ", ".join(
+            f"{jurisdiction}/{stattype}"
+            for jurisdiction, stattype in missing_achievement_keys
+        )
+        raise ValueError(f"NAEP achievement-level data is incomplete: {missing_labels}")
+
+    for jurisdiction in expected_jurisdictions:
+        prior_below_basic = 100.0 - float(naep_rows[jurisdiction]["AB_FP"])
+        achievement_below_basic = float(achievement_rows[(jurisdiction, "ALC:BB")]["value"])
+        if abs(prior_below_basic - achievement_below_basic) > 0.02:
+            raise ValueError(
+                "NAEP Below Basic values disagree between official source tables for "
+                f"{jurisdiction}: {prior_below_basic} versus {achievement_below_basic}."
+            )
 
     rows: list[dict[str, object]] = []
 
@@ -273,9 +363,29 @@ def build_looker_state_naep_comparison(
                 detail_order=bin_number,
             )
 
-    for state_code, state_name in sorted(state_name_map.items()):
-        naep_state_row = naep_rows.get(state_code)
-        if naep_state_row is not None:
+    def add_naep_rows(
+        *,
+        state_code: str,
+        state_name: str,
+        jurisdiction: str,
+        source: str,
+        comparison_role: str,
+        benchmark_label: str,
+        repeated_benchmark: bool,
+    ) -> None:
+        jurisdiction_name = str(achievement_rows[(jurisdiction, "ALC:BB")]["jurisLabel"])
+        repeat_note = (
+            " Repeated for each state so a simple state filter in Looker Studio still "
+            "shows the national comparison without a join."
+            if repeated_benchmark
+            else ""
+        )
+        for metric, stattype, metric_family, detail_order in achievement_specs:
+            source_value_kind = (
+                "official_cumulative_achievement_level"
+                if stattype == "ALC:BB"
+                else "official_discrete_achievement_level"
+            )
             add_row(
                 state_code=state_code,
                 state_name=state_name,
@@ -283,22 +393,28 @@ def build_looker_state_naep_comparison(
                 school_year="2024",
                 grade=4,
                 subject="Reading",
-                source="NAEP (State)",
+                source=source,
                 assessment="NAEP",
-                metric="Percent Below Basic",
-                value=100.0 - float(naep_state_row["AB_FP"]),
-                metric_family="naep_below_basic",
-                comparison_role="naep_state",
-                jurisdiction_of_measure=state_code,
-                jurisdiction_of_measure_name=str(naep_state_row["Jurisdiction"]),
-                source_value_kind="derived_from_pct_at_or_above_basic",
-                benchmark_label="State NAEP",
-                source_url=NAEP_QUERY_URL,
+                metric=metric,
+                value=float(achievement_rows[(jurisdiction, stattype)]["value"]),
+                metric_family=metric_family,
+                comparison_role=comparison_role,
+                jurisdiction_of_measure=jurisdiction,
+                jurisdiction_of_measure_name=jurisdiction_name,
+                source_value_kind=source_value_kind,
+                benchmark_label=benchmark_label,
+                source_url=NAEP_ACHIEVEMENT_QUERY_URL,
                 source_page_url=NAEP_SOURCE_PAGE_URL,
-                notes="Derived as 100 minus NAEP percent at or above Basic from the official 2024 Grade 4 Reading state table.",
-                detail_order=0,
+                notes=(
+                    "Official 2024 NAEP Grade 4 Reading achievement-level percentage "
+                    f"for public-school students.{repeat_note}"
+                ),
+                detail_order=detail_order,
             )
 
+        below_proficient = float(achievement_rows[(jurisdiction, "ALC:BB")]["value"]) + float(
+            achievement_rows[(jurisdiction, "ALD:BA")]["value"]
+        )
         add_row(
             state_code=state_code,
             state_name=state_name,
@@ -306,23 +422,43 @@ def build_looker_state_naep_comparison(
             school_year="2024",
             grade=4,
             subject="Reading",
-            source="NAEP (National Public)",
+            source=source,
             assessment="NAEP",
-            metric="Percent Below Basic",
-            value=100.0 - float(national_public_row["AB_FP"]),
-            metric_family="naep_below_basic",
-            comparison_role="naep_national_public_benchmark",
-            jurisdiction_of_measure="NP",
-            jurisdiction_of_measure_name=str(national_public_row["Jurisdiction"]),
-            source_value_kind="derived_from_pct_at_or_above_basic",
-            benchmark_label="National Public",
-            source_url=NAEP_QUERY_URL,
+            metric="Percent Below Proficient",
+            value=below_proficient,
+            metric_family="naep_below_proficient",
+            comparison_role=comparison_role,
+            jurisdiction_of_measure=jurisdiction,
+            jurisdiction_of_measure_name=jurisdiction_name,
+            source_value_kind="derived_from_below_basic_plus_basic",
+            benchmark_label=benchmark_label,
+            source_url=NAEP_ACHIEVEMENT_QUERY_URL,
             source_page_url=NAEP_SOURCE_PAGE_URL,
             notes=(
-                "Repeated National Public NAEP benchmark row so a simple state filter in Looker Studio "
-                "still shows the national comparison without a join."
+                "Calculated as the official NAEP Below Basic percentage plus the "
+                f"official discrete Basic percentage.{repeat_note}"
             ),
             detail_order=0,
+        )
+
+    for state_code, state_name in sorted(state_name_map.items()):
+        add_naep_rows(
+            state_code=state_code,
+            state_name=state_name,
+            jurisdiction=state_code,
+            source="NAEP (State)",
+            comparison_role="naep_state",
+            benchmark_label="State NAEP",
+            repeated_benchmark=False,
+        )
+        add_naep_rows(
+            state_code=state_code,
+            state_name=state_name,
+            jurisdiction="NP",
+            source="NAEP (National Public)",
+            comparison_role="naep_national_public_benchmark",
+            benchmark_label="National Public",
+            repeated_benchmark=True,
         )
 
     enriched_df = pd.DataFrame(rows)
@@ -334,9 +470,11 @@ def build_looker_state_naep_comparison(
     }
     family_order = {
         "naep_below_basic": 1,
-        "state_below_basic_analog": 2,
-        "state_exact_tier": 3,
-        "state_published_source_bin": 4,
+        "naep_below_proficient": 2,
+        "naep_achievement_level": 3,
+        "state_below_basic_analog": 4,
+        "state_exact_tier": 5,
+        "state_published_source_bin": 6,
     }
     enriched_df["source_order"] = enriched_df["comparison_role"].map(role_order).fillna(99)
     enriched_df["metric_order"] = enriched_df["metric_family"].map(family_order).fillna(99)
@@ -360,16 +498,27 @@ def build_looker_state_naep_comparison(
         "build_date": dt.date.today().isoformat(),
         "description": (
             "Looker-ready long tables combining state assessment Grade 3 ELA rows with 2024 NAEP Grade 4 Reading "
-            "below-basic comparison rows."
+            "achievement-level and below-proficient comparison rows."
         ),
         "outputs": {
             "looker_minimal_csv": str(LOOKER_MINIMAL_RELATIVE_PATH),
             "looker_enriched_csv": str(LOOKER_ENRICHED_RELATIVE_PATH),
             "naep_raw_json": str(NAEP_RAW_RELATIVE_PATH),
+            "naep_achievement_raw_json": str(NAEP_ACHIEVEMENT_RAW_RELATIVE_PATH),
         },
         "naep_logic": {
-            "metric": "Percent Below Basic",
-            "derivation": "100 - percent at or above Basic from the official NAEP 2024 Grade 4 Reading state data table.",
+            "metrics": [
+                "Percent Below Basic",
+                "Percent Basic",
+                "Percent Proficient",
+                "Percent Advanced",
+                "Percent Below Proficient",
+            ],
+            "achievement_levels": (
+                "Official discrete or cumulative achievement-level percentages from the "
+                "NAEP 2024 Grade 4 Reading data service."
+            ),
+            "below_proficient_derivation": "Percent Below Basic + Percent Basic.",
             "repeated_national_benchmark": True,
         },
         "state_assessment_logic": {
@@ -382,6 +531,7 @@ def build_looker_state_naep_comparison(
         },
         "sources": {
             "naep_query_url": NAEP_QUERY_URL,
+            "naep_achievement_query_url": NAEP_ACHIEVEMENT_QUERY_URL,
             "naep_source_page_url": NAEP_SOURCE_PAGE_URL,
         },
     }
@@ -401,6 +551,17 @@ def build_looker_state_naep_comparison(
                 "description": "Raw NAEP 2024 Grade 4 Reading state data table used for Looker comparison rows.",
                 "path": str(NAEP_RAW_RELATIVE_PATH),
                 "source_url": NAEP_QUERY_URL,
+            },
+            {
+                "state": "MULTI",
+                "state_name": "Multiple States",
+                "program": "NAEP",
+                "reporting_period": "2024",
+                "kind": "raw",
+                "granularity": "state+national",
+                "description": "Raw NAEP 2024 Grade 4 Reading achievement-level percentages.",
+                "path": str(NAEP_ACHIEVEMENT_RAW_RELATIVE_PATH),
+                "source_url": NAEP_ACHIEVEMENT_QUERY_URL,
             },
             {
                 "state": "MULTI",
@@ -432,4 +593,5 @@ def build_looker_state_naep_comparison(
         "looker_enriched": enriched_output_path,
         "looker_metadata": metadata_output_path,
         "naep_raw_json": repo_root / NAEP_RAW_RELATIVE_PATH,
+        "naep_achievement_raw_json": repo_root / NAEP_ACHIEVEMENT_RAW_RELATIVE_PATH,
     }

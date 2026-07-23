@@ -151,6 +151,12 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Optional local NAEP 2024 Grade 4 Reading state table JSON path.",
     )
+    parser.add_argument(
+        "--naep-achievement-json",
+        type=Path,
+        default=None,
+        help="Optional local NAEP 2024 Grade 4 Reading achievement-level JSON path.",
+    )
     return parser.parse_args()
 
 
@@ -191,6 +197,7 @@ def main() -> int:
         tiers_path=outputs["cross_state_tiers"],
         published_reference_path=outputs["published_reference_bins"],
         naep_raw_json=args.naep_raw_json,
+        naep_achievement_json=args.naep_achievement_json,
     )
     outputs = {**outputs, **looker_outputs}
 

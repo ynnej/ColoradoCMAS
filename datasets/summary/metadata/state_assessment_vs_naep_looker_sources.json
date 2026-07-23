@@ -1,17 +1,26 @@
 {
   "build_date": "2026-07-23",
-  "description": "Looker-ready long tables combining state assessment Grade 3 ELA rows with 2024 NAEP Grade 4 Reading below-basic comparison rows.",
+  "description": "Looker-ready long tables combining state assessment Grade 3 ELA rows with 2024 NAEP Grade 4 Reading achievement-level and below-proficient comparison rows.",
   "naep_logic": {
-    "derivation": "100 - percent at or above Basic from the official NAEP 2024 Grade 4 Reading state data table.",
-    "metric": "Percent Below Basic",
+    "achievement_levels": "Official discrete or cumulative achievement-level percentages from the NAEP 2024 Grade 4 Reading data service.",
+    "below_proficient_derivation": "Percent Below Basic + Percent Basic.",
+    "metrics": [
+      "Percent Below Basic",
+      "Percent Basic",
+      "Percent Proficient",
+      "Percent Advanced",
+      "Percent Below Proficient"
+    ],
     "repeated_national_benchmark": true
   },
   "outputs": {
     "looker_enriched_csv": "datasets/summary/state_assessment_vs_naep_looker_enriched.csv",
     "looker_minimal_csv": "datasets/summary/state_assessment_vs_naep_looker_minimal.csv",
+    "naep_achievement_raw_json": "datasets/naep/2024/raw/naep_2024_grade4_reading_achievement_levels.json",
     "naep_raw_json": "datasets/naep/2024/raw/naep_2024_grade4_reading_state_map_datatable.json"
   },
   "sources": {
+    "naep_achievement_query_url": "https://www.nationsreportcard.gov/DataService/GetAdhocData.aspx?type=data&subject=RED&cohort=1&subscale=RRPCM&variable=TOTAL&jurisdiction=AL%2CAK%2CAZ%2CAR%2CCA%2CCO%2CCT%2CDE%2CDC%2CFL%2CGA%2CHI%2CID%2CIL%2CIN%2CIA%2CKS%2CKY%2CLA%2CME%2CMD%2CMA%2CMI%2CMN%2CMS%2CMO%2CMT%2CNE%2CNV%2CNH%2CNJ%2CNM%2CNY%2CNC%2CND%2COH%2COK%2COR%2CPA%2CRI%2CSC%2CSD%2CTN%2CTX%2CUT%2CVT%2CVA%2CWA%2CWV%2CWI%2CWY%2CNP&stattype=ALC%3ABB%2CALD%3ABA%2CALD%3APR%2CALD%3AAD&Year=2024R3",
     "naep_query_url": "https://www.nationsreportcard.gov/NDEDataService/ChartHandler.aspx?type=sp_state_map_datatable&subject=RED&cohort=1&year=2024R3&wantse=false&wantextdecplaces=false",
     "naep_source_page_url": "https://www.nationsreportcard.gov/profiles/"
   },

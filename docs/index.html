@@ -15,8 +15,8 @@
       href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,650&amp;family=Public+Sans:wght@400;500;600;700;800&amp;display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="assets/dashboard-20260723-yellow2.css">
-    <script src="assets/dashboard-20260723-yellow2.js" defer></script>
+    <link rel="stylesheet" href="assets/dashboard-20260723-naep2.css">
+    <script src="assets/dashboard-20260723-naep2.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to dashboard</a>
@@ -41,7 +41,7 @@
         <a href="#naep-overview">Overview</a>
         <a href="#naep-states">States</a>
         <a href="#naep-methodology">Methodology</a>
-        <a class="nav-download" href="downloads/naep_2024_grade4_reading_below_basic.csv" download>
+        <a class="nav-download" href="downloads/naep_2024_grade4_reading_achievement_levels.csv" download>
           Get NAEP data
         </a>
       </nav>
@@ -328,16 +328,16 @@
             <p class="eyebrow">The Nation’s Report Card</p>
             <h1 id="naep-page-title">One assessment.<br><em>A common yardstick.</em></h1>
             <p class="hero-deck">
-              2024 NAEP Grade 4 Reading results for every state and DC, shown as the
-              share of public-school students performing Below Basic.
+              2024 NAEP Grade 4 Reading results for every state and DC, with all four
+              achievement levels and a shared national benchmark.
             </p>
           </div>
           <aside class="hero-note naep-hero-note">
             <p class="note-label">How to read this</p>
             <p>
-              Lower percentages mean fewer students scored Below Basic. NAEP uses the
-              same framework across jurisdictions, but small differences may not be
-              statistically significant.
+              Select a state to see Below Basic, Basic, Proficient, Advanced, and the
+              combined share Below Proficient. Small differences may not be statistically
+              significant.
             </p>
             <a href="#naep-methodology">Read the NAEP notes <span aria-hidden="true">↘</span></a>
           </aside>
@@ -478,6 +478,9 @@
                       <button type="button" data-naep-sort="naepValue">Below Basic <span aria-hidden="true">↕</span></button>
                     </th>
                     <th scope="col" class="numeric">
+                      <button type="button" data-naep-sort="naepBelowProficientValue">Below Proficient <span aria-hidden="true">↕</span></button>
+                    </th>
+                    <th scope="col" class="numeric">
                       <button type="button" data-naep-sort="naepDifference">Difference from U.S. <span aria-hidden="true">↕</span></button>
                     </th>
                     <th scope="col">Comparison</th>
@@ -486,7 +489,7 @@
                   </tr>
                 </thead>
                 <tbody id="naep-table-body">
-                  <tr><td colspan="6" class="table-loading">Loading NAEP results…</td></tr>
+                  <tr><td colspan="7" class="table-loading">Loading NAEP results…</td></tr>
                 </tbody>
               </table>
             </div>
@@ -517,10 +520,11 @@
             </article>
             <article>
               <span class="method-number">02</span>
-              <h3>Below Basic</h3>
+              <h3>Achievement levels</h3>
               <p>
-                The displayed value is 100 minus the official percentage at or above NAEP Basic.
-                NAEP achievement levels are not equivalent to state proficiency categories.
+                Each detail view shows Below Basic, Basic, Proficient, and Advanced.
+                Below Proficient is calculated as Below Basic plus Basic; NAEP Proficient
+                is not equivalent to a state’s grade-level proficiency standard.
               </p>
             </article>
             <article>

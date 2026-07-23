@@ -15,7 +15,7 @@ DOCS_DIR = REPO_ROOT / "docs"
 DATA_DIR = DOCS_DIR / "data"
 DOWNLOADS_DIR = DOCS_DIR / "downloads"
 ASSET_DIR = DOCS_DIR / "assets"
-DASHBOARD_RELEASE = "20260723-yellow2"
+DASHBOARD_RELEASE = "20260723-naep2"
 
 TRACKER_PATH = SUMMARY_DIR / "statewide_grade3_ela_rollout_tracker.csv"
 ANALOG_PATH = SUMMARY_DIR / "statewide_grade3_ela_below_basic_analog.csv"
@@ -23,7 +23,14 @@ REFERENCE_PATH = SUMMARY_DIR / "statewide_grade3_ela_published_reference_bins.cs
 TIERS_PATH = SUMMARY_DIR / "statewide_grade3_ela_tiers.csv"
 LOOKER_PATH = SUMMARY_DIR / "state_assessment_vs_naep_looker_enriched.csv"
 METADATA_PATH = SUMMARY_DIR / "metadata" / "statewide_grade3_ela_sources.json"
-NAEP_DOWNLOAD_FILENAME = "naep_2024_grade4_reading_below_basic.csv"
+NAEP_DOWNLOAD_FILENAME = "naep_2024_grade4_reading_achievement_levels.csv"
+NAEP_LEVEL_METRICS = {
+    "Percent Below Basic": ("below_basic", "Below Basic"),
+    "Percent Basic": ("basic", "Basic"),
+    "Percent Proficient": ("proficient", "Proficient"),
+    "Percent Advanced": ("advanced", "Advanced"),
+}
+NAEP_LEVEL_IDS = tuple(level_id for level_id, _ in NAEP_LEVEL_METRICS.values())
 
 STATUS_CONFIG = {
     "covered_exact_tiers": {
@@ -93,25 +100,66 @@ def tier_bins(rows: list[dict[str, str]]) -> list[dict[str, object]]:
 
 def build_naep_lookup(
     rows: list[dict[str, str]],
-) -> tuple[dict[str, float], float | None, str, str]:
+) -> dict[str, object]:
     state_values: dict[str, float] = {}
+    state_below_proficient: dict[str, float] = {}
+    state_levels: dict[str, dict[str, dict[str, object]]] = {}
     national_value = None
+    national_below_proficient = None
+    national_levels: dict[str, dict[str, object]] = {}
     source_url = ""
     source_page_url = ""
     for row in rows:
-        metric_id = row.get("metric_id") or row.get("metric_family")
-        if metric_id != "naep_below_basic":
+        metric_id = row.get("metric_id") or row.get("metric_family") or ""
+        if not metric_id.startswith("naep_"):
             continue
         value = as_number(row.get("value"))
         if value is None:
             continue
         source_url = source_url or row.get("source_url", "").strip()
         source_page_url = source_page_url or row.get("source_page_url", "").strip()
-        if row.get("comparison_role") == "naep_state":
-            state_values[row["state_code"]] = value
-        elif row.get("comparison_role") == "naep_national_public_benchmark":
-            national_value = value
-    return state_values, national_value, source_url, source_page_url
+        role = row.get("comparison_role")
+        metric = row.get("metric", "")
+        state_code = row["state_code"]
+
+        if metric == "Percent Below Proficient":
+            if role == "naep_state":
+                state_below_proficient[state_code] = value
+            elif role == "naep_national_public_benchmark":
+                national_below_proficient = value
+            continue
+
+        level_spec = NAEP_LEVEL_METRICS.get(metric)
+        if level_spec is None:
+            continue
+        level_id, label = level_spec
+        level = {"id": level_id, "label": label, "value": value}
+        if role == "naep_state":
+            state_levels.setdefault(state_code, {})[level_id] = level
+            if level_id == "below_basic":
+                state_values[state_code] = value
+        elif role == "naep_national_public_benchmark":
+            national_levels[level_id] = level
+            if level_id == "below_basic":
+                national_value = value
+
+    return {
+        "stateValues": state_values,
+        "stateBelowProficient": state_below_proficient,
+        "stateLevels": {
+            state_code: [levels[level_id] for level_id in NAEP_LEVEL_IDS if level_id in levels]
+            for state_code, levels in state_levels.items()
+        },
+        "nationalValue": national_value,
+        "nationalBelowProficient": national_below_proficient,
+        "nationalLevels": [
+            national_levels[level_id]
+            for level_id in NAEP_LEVEL_IDS
+            if level_id in national_levels
+        ],
+        "sourceUrl": source_url,
+        "sourcePageUrl": source_page_url,
+    }
 
 
 def write_dashboard_csv(states: list[dict[str, object]], destination: Path) -> None:
@@ -124,6 +172,7 @@ def write_dashboard_csv(states: list[dict[str, object]], destination: Path) -> N
         "reported_measure",
         "below_basic_analog_pct",
         "naep_2024_grade4_reading_below_basic_pct",
+        "naep_2024_grade4_reading_below_proficient_pct",
         "source_page_url",
     ]
     with destination.open("w", newline="", encoding="utf-8") as output:
@@ -140,6 +189,9 @@ def write_dashboard_csv(states: list[dict[str, object]], destination: Path) -> N
                     "reported_measure": state["analogLabel"],
                     "below_basic_analog_pct": state["analogValue"],
                     "naep_2024_grade4_reading_below_basic_pct": state["naepValue"],
+                    "naep_2024_grade4_reading_below_proficient_pct": state[
+                        "naepBelowProficientValue"
+                    ],
                     "source_page_url": state["sourcePageUrl"],
                 }
             )
@@ -148,19 +200,29 @@ def write_dashboard_csv(states: list[dict[str, object]], destination: Path) -> N
 def write_naep_csv(
     states: list[dict[str, object]],
     national_value: float,
+    national_below_proficient: float,
+    national_levels: list[dict[str, object]],
     source_page_url: str,
     destination: Path,
 ) -> None:
+    national_by_level = {str(level["id"]): level["value"] for level in national_levels}
     fieldnames = [
         "state",
         "state_name",
         "year",
         "grade",
         "subject",
-        "metric",
-        "state_pct",
-        "national_public_pct",
-        "difference_from_national_percentage_points",
+        "state_below_basic_pct",
+        "state_basic_pct",
+        "state_proficient_pct",
+        "state_advanced_pct",
+        "state_below_proficient_pct",
+        "national_public_below_basic_pct",
+        "national_public_basic_pct",
+        "national_public_proficient_pct",
+        "national_public_advanced_pct",
+        "national_public_below_proficient_pct",
+        "below_basic_difference_from_national_percentage_points",
         "source_page_url",
     ]
     with destination.open("w", newline="", encoding="utf-8") as output:
@@ -168,6 +230,9 @@ def write_naep_csv(
         writer.writeheader()
         for state in states:
             value = state["naepValue"]
+            state_by_level = {
+                str(level["id"]): level["value"] for level in state["naepLevels"]
+            }
             writer.writerow(
                 {
                     "state": state["code"],
@@ -175,10 +240,17 @@ def write_naep_csv(
                     "year": 2024,
                     "grade": 4,
                     "subject": "Reading",
-                    "metric": "Percent Below Basic",
-                    "state_pct": value,
-                    "national_public_pct": national_value,
-                    "difference_from_national_percentage_points": round(
+                    "state_below_basic_pct": state_by_level["below_basic"],
+                    "state_basic_pct": state_by_level["basic"],
+                    "state_proficient_pct": state_by_level["proficient"],
+                    "state_advanced_pct": state_by_level["advanced"],
+                    "state_below_proficient_pct": state["naepBelowProficientValue"],
+                    "national_public_below_basic_pct": national_by_level["below_basic"],
+                    "national_public_basic_pct": national_by_level["basic"],
+                    "national_public_proficient_pct": national_by_level["proficient"],
+                    "national_public_advanced_pct": national_by_level["advanced"],
+                    "national_public_below_proficient_pct": national_below_proficient,
+                    "below_basic_difference_from_national_percentage_points": round(
                         float(value) - national_value, 2
                     ),
                     "source_page_url": source_page_url,
@@ -198,12 +270,15 @@ def main() -> int:
     tiers_by_state: dict[str, list[dict[str, str]]] = {}
     for row in read_csv(TIERS_PATH):
         tiers_by_state.setdefault(row["state"], []).append(row)
-    (
-        naep_by_state,
-        national_naep,
-        naep_source_url,
-        naep_source_page_url,
-    ) = build_naep_lookup(read_csv(LOOKER_PATH))
+    naep_lookup = build_naep_lookup(read_csv(LOOKER_PATH))
+    naep_by_state = naep_lookup["stateValues"]
+    naep_below_proficient_by_state = naep_lookup["stateBelowProficient"]
+    naep_levels_by_state = naep_lookup["stateLevels"]
+    national_naep = naep_lookup["nationalValue"]
+    national_naep_below_proficient = naep_lookup["nationalBelowProficient"]
+    national_naep_levels = naep_lookup["nationalLevels"]
+    naep_source_url = naep_lookup["sourceUrl"]
+    naep_source_page_url = naep_lookup["sourcePageUrl"]
     metadata = json.loads(METADATA_PATH.read_text(encoding="utf-8"))
 
     states: list[dict[str, object]] = []
@@ -233,6 +308,8 @@ def main() -> int:
                 "analogLabel": analog["below_basic_analog_label"],
                 "analogValue": as_number(analog["below_basic_analog_pct"]),
                 "naepValue": naep_by_state.get(code),
+                "naepBelowProficientValue": naep_below_proficient_by_state.get(code),
+                "naepLevels": naep_levels_by_state.get(code, []),
                 "sourceNotes": analog["source_notes"],
                 "sourceUrl": analog["source_url"],
                 "sourcePageUrl": tracker["source_page_url"],
@@ -263,10 +340,43 @@ def main() -> int:
 
     state_codes = {state["code"] for state in states}
     missing_naep = sorted(state_codes - set(naep_by_state))
-    if national_naep is None or missing_naep:
+    missing_naep_below_proficient = sorted(
+        state_codes - set(naep_below_proficient_by_state)
+    )
+    missing_naep_levels = sorted(state_codes - set(naep_levels_by_state))
+    if (
+        national_naep is None
+        or national_naep_below_proficient is None
+        or len(national_naep_levels) != len(NAEP_LEVEL_IDS)
+        or missing_naep
+        or missing_naep_below_proficient
+        or missing_naep_levels
+    ):
         raise ValueError(
-            "NAEP data must include the national public benchmark and all 51 jurisdictions; "
-            f"missing jurisdictions: {', '.join(missing_naep) or 'none'}"
+            "NAEP data must include all achievement levels and Below Proficient for "
+            "the national public benchmark and all 51 jurisdictions; missing Below Basic: "
+            f"{', '.join(missing_naep) or 'none'}; missing Below Proficient: "
+            f"{', '.join(missing_naep_below_proficient) or 'none'}; missing levels: "
+            f"{', '.join(missing_naep_levels) or 'none'}"
+        )
+
+    for state in states:
+        levels = state["naepLevels"]
+        if [level["id"] for level in levels] != list(NAEP_LEVEL_IDS):
+            raise ValueError(f"NAEP achievement levels are incomplete for {state['code']}.")
+        level_total = sum(float(level["value"]) for level in levels)
+        if abs(level_total - 100.0) > 0.1:
+            raise ValueError(
+                f"NAEP achievement levels for {state['code']} sum to {level_total}, not 100."
+            )
+        below_proficient = float(levels[0]["value"]) + float(levels[1]["value"])
+        if abs(below_proficient - float(state["naepBelowProficientValue"])) > 0.02:
+            raise ValueError(f"NAEP Below Proficient is inconsistent for {state['code']}.")
+
+    national_level_total = sum(float(level["value"]) for level in national_naep_levels)
+    if abs(national_level_total - 100.0) > 0.1:
+        raise ValueError(
+            f"National NAEP achievement levels sum to {national_level_total}, not 100."
         )
 
     new_hampshire = next(state for state in states if state["code"] == "NH")
@@ -285,7 +395,14 @@ def main() -> int:
     dashboard_csv_path = DOWNLOADS_DIR / "state_assessment_dashboard_results.csv"
     write_dashboard_csv(states, dashboard_csv_path)
     naep_csv_path = DOWNLOADS_DIR / NAEP_DOWNLOAD_FILENAME
-    write_naep_csv(states, national_naep, naep_source_page_url, naep_csv_path)
+    write_naep_csv(
+        states,
+        national_naep,
+        national_naep_below_proficient,
+        national_naep_levels,
+        naep_source_page_url,
+        naep_csv_path,
+    )
     for source in DOWNLOAD_FILES:
         shutil.copyfile(source, DOWNLOADS_DIR / source.name)
     shutil.copyfile(
@@ -309,6 +426,8 @@ def main() -> int:
             "subject": "Reading",
             "metric": "Percent Below Basic",
             "nationalValue": national_naep,
+            "nationalBelowProficientValue": national_naep_below_proficient,
+            "nationalLevels": national_naep_levels,
             "sourceUrl": naep_source_url,
             "sourcePageUrl": naep_source_page_url,
             "jurisdictions": len(naep_by_state),
@@ -344,7 +463,7 @@ def main() -> int:
             {
                 "label": "NAEP Grade 4 Reading",
                 "file": f"downloads/{NAEP_DOWNLOAD_FILENAME}",
-                "description": "2024 percent Below Basic for every state and DC, with the national benchmark.",
+                "description": "2024 achievement levels and Below Proficient for every state and DC, with the national benchmark.",
             },
         ],
     }
