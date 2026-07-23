@@ -289,30 +289,494 @@ STATE_INFO = [
 
 EXACT_TIER_STATES = {
     "AK",
+    "AL",
     "AR",
+    "AZ",
     "CO",
     "CT",
     "DC",
     "FL",
     "GA",
+    "ID",
     "IN",
+    "KS",
     "KY",
     "LA",
     "MA",
     "MD",
+    "ME",
     "MS",
+    "MO",
+    "MT",
     "NJ",
     "NY",
+    "OK",
+    "OR",
     "PA",
     "RI",
     "SC",
+    "SD",
     "TN",
     "TX",
     "WA",
     "WI",
 }
-OFFICIAL_PROFICIENCY_ONLY_STATES = {"CA", "DE", "NH", "OH", "WV"}
-SOURCE_BIN_STATES = {"NC", "VA"}
+OFFICIAL_PROFICIENCY_ONLY_STATES = {"CA", "DE", "HI", "IA", "IL", "NH", "NM", "OH", "WV", "WY"}
+SOURCE_BIN_STATES = {"MI", "NC", "VA"}
+
+
+OFFICIAL_STATE_RECORDS: dict[str, dict[str, object]] = {
+    "AL": {
+        "state_name": "Alabama",
+        "assessment": "ACAP",
+        "program": "ACAP",
+        "school_year": "2024-2025",
+        "administration_year": 2025,
+        "record_kind": "exact_tiers",
+        "bins": [
+            ("level_1", "Level 1", 9.0),
+            ("level_2", "Level 2", 25.0),
+            ("level_3", "Level 3", 42.0),
+            ("level_4", "Level 4", 23.0),
+        ],
+        "below_basic_label": "Level 1",
+        "proficient_pct": 66.0,
+        "valid_test_takers": 55930,
+        "output_path": Path(
+            "datasets/al/acap/2024_2025/processed/acap_2025_statewide_grade3_ela_tiers.csv"
+        ),
+        "source_url": (
+            "https://www.alabamaachieves.org/wp-content/uploads/2025/07/"
+            "SBOE_20250716_2024-2025-Student-Assessment-State-Data-Overview_v1.0.pdf"
+        ),
+        "source_page_url": "https://www.alabamaachieves.org/assessment/acap/",
+        "notes": (
+            "Alabama's official 2024-25 state assessment overview reports statewide Grade 3 ACAP ELA "
+            "percentages for Levels 1 through 4. Published percentages sum to 99% because of rounding."
+        ),
+    },
+    "AZ": {
+        "state_name": "Arizona",
+        "assessment": "AASA",
+        "program": "AASA",
+        "school_year": "2024-2025",
+        "administration_year": 2025,
+        "record_kind": "exact_tiers",
+        "bins": [
+            ("minimally_proficient", "Minimally Proficient", 51.7),
+            ("partially_proficient", "Partially Proficient", 12.5),
+            ("proficient", "Proficient", 22.8),
+            ("highly_proficient", "Highly Proficient", 13.1),
+        ],
+        "below_basic_label": "Minimally Proficient",
+        "proficient_pct": 35.9,
+        "valid_test_takers": 79299,
+        "output_path": Path(
+            "datasets/az/aasa/2024_2025/processed/aasa_2025_statewide_grade3_ela_tiers.csv"
+        ),
+        "source_url": "https://www.azed.gov/sites/default/files/2026/04/AASA_2025_Technical_Report.pdf",
+        "source_page_url": "https://www.azed.gov/assessment/assessments/aasa",
+        "notes": (
+            "Arizona's official AASA 2025 technical report, Table C.1, reports statewide Grade 3 ELA "
+            "counts and percentages for all four performance levels."
+        ),
+    },
+    "HI": {
+        "state_name": "Hawaii",
+        "assessment": "Smarter Balanced",
+        "program": "SMARTER_BALANCED",
+        "school_year": "2024-2025",
+        "administration_year": 2025,
+        "record_kind": "proficiency_only",
+        "proficient_label": "Met or Exceeded Achievement Standard",
+        "proficient_pct": 49.9,
+        "valid_test_takers": 12122,
+        "below_basic_label": "100 - Met or Exceeded Achievement Standard",
+        "output_path": Path(
+            "datasets/hi/smarter_balanced/2024_2025/processed/"
+            "sba_2025_statewide_grade3_ela_public_reference.csv"
+        ),
+        "source_url": "https://hawaiipublicschools.org/wp-content/uploads/SBA2024-25.xlsx",
+        "source_page_url": "https://hawaiipublicschools.org/academics/types-of-testing/",
+        "notes": (
+            "Hawaii's official 2024-25 Smarter Balanced statewide workbook reports 49.9% of Grade 3 "
+            "ELA students met or exceeded the achievement standard, but the state row used here does "
+            "not publish the full performance-level split."
+        ),
+    },
+    "ID": {
+        "state_name": "Idaho",
+        "assessment": "ISAT",
+        "program": "ISAT",
+        "school_year": "2023-2024",
+        "administration_year": 2024,
+        "record_kind": "exact_tiers",
+        "bins": [
+            ("level_1", "Level 1", 29.0),
+            ("level_2", "Level 2", 23.0),
+            ("level_3", "Level 3", 22.0),
+            ("level_4", "Level 4", 25.0),
+        ],
+        "below_basic_label": "Level 1",
+        "proficient_pct": 48.0,
+        "valid_test_takers": 23374,
+        "output_path": Path(
+            "datasets/id/isat/2023_2024/processed/isat_2024_statewide_grade3_ela_tiers.csv"
+        ),
+        "source_url": (
+            "https://www.sde.idaho.gov/assessment/isat-cas/files/general/"
+            "SY2023-24-Idaho-SB-Tech-Report.pdf"
+        ),
+        "source_page_url": (
+            "https://www.sde.idaho.gov/about-us/departments/assessment-accountability/"
+            "idaho-standards-achievement-test-isat/"
+        ),
+        "notes": (
+            "Idaho's official 2023-24 ISAT technical report publishes statewide Grade 3 ELA "
+            "percentages for Levels 1 through 4. This one-year-older state result replaces the older "
+            "federal proficiency proxy; published level percentages sum to 99% because of rounding."
+        ),
+    },
+    "IL": {
+        "state_name": "Illinois",
+        "assessment": "IAR",
+        "program": "IAR",
+        "school_year": "2024-2025",
+        "administration_year": 2025,
+        "record_kind": "proficiency_only",
+        "proficient_label": "Proficient",
+        "proficient_pct": 47.3,
+        "below_basic_label": "100 - Proficient",
+        "output_path": Path(
+            "datasets/il/iar/2024_2025/processed/iar_2025_statewide_grade3_ela_public_reference.csv"
+        ),
+        "source_url": "https://www.isbe.net/Documents/2025-Report-Card-Public-Data-Set.xlsx",
+        "source_page_url": "https://www.isbe.net/Pages/Illinois-State-Report-Card-Data.aspx",
+        "notes": (
+            "Illinois's official 2025 Report Card public dataset reports statewide Grade 3 IAR ELA "
+            "proficiency at 47.3%. The statewide row used here does not expose the full performance-level split."
+        ),
+    },
+    "IA": {
+        "state_name": "Iowa",
+        "assessment": "ISASP",
+        "program": "ISASP",
+        "school_year": "2024-2025",
+        "administration_year": 2025,
+        "record_kind": "proficiency_only",
+        "proficient_label": "Proficient",
+        "proficient_pct": 68.0,
+        "below_basic_label": "100 - Proficient",
+        "output_path": Path(
+            "datasets/ia/isasp/2024_2025/processed/isasp_2025_statewide_grade3_ela_public_reference.csv"
+        ),
+        "source_url": "https://educate.iowa.gov/media/11696/download?inline=",
+        "source_page_url": (
+            "https://educate.iowa.gov/press-release/2025-08-20/"
+            "iowa-achieves-impressive-gains-early-literacy-science-new-2025-spring-statewide-student-assessment"
+        ),
+        "notes": (
+            "Iowa's official 2025 statewide assessment results report Grade 3 ELA proficiency at 68%. "
+            "The public statewide summary used here does not expose the full performance-level split."
+        ),
+    },
+    "KS": {
+        "state_name": "Kansas",
+        "assessment": "Kansas State Assessment",
+        "program": "KSA",
+        "school_year": "2024-2025",
+        "administration_year": 2025,
+        "record_kind": "exact_tiers",
+        "bins": [
+            ("level_1", "Level 1", 27.2),
+            ("level_2", "Level 2", 20.9),
+            ("level_3", "Level 3", 39.2),
+            ("level_4", "Level 4", 12.7),
+        ],
+        "below_basic_label": "Level 1",
+        "proficient_pct": 51.9,
+        "output_path": Path(
+            "datasets/ks/ksa/2024_2025/processed/ksa_2025_statewide_grade3_ela_tiers.csv"
+        ),
+        "source_url": (
+            "https://www.ksde.gov/docs/default-source/crp/ar-2024-25-coherence.pdf"
+            "?sfvrsn=42d42afb_3"
+        ),
+        "source_page_url": "https://www.ksde.gov/Home/Quick-Links/News-Room/Annual-Reports",
+        "notes": (
+            "Kansas's official 2024-25 annual report publishes statewide Grade 3 ELA percentages "
+            "for Kansas State Assessment Levels 1 through 4."
+        ),
+    },
+    "ME": {
+        "state_name": "Maine",
+        "assessment": "Maine Through Year Assessment",
+        "program": "MTYA",
+        "school_year": "2024-2025",
+        "administration_year": 2025,
+        "record_kind": "exact_tiers",
+        "bins": [
+            ("well_below_state_expectations", "Well Below State Expectations", 12.6),
+            ("below_state_expectations", "Below State Expectations", 27.1),
+            ("at_state_expectations", "At State Expectations", 47.3),
+            ("above_state_expectations", "Above State Expectations", 13.0),
+        ],
+        "below_basic_label": "Well Below State Expectations",
+        "proficient_pct": 60.3,
+        "valid_test_takers": 12530,
+        "output_path": Path(
+            "datasets/me/mtya/2024_2025/processed/mtya_2025_statewide_grade3_reading_tiers.csv"
+        ),
+        "source_url": (
+            "https://www.maine.gov/doe/sites/maine.gov.doe/files/inline-files/"
+            "Assessment%20-%20Maine%20Through%20Year%20Assessment%20Spring%2025%20Technical%20Report%20-%203.31.2026.pdf"
+        ),
+        "source_page_url": (
+            "https://www.maine.gov/doe/Testing_Accountability/MECAS/math_ELA_Literacy"
+        ),
+        "notes": (
+            "Maine's official Spring 2025 technical report, Table 8.2, publishes statewide Grade 3 "
+            "Reading percentages for all four achievement levels."
+        ),
+    },
+    "MI": {
+        "state_name": "Michigan",
+        "assessment": "M-STEP",
+        "program": "MSTEP",
+        "school_year": "2024-2025",
+        "administration_year": 2025,
+        "record_kind": "source_bins",
+        "bins": [
+            ("not_proficient", "Not Proficient", 36.5),
+            ("partially_proficient", "Partially Proficient", 24.6),
+            ("proficient_or_advanced", "Proficient or Advanced", 38.9),
+        ],
+        "below_basic_label": "Not Proficient",
+        "proficient_pct": 38.9,
+        "output_path": Path(
+            "datasets/mi/mstep/2024_2025/processed/mstep_2025_statewide_grade3_ela_public_bins.csv"
+        ),
+        "source_url": (
+            "https://www.michigan.gov/mde/news-and-information/press-releases/2025/08/27/"
+            "michigan-students-perform-better-on-most-tests"
+        ),
+        "source_page_url": (
+            "https://www.michigan.gov/mde/news-and-information/press-releases/2025/08/27/"
+            "michigan-students-perform-better-on-most-tests"
+        ),
+        "notes": (
+            "Michigan's official 2025 release reports 38.9% Proficient or Advanced and 24.6% "
+            "Partially Proficient for Grade 3 M-STEP ELA. Not Proficient is the remaining 36.5%; "
+            "the state release combines the two upper tiers."
+        ),
+    },
+    "MO": {
+        "state_name": "Missouri",
+        "assessment": "MAP",
+        "program": "MAP",
+        "school_year": "2024-2025",
+        "administration_year": 2025,
+        "record_kind": "exact_tiers",
+        "bins": [
+            ("below_basic", "Below Basic", 18.0),
+            ("basic", "Basic", 23.0),
+            ("proficient", "Proficient", 28.0),
+            ("advanced", "Advanced", 31.0),
+        ],
+        "below_basic_label": "Below Basic",
+        "proficient_pct": 59.0,
+        "valid_test_takers": 65733,
+        "output_path": Path(
+            "datasets/mo/map/2024_2025/processed/map_2025_statewide_grade3_ela_tiers.csv"
+        ),
+        "source_url": (
+            "https://dese.mo.gov/sites/g/files/zuston521/files/media/pdf/2025/08/"
+            "2024-25%20Preliminary%20MAP%20Results%2008.22.2025.pdf"
+        ),
+        "source_page_url": (
+            "https://dese.mo.gov/media/pdf/report-2024-25-preliminary-academic-performance"
+        ),
+        "notes": (
+            "Missouri's official preliminary 2024-25 MAP results publish statewide Grade 3 ELA "
+            "percentages for Below Basic, Basic, Proficient, and Advanced."
+        ),
+    },
+    "MT": {
+        "state_name": "Montana",
+        "assessment": "MAST",
+        "program": "MAST",
+        "school_year": "2024-2025",
+        "administration_year": 2025,
+        "record_kind": "exact_tiers",
+        "bins": [
+            ("novice", "Novice", 32.8),
+            ("partially_proficient", "Partially Proficient", 31.3),
+            ("proficient", "Proficient", 28.8),
+            ("advanced", "Advanced", 7.2),
+        ],
+        "below_basic_label": "Novice",
+        "proficient_pct": 36.0,
+        "valid_test_takers": 11239,
+        "output_path": Path(
+            "datasets/mt/mast/2024_2025/processed/mast_2025_statewide_grade3_ela_tiers.csv"
+        ),
+        "source_url": (
+            "https://opi.mt.gov/Portals/182/Page%20Files/Statewide%20Testing/MAST/"
+            "MAST%202024-2025%20Technical%20Report.pdf?ver=2025-12-19-121316-830"
+        ),
+        "source_page_url": (
+            "https://opi.mt.gov/Leadership/Assessment-Accountability/MontCAS/Assessment-Data-Release"
+        ),
+        "notes": (
+            "Montana's official 2024-25 MAST technical report publishes statewide Grade 3 ELA "
+            "counts and percentages for Novice through Advanced. Published percentages sum to "
+            "100.1% because of rounding."
+        ),
+    },
+    "NM": {
+        "state_name": "New Mexico",
+        "assessment": "NM-MSSA",
+        "program": "NM_MSSA",
+        "school_year": "2024-2025",
+        "administration_year": 2025,
+        "record_kind": "proficiency_only",
+        "proficient_label": "Proficient",
+        "proficient_pct": 41.0,
+        "below_basic_label": "100 - Proficient",
+        "output_path": Path(
+            "datasets/nm/nm_mssa/2024_2025/processed/"
+            "nm_mssa_2025_statewide_grade3_ela_public_reference.csv"
+        ),
+        "source_url": (
+            "https://web.ped.nm.gov/wp-content/uploads/2025/10/"
+            "PED-Assessment-Presentation-for-LESC_101525.pdf"
+        ),
+        "source_page_url": (
+            "https://web.ped.nm.gov/bureaus/accountability/achievement-data-by-year/"
+        ),
+        "notes": (
+            "New Mexico PED's official 2025 assessment presentation reports Grade 3 literacy "
+            "proficiency at 41%. The Grade 3 public result used here does not expose the full "
+            "NM-MSSA performance-level split."
+        ),
+    },
+    "OK": {
+        "state_name": "Oklahoma",
+        "assessment": "OSTP",
+        "program": "OSTP",
+        "school_year": "2024-2025",
+        "administration_year": 2025,
+        "record_kind": "exact_tiers",
+        "bins": [
+            ("below_basic", "Below Basic", 43.0),
+            ("basic", "Basic", 30.0),
+            ("proficient", "Proficient", 24.0),
+            ("advanced", "Advanced", 3.0),
+        ],
+        "below_basic_label": "Below Basic",
+        "proficient_pct": 27.0,
+        "valid_test_takers": 49994,
+        "output_path": Path(
+            "datasets/ok/ostp/2024_2025/processed/ostp_2025_statewide_grade3_ela_tiers.csv"
+        ),
+        "source_url": (
+            "https://oklahoma.gov/content/dam/ok/en/osde/documents/services/assessments/"
+            "state-testing-resources/2025-state-testing-resources/2425OKOSTPMediaRedacted.csv"
+        ),
+        "source_page_url": (
+            "https://oklahoma.gov/education/services/assessments/state-testing-resources.html"
+        ),
+        "notes": (
+            "Oklahoma's official 2024-25 OSTP public CSV reports statewide Grade 3 ELA counts "
+            "and percentages for Below Basic through Advanced."
+        ),
+    },
+    "OR": {
+        "state_name": "Oregon",
+        "assessment": "OSAS",
+        "program": "OSAS",
+        "school_year": "2024-2025",
+        "administration_year": 2025,
+        "record_kind": "exact_tiers",
+        "bins": [
+            ("level_1", "Level 1", 35.9),
+            ("level_2", "Level 2", 23.9),
+            ("level_3", "Level 3", 19.6),
+            ("level_4", "Level 4", 20.7),
+        ],
+        "below_basic_label": "Level 1",
+        "proficient_pct": 40.3,
+        "valid_test_takers": 38826,
+        "output_path": Path(
+            "datasets/or/osas/2024_2025/processed/osas_2025_statewide_grade3_ela_tiers.csv"
+        ),
+        "source_url": (
+            "https://www.oregon.gov/ode/educator-resources/assessment/Documents/"
+            "TestResults2425/pagr_State_ELA_2425.xlsx"
+        ),
+        "source_page_url": (
+            "https://www.oregon.gov/ode/educator-resources/assessment/pages/"
+            "assessment-group-reports.aspx"
+        ),
+        "notes": (
+            "Oregon's official 2024-25 statewide ELA workbook reports Grade 3 OSAS counts and "
+            "percentages for Levels 1 through 4. Published percentages sum to 100.1% because of rounding."
+        ),
+    },
+    "SD": {
+        "state_name": "South Dakota",
+        "assessment": "South Dakota Assessment",
+        "program": "SDA",
+        "school_year": "2024-2025",
+        "administration_year": 2025,
+        "record_kind": "exact_tiers",
+        "bins": [
+            ("level_1", "Level 1", 30.0),
+            ("level_2", "Level 2", 26.0),
+            ("level_3", "Level 3", 23.0),
+            ("level_4", "Level 4", 22.0),
+        ],
+        "below_basic_label": "Level 1",
+        "proficient_pct": 45.0,
+        "valid_test_takers": 10929,
+        "output_path": Path(
+            "datasets/sd/sd_assessments/2024_2025/processed/"
+            "sd_2025_statewide_grade3_ela_tiers.csv"
+        ),
+        "source_url": "https://doe.sd.gov/Assessment/documents/SY25-SBTech.pdf",
+        "source_page_url": "https://doe.sd.gov/Assessment/SD-assessments.aspx",
+        "notes": (
+            "South Dakota's official 2024-25 ELA and mathematics technical report, Table 23, "
+            "publishes statewide Grade 3 ELA percentages for Levels 1 through 4. Published "
+            "percentages sum to 101% because of rounding."
+        ),
+    },
+    "WY": {
+        "state_name": "Wyoming",
+        "assessment": "WY-TOPP",
+        "program": "WY_TOPP",
+        "school_year": "2023-2024",
+        "administration_year": 2024,
+        "record_kind": "proficiency_only",
+        "proficient_label": "Proficient",
+        "proficient_pct": 48.0,
+        "below_basic_label": "100 - Proficient",
+        "output_path": Path(
+            "datasets/wy/wy_topp/2023_2024/processed/"
+            "wy_topp_2024_statewide_grade3_ela_public_reference.csv"
+        ),
+        "source_url": (
+            "https://edu.wyoming.gov/wp-content/uploads/2024/02/"
+            "How-to-Use-Statewide-Summative-Assessment-Data-Public.pdf"
+        ),
+        "source_page_url": "https://edu.wyoming.gov/data/assessment-reports/",
+        "notes": (
+            "Wyoming's official statewide assessment guidance reports Grade 3 ELA proficiency "
+            "at 48%. This 2023-24 state result replaces the older federal proxy; the public "
+            "reference used here does not expose the full WY-TOPP performance-level split."
+        ),
+    },
+}
 
 
 def _copy_or_download_file(
@@ -346,6 +810,171 @@ def _write_single_row_csv(repo_root: Path, output_relative_path: Path, row: dict
     ensure_parent(output_path)
     pd.DataFrame([row]).to_csv(output_path, index=False)
     return output_path
+
+
+def _build_official_state_records(
+    repo_root: Path,
+) -> tuple[
+    pd.DataFrame,
+    list[dict[str, object]],
+    list[dict[str, object]],
+    dict[str, Path],
+    list[dict[str, str]],
+]:
+    tier_frames: list[pd.DataFrame] = []
+    below_basic_rows: list[dict[str, object]] = []
+    published_reference_rows: list[dict[str, object]] = []
+    output_paths: dict[str, Path] = {}
+    catalog_entries: list[dict[str, str]] = []
+
+    for state_code, record in OFFICIAL_STATE_RECORDS.items():
+        state_name = str(record["state_name"])
+        assessment = str(record["assessment"])
+        school_year = str(record["school_year"])
+        administration_year = int(record["administration_year"])
+        record_kind = str(record["record_kind"])
+        below_basic_label = str(record["below_basic_label"])
+        source_url = str(record["source_url"])
+        source_page_url = str(record["source_page_url"])
+        notes = str(record["notes"])
+        output_relative_path = Path(record["output_path"])
+        output_path = repo_root / output_relative_path
+        ensure_parent(output_path)
+
+        bins = list(record.get("bins", []))
+        if record_kind == "proficiency_only":
+            proficient_pct = float(record["proficient_pct"])
+            below_basic_pct = round(100.0 - proficient_pct, 1)
+        else:
+            matching_bins = [float(value) for _, label, value in bins if label == below_basic_label]
+            if len(matching_bins) != 1:
+                raise RuntimeError(
+                    f"{state_code} official state record must contain exactly one below-basic bin."
+                )
+            below_basic_pct = matching_bins[0]
+
+        summary: dict[str, object] = {
+            "state": state_code,
+            "state_name": state_name,
+            "assessment": assessment,
+            "subject": "ELA",
+            "grade": "03",
+            "school_year": school_year,
+            "administration_year": administration_year,
+            "below_basic_analog_label": below_basic_label,
+            "below_basic_analog_pct": below_basic_pct,
+            "source_notes": notes,
+            "source_url": source_url,
+            "source_page_url": source_page_url,
+        }
+        if "proficient_pct" in record:
+            summary["official_statewide_grade3_ela_percent_proficient_pct"] = float(
+                record["proficient_pct"]
+            )
+        if "valid_test_takers" in record:
+            summary["official_valid_test_takers"] = int(record["valid_test_takers"])
+        below_basic_rows.append(summary)
+
+        published_reference: dict[str, object] = {
+            "state": state_code,
+            "state_name": state_name,
+            "assessment": assessment,
+            "subject": "ELA",
+            "grade": "03",
+            "school_year": school_year,
+            "administration_year": administration_year,
+            "source_bin_structure": (
+                "published_exact_tiers"
+                if record_kind == "exact_tiers"
+                else "published_source_bins"
+                if record_kind == "source_bins"
+                else "published_proficiency_only"
+            ),
+            "notes": notes,
+            "source_url": source_url,
+            "source_page_url": source_page_url,
+        }
+        if record_kind == "proficiency_only":
+            reference_bins = [
+                (
+                    str(record.get("proficient_label", "Proficient")),
+                    float(record["proficient_pct"]),
+                )
+            ]
+        else:
+            reference_bins = [(str(label), float(value)) for _, label, value in bins]
+        for index in range(1, 6):
+            if index <= len(reference_bins):
+                label, value = reference_bins[index - 1]
+                published_reference[f"source_bin_{index}_label"] = label
+                published_reference[f"source_bin_{index}_pct"] = value
+            else:
+                published_reference[f"source_bin_{index}_label"] = ""
+                published_reference[f"source_bin_{index}_pct"] = None
+        published_reference_rows.append(published_reference)
+
+        if record_kind == "exact_tiers":
+            tier_rows: list[dict[str, object]] = []
+            for tier_rank, (tier_id, tier_label, value) in enumerate(bins, start=1):
+                tier_rows.append(
+                    {
+                        "state": state_code,
+                        "state_name": state_name,
+                        "assessment": assessment,
+                        "subject": "ELA",
+                        "subject_label": "English Language Arts",
+                        "grade": "03",
+                        "school_year": school_year,
+                        "administration_year": administration_year,
+                        "tier_rank": tier_rank,
+                        "tier_id": str(tier_id),
+                        "tier_label": str(tier_label),
+                        "pct_students": float(value),
+                        "is_below_basic_analog": str(tier_label) == below_basic_label,
+                        "below_basic_analog_label": below_basic_label,
+                        "source_value_kind": "reported_exact_tier",
+                        "notes": notes,
+                        "source_url": source_url,
+                        "source_page_url": source_page_url,
+                    }
+                )
+            processed_df = pd.DataFrame(tier_rows)
+            tier_frames.append(processed_df)
+        else:
+            processed_df = pd.DataFrame([published_reference])
+        processed_df.to_csv(output_path, index=False)
+
+        output_key = (
+            f"{state_code.lower()}_statewide_tiers"
+            if record_kind == "exact_tiers"
+            else f"{state_code.lower()}_public_reference"
+        )
+        output_paths[output_key] = output_path
+        catalog_entries.append(
+            {
+                "state": state_code,
+                "state_name": state_name,
+                "program": str(record["program"]),
+                "reporting_period": school_year,
+                "kind": "processed",
+                "granularity": "state",
+                "description": (
+                    f"Statewide Grade 3 ELA {assessment} "
+                    + (
+                        "exact performance tiers."
+                        if record_kind == "exact_tiers"
+                        else "published source bins."
+                        if record_kind == "source_bins"
+                        else "official proficiency-only public reference."
+                    )
+                ),
+                "path": str(output_relative_path),
+                "source_url": source_url,
+            }
+        )
+
+    all_tiers = pd.concat(tier_frames, ignore_index=True) if tier_frames else pd.DataFrame()
+    return all_tiers, below_basic_rows, published_reference_rows, output_paths, catalog_entries
 
 
 def _strip_html_text(value: str) -> str:
@@ -3882,6 +4511,13 @@ def build_statewide_grade3_ela(
     delaware_summary, delaware_published_reference = _build_delaware_public_reference(repo_root)
     new_hampshire_summary, new_hampshire_published_reference = _build_new_hampshire_public_reference(repo_root)
     west_virginia_summary, west_virginia_published_reference = _build_west_virginia_public_reference(repo_root)
+    (
+        official_state_tiers,
+        official_state_summaries,
+        official_state_references,
+        official_state_outputs,
+        official_state_catalog_entries,
+    ) = _build_official_state_records(repo_root)
     ed_data_express_proxy_df, ed_data_express_proxy_summaries, ed_data_express_proxy_references = (
         _build_ed_data_express_proxy_rows(repo_root)
     )
@@ -3910,6 +4546,7 @@ def build_statewide_grade3_ela(
             texas_tiers,
             washington_tiers,
             wisconsin_tiers,
+            official_state_tiers,
         ],
         ignore_index=True,
     ).sort_values(by=["state", "tier_rank"], kind="stable")
@@ -3948,6 +4585,7 @@ def build_statewide_grade3_ela(
         west_virginia_summary,
         wisconsin_summary,
     ]
+    below_basic_rows.extend(official_state_summaries)
     existing_below_basic_states = {str(row["state"]) for row in below_basic_rows}
     proxy_states_added = {
         str(row["state"])
@@ -3996,6 +4634,7 @@ def build_statewide_grade3_ela(
         west_virginia_published_reference,
         wisconsin_published_reference,
     ]
+    published_reference_rows.extend(official_state_references)
     published_reference_rows.extend(
         row for row in ed_data_express_proxy_references if str(row["state"]) in proxy_states_added
     )
@@ -4341,6 +4980,21 @@ def build_statewide_grade3_ela(
             },
         },
     }
+    for state_code, record in OFFICIAL_STATE_RECORDS.items():
+        output_key = (
+            f"{state_code.lower()}_statewide_tiers_csv"
+            if record["record_kind"] == "exact_tiers"
+            else f"{state_code.lower()}_public_reference_csv"
+        )
+        metadata["outputs"][output_key] = str(record["output_path"])
+        metadata["state_logic"][state_code] = {
+            "below_basic_analog": str(record["below_basic_label"]),
+            "tier_logic": str(record["notes"]),
+        }
+        metadata["sources"][state_code] = {
+            "source_download_url": str(record["source_url"]),
+            "source_page_url": str(record["source_page_url"]),
+        }
     metadata_output_path = repo_root / METADATA_RELATIVE_PATH
     write_json(metadata_output_path, metadata)
     rollout_tracker_output_path = _write_rollout_tracker(
@@ -4971,8 +5625,9 @@ def build_statewide_grade3_ela(
             },
         ],
     )
+    _update_catalog(repo_root, official_state_catalog_entries)
 
-    return {
+    outputs = {
         "alaska_statewide_tiers": repo_root / AK_OUTPUT_RELATIVE_PATH,
         "arkansas_statewide_tiers": repo_root / AR_OUTPUT_RELATIVE_PATH,
         "california_public_reference": repo_root / CA_OUTPUT_RELATIVE_PATH,
@@ -5008,3 +5663,5 @@ def build_statewide_grade3_ela(
         "texas_field_guide": repo_root / TX_FIELD_GUIDE_RELATIVE_PATH,
         "metadata": metadata_output_path,
     }
+    outputs.update(official_state_outputs)
+    return outputs

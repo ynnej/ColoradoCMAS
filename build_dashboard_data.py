@@ -15,7 +15,7 @@ DOCS_DIR = REPO_ROOT / "docs"
 DATA_DIR = DOCS_DIR / "data"
 DOWNLOADS_DIR = DOCS_DIR / "downloads"
 ASSET_DIR = DOCS_DIR / "assets"
-DASHBOARD_RELEASE = "20260723-naep1"
+DASHBOARD_RELEASE = "20260723-state2"
 
 TRACKER_PATH = SUMMARY_DIR / "statewide_grade3_ela_rollout_tracker.csv"
 ANALOG_PATH = SUMMARY_DIR / "statewide_grade3_ela_below_basic_analog.csv"
@@ -248,15 +248,18 @@ def main() -> int:
     }
     counts["statePublished"] = counts["exact"] + counts["state"]
 
-    expected_counts = {
-        "jurisdictions": 51,
-        "exact": 22,
-        "state": 7,
-        "federal": 22,
-        "statePublished": 29,
-    }
-    if counts != expected_counts:
-        raise ValueError(f"Unexpected coverage counts: {counts}; expected {expected_counts}")
+    if counts["jurisdictions"] != 51:
+        raise ValueError(
+            f"Dashboard must include all 50 states and DC; found {counts['jurisdictions']} jurisdictions."
+        )
+    if len({state["code"] for state in states}) != counts["jurisdictions"]:
+        raise ValueError("Dashboard tracker contains duplicate state or jurisdiction codes.")
+    categorized_count = counts["exact"] + counts["state"] + counts["federal"]
+    if categorized_count != counts["jurisdictions"]:
+        raise ValueError(
+            "Every dashboard jurisdiction must map to exactly one source-quality category; "
+            f"categorized {categorized_count} of {counts['jurisdictions']}."
+        )
 
     state_codes = {state["code"] for state in states}
     missing_naep = sorted(state_codes - set(naep_by_state))

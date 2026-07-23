@@ -8,34 +8,20 @@
     },
     "latest_public_school_year_for_this_filter": "2021-2022",
     "states_filled_from_proxy": [
-      "AL",
-      "AZ",
-      "HI",
-      "IA",
-      "ID",
-      "IL",
-      "KS",
-      "ME",
-      "MI",
       "MN",
-      "MO",
-      "MT",
       "ND",
       "NE",
-      "NM",
       "NV",
-      "OK",
-      "OR",
-      "SD",
       "UT",
-      "VT",
-      "WY"
+      "VT"
     ],
     "still_missing_after_proxy_check": []
   },
   "outputs": {
+    "al_statewide_tiers_csv": "datasets/al/acap/2024_2025/processed/acap_2025_statewide_grade3_ela_tiers.csv",
     "alaska_statewide_tiers_csv": "datasets/ak/ak_star/2024_2025/processed/ak_star_2025_statewide_grade3_ela_tiers.csv",
     "arkansas_statewide_tiers_csv": "datasets/ar/atlas/2024_2025/processed/atlas_2025_statewide_grade3_ela_tiers.csv",
+    "az_statewide_tiers_csv": "datasets/az/aasa/2024_2025/processed/aasa_2025_statewide_grade3_ela_tiers.csv",
     "california_public_reference_csv": "datasets/ca/caaspp/2024_2025/processed/caaspp_2025_statewide_grade3_ela_public_reference.csv",
     "colorado_statewide_tiers_csv": "datasets/co/cmas/2025/processed/cmas_2025_statewide_grade3_ela_tiers.csv",
     "connecticut_statewide_tiers_csv": "datasets/ct/smarter_balanced/2024_2025/processed/smarter_balanced_2025_statewide_grade3_ela_tiers.csv",
@@ -47,20 +33,33 @@
     "ed_data_express_proxy_source_csv": "datasets/us/ed_data_express/multi_year/processed/ed_data_express_statewide_grade3_ela_proficiency_proxy.csv",
     "florida_statewide_tiers_csv": "datasets/fl/fast/2024_2025/processed/fast_2025_statewide_grade3_ela_tiers.csv",
     "georgia_statewide_tiers_csv": "datasets/ga/georgia_milestones/2024_2025/processed/georgia_milestones_2025_statewide_grade3_ela_tiers.csv",
+    "hi_public_reference_csv": "datasets/hi/smarter_balanced/2024_2025/processed/sba_2025_statewide_grade3_ela_public_reference.csv",
+    "ia_public_reference_csv": "datasets/ia/isasp/2024_2025/processed/isasp_2025_statewide_grade3_ela_public_reference.csv",
+    "id_statewide_tiers_csv": "datasets/id/isat/2023_2024/processed/isat_2024_statewide_grade3_ela_tiers.csv",
+    "il_public_reference_csv": "datasets/il/iar/2024_2025/processed/iar_2025_statewide_grade3_ela_public_reference.csv",
     "indiana_statewide_tiers_csv": "datasets/in/ilearn/2024_2025/processed/ilearn_2025_statewide_grade3_ela_tiers.csv",
     "kentucky_statewide_tiers_csv": "datasets/ky/ksa/2023_2024/processed/ksa_2024_statewide_grade3_reading_tiers.csv",
+    "ks_statewide_tiers_csv": "datasets/ks/ksa/2024_2025/processed/ksa_2025_statewide_grade3_ela_tiers.csv",
     "louisiana_statewide_tiers_csv": "datasets/la/leap/2024_2025/processed/leap_2025_statewide_grade3_ela_tiers.csv",
     "maryland_statewide_tiers_csv": "datasets/md/mcap/2024_2025/processed/mcap_2025_statewide_grade3_ela_tiers.csv",
     "massachusetts_statewide_tiers_csv": "datasets/ma/mcas/2024_2025/processed/mcas_2025_statewide_grade3_ela_tiers.csv",
+    "me_statewide_tiers_csv": "datasets/me/mtya/2024_2025/processed/mtya_2025_statewide_grade3_reading_tiers.csv",
+    "mi_public_reference_csv": "datasets/mi/mstep/2024_2025/processed/mstep_2025_statewide_grade3_ela_public_bins.csv",
     "mississippi_statewide_tiers_csv": "datasets/ms/maap/2024_2025/processed/maap_2025_statewide_grade3_ela_tiers.csv",
+    "mo_statewide_tiers_csv": "datasets/mo/map/2024_2025/processed/map_2025_statewide_grade3_ela_tiers.csv",
+    "mt_statewide_tiers_csv": "datasets/mt/mast/2024_2025/processed/mast_2025_statewide_grade3_ela_tiers.csv",
     "new_hampshire_public_reference_csv": "datasets/nh/nh_sas/2024_2025/processed/nh_sas_2025_statewide_grade3_ela_public_reference.csv",
     "new_jersey_statewide_tiers_csv": "datasets/nj/njsla/2024_2025/processed/njsla_2025_statewide_grade3_ela_tiers.csv",
     "new_york_statewide_tiers_csv": "datasets/ny/nysed_report_card/2024_2025/processed/nysed_2025_statewide_grade3_ela_tiers.csv",
+    "nm_public_reference_csv": "datasets/nm/nm_mssa/2024_2025/processed/nm_mssa_2025_statewide_grade3_ela_public_reference.csv",
     "north_carolina_public_bins_csv": "datasets/nc/eog/2024_2025/processed/eog_2025_statewide_grade3_reading_public_bins.csv",
     "ohio_public_reference_csv": "datasets/oh/ost/2024_2025/processed/ost_2025_statewide_grade3_ela_public_reference.csv",
+    "ok_statewide_tiers_csv": "datasets/ok/ostp/2024_2025/processed/ostp_2025_statewide_grade3_ela_tiers.csv",
+    "or_statewide_tiers_csv": "datasets/or/osas/2024_2025/processed/osas_2025_statewide_grade3_ela_tiers.csv",
     "pennsylvania_statewide_tiers_csv": "datasets/pa/pssa/2024_2025/processed/pssa_2025_statewide_grade3_ela_tiers.csv",
     "rhode_island_statewide_tiers_csv": "datasets/ri/ricas/2024_2025/processed/ricas_2025_statewide_grade3_ela_tiers.csv",
     "rollout_tracker_csv": "datasets/summary/statewide_grade3_ela_rollout_tracker.csv",
+    "sd_statewide_tiers_csv": "datasets/sd/sd_assessments/2024_2025/processed/sd_2025_statewide_grade3_ela_tiers.csv",
     "south_carolina_statewide_tiers_csv": "datasets/sc/sc_ready/2024_2025/processed/sc_ready_2025_statewide_grade3_ela_tiers.csv",
     "tennessee_statewide_tiers_csv": "datasets/tn/tcap/2024_2025/processed/tcap_2025_statewide_grade3_ela_tiers.csv",
     "texas_field_guide_csv": "datasets/tx/staar/2023_2024/metadata/staar_grade3_field_guide.csv",
@@ -68,16 +67,25 @@
     "virginia_public_bins_csv": "datasets/va/sol/2024_2025/processed/sol_2025_statewide_grade3_reading_public_bins.csv",
     "washington_statewide_tiers_csv": "datasets/wa/sbac/2024_2025/processed/sbac_2025_statewide_grade3_ela_tiers.csv",
     "west_virginia_public_reference_csv": "datasets/wv/wvgsa/2023_2024/processed/wvgsa_2024_statewide_grade3_ela_public_reference.csv",
-    "wisconsin_statewide_tiers_csv": "datasets/wi/forward/2024_2025/processed/forward_2025_statewide_grade3_ela_tiers.csv"
+    "wisconsin_statewide_tiers_csv": "datasets/wi/forward/2024_2025/processed/forward_2025_statewide_grade3_ela_tiers.csv",
+    "wy_public_reference_csv": "datasets/wy/wy_topp/2023_2024/processed/wy_topp_2024_statewide_grade3_ela_public_reference.csv"
   },
   "sources": {
     "AK": {
       "source_download_url": "https://education.alaska.gov/akassessments/AKAssessment_Brief_2025.pdf",
       "source_page_url": "https://education.alaska.gov/assessment-results/Statewide/StatewideResults?isScience=False&schoolYear=2024-2025"
     },
+    "AL": {
+      "source_download_url": "https://www.alabamaachieves.org/wp-content/uploads/2025/07/SBOE_20250716_2024-2025-Student-Assessment-State-Data-Overview_v1.0.pdf",
+      "source_page_url": "https://www.alabamaachieves.org/assessment/acap/"
+    },
     "AR": {
       "source_download_url": "https://dese.ade.arkansas.gov/Files/Atlas_Summary_Post-Corrections_Scores_Spring_2025_PSA.xlsx",
       "source_page_url": "https://dese.ade.arkansas.gov/Offices/public-school-accountability/assessment-test-scores/2025"
+    },
+    "AZ": {
+      "source_download_url": "https://www.azed.gov/sites/default/files/2026/04/AASA_2025_Technical_Report.pdf",
+      "source_page_url": "https://www.azed.gov/assessment/assessments/aasa"
     },
     "CA": {
       "source_download_url": "https://www.cde.ca.gov/ta/tg/ca/documents/elaallall2025.xlsx",
@@ -111,9 +119,29 @@
       "source_download_url": "https://url.gadoe.org/r9zz0",
       "source_page_url": "https://gadoe.org/assessment-accountability/georgia-milestones/"
     },
+    "HI": {
+      "source_download_url": "https://hawaiipublicschools.org/wp-content/uploads/SBA2024-25.xlsx",
+      "source_page_url": "https://hawaiipublicschools.org/academics/types-of-testing/"
+    },
+    "IA": {
+      "source_download_url": "https://educate.iowa.gov/media/11696/download?inline=",
+      "source_page_url": "https://educate.iowa.gov/press-release/2025-08-20/iowa-achieves-impressive-gains-early-literacy-science-new-2025-spring-statewide-student-assessment"
+    },
+    "ID": {
+      "source_download_url": "https://www.sde.idaho.gov/assessment/isat-cas/files/general/SY2023-24-Idaho-SB-Tech-Report.pdf",
+      "source_page_url": "https://www.sde.idaho.gov/about-us/departments/assessment-accountability/idaho-standards-achievement-test-isat/"
+    },
+    "IL": {
+      "source_download_url": "https://www.isbe.net/Documents/2025-Report-Card-Public-Data-Set.xlsx",
+      "source_page_url": "https://www.isbe.net/Pages/Illinois-State-Report-Card-Data.aspx"
+    },
     "IN": {
       "source_download_url": "https://secure.in.gov/doe/files/ILEARN-2025-Grade3-8-Final-Statewide-Summary_20250714.xlsx",
       "source_page_url": "https://secure.in.gov/doe/it/data-center-and-reports/"
+    },
+    "KS": {
+      "source_download_url": "https://www.ksde.gov/docs/default-source/crp/ar-2024-25-coherence.pdf?sfvrsn=42d42afb_3",
+      "source_page_url": "https://www.ksde.gov/Home/Quick-Links/News-Room/Annual-Reports"
     },
     "KY": {
       "source_download_url": "https://www.education.ky.gov/AA/Reports/Documents/KY1161534_KY_SP25_Yearbook.pdf",
@@ -131,9 +159,25 @@
       "source_download_url": "https://reportcard.msde.maryland.gov/Assessments/GetELAPerformanceBarChart",
       "source_page_url": "https://reportcard.msde.maryland.gov/Graphs/#/Assessments/ELAPerformance"
     },
+    "ME": {
+      "source_download_url": "https://www.maine.gov/doe/sites/maine.gov.doe/files/inline-files/Assessment%20-%20Maine%20Through%20Year%20Assessment%20Spring%2025%20Technical%20Report%20-%203.31.2026.pdf",
+      "source_page_url": "https://www.maine.gov/doe/Testing_Accountability/MECAS/math_ELA_Literacy"
+    },
+    "MI": {
+      "source_download_url": "https://www.michigan.gov/mde/news-and-information/press-releases/2025/08/27/michigan-students-perform-better-on-most-tests",
+      "source_page_url": "https://www.michigan.gov/mde/news-and-information/press-releases/2025/08/27/michigan-students-perform-better-on-most-tests"
+    },
+    "MO": {
+      "source_download_url": "https://dese.mo.gov/sites/g/files/zuston521/files/media/pdf/2025/08/2024-25%20Preliminary%20MAP%20Results%2008.22.2025.pdf",
+      "source_page_url": "https://dese.mo.gov/media/pdf/report-2024-25-preliminary-academic-performance"
+    },
     "MS": {
       "source_download_url": "https://mdek12.org/wp-content/uploads/sites/33/2025/08/MAAP-2025-Results-Executive-Summary.pdf",
       "source_page_url": "https://mdek12.org/wp-content/uploads/sites/33/2025/08/MAAP-2025-Results-Executive-Summary.pdf"
+    },
+    "MT": {
+      "source_download_url": "https://opi.mt.gov/Portals/182/Page%20Files/Statewide%20Testing/MAST/MAST%202024-2025%20Technical%20Report.pdf?ver=2025-12-19-121316-830",
+      "source_page_url": "https://opi.mt.gov/Leadership/Assessment-Accountability/MontCAS/Assessment-Data-Release"
     },
     "NC": {
       "source_download_url": "https://www.dpi.nc.gov/2024-25-school-assessment-and-other-indicator-data-0/download?attachment",
@@ -147,9 +191,21 @@
       "source_download_url": "https://www.nj.gov/education/assessment/results/reports/2425/spring/ELA03%20NJSLA%20DATA%202024-25.xlsx",
       "source_page_url": "https://www.nj.gov/education/assessment/results/reports/2425/index.shtml"
     },
+    "NM": {
+      "source_download_url": "https://web.ped.nm.gov/wp-content/uploads/2025/10/PED-Assessment-Presentation-for-LESC_101525.pdf",
+      "source_page_url": "https://web.ped.nm.gov/bureaus/accountability/achievement-data-by-year/"
+    },
     "OH": {
       "source_download_url": "https://edu-prd-reportcard-datarefresh-api.azurewebsites.net/api/v2/CategoriesFileTypes/2025/0/0",
       "source_page_url": "https://reportcard.education.ohio.gov/download"
+    },
+    "OK": {
+      "source_download_url": "https://oklahoma.gov/content/dam/ok/en/osde/documents/services/assessments/state-testing-resources/2025-state-testing-resources/2425OKOSTPMediaRedacted.csv",
+      "source_page_url": "https://oklahoma.gov/education/services/assessments/state-testing-resources.html"
+    },
+    "OR": {
+      "source_download_url": "https://www.oregon.gov/ode/educator-resources/assessment/Documents/TestResults2425/pagr_State_ELA_2425.xlsx",
+      "source_page_url": "https://www.oregon.gov/ode/educator-resources/assessment/pages/assessment-group-reports.aspx"
     },
     "PA": {
       "source_download_url": "https://www.pa.gov/agencies/education/data-and-reporting/assessment-reporting",
@@ -162,6 +218,10 @@
     "SC": {
       "source_download_url": "https://ed.sc.gov/data/test-scores/state-assessments/sc-ready/2025/state-scores-by-grade-level-and-demographic/?districtCode=9999&schoolCode=1001",
       "source_page_url": "https://ed.sc.gov/data/test-scores/state-assessments/sc-ready/2025/state-scores-by-grade-level-and-demographic/?districtCode=9999&schoolCode=1001"
+    },
+    "SD": {
+      "source_download_url": "https://doe.sd.gov/Assessment/documents/SY25-SBTech.pdf",
+      "source_page_url": "https://doe.sd.gov/Assessment/SD-assessments.aspx"
     },
     "TN": {
       "source_download_url": "https://www.tn.gov/content/dam/tn/education/accountability/2025/state_assessment_file_suppressed_2025.xlsx",
@@ -187,6 +247,10 @@
       "source_download_url": "https://wvde.us/sites/default/files/2024-09/2024-Accountability-Assessment-Results-Document.pdf",
       "source_page_url": "https://wvde.us/events/2024/8/august-2024-board-meeting",
       "tier_definitions_page_url": "https://wvde.us/academics/assessment/scaled-scored-information/scale-score-west-virginia-general-summative-assessment"
+    },
+    "WY": {
+      "source_download_url": "https://edu.wyoming.gov/wp-content/uploads/2024/02/How-to-Use-Statewide-Summative-Assessment-Data-Public.pdf",
+      "source_page_url": "https://edu.wyoming.gov/data/assessment-reports/"
     }
   },
   "state_logic": {
@@ -194,9 +258,17 @@
       "below_basic_analog": "Needs Support",
       "tier_logic": "Use Alaska's published statewide Grade 3 AK STAR ELA performance-level percentages from the 2025 assessment brief, cross-checked against the statewide results page's Advanced / Proficient rate."
     },
+    "AL": {
+      "below_basic_analog": "Level 1",
+      "tier_logic": "Alabama's official 2024-25 state assessment overview reports statewide Grade 3 ACAP ELA percentages for Levels 1 through 4. Published percentages sum to 99% because of rounding."
+    },
     "AR": {
       "below_basic_analog": "Level 1",
       "tier_logic": "Use Arkansas's reported exact statewide Grade 3 ATLAS ELA performance-level percentages."
+    },
+    "AZ": {
+      "below_basic_analog": "Minimally Proficient",
+      "tier_logic": "Arizona's official AASA 2025 technical report, Table C.1, reports statewide Grade 3 ELA counts and percentages for all four performance levels."
     },
     "CA": {
       "below_basic_analog": "100 - Standard Met/Exceeded",
@@ -226,9 +298,29 @@
       "below_basic_analog": "Beginning Learner",
       "tier_logic": "Use Georgia's reported exact statewide Grade 3 Georgia Milestones ELA performance-level percentages."
     },
+    "HI": {
+      "below_basic_analog": "100 - Met or Exceeded Achievement Standard",
+      "tier_logic": "Hawaii's official 2024-25 Smarter Balanced statewide workbook reports 49.9% of Grade 3 ELA students met or exceeded the achievement standard, but the state row used here does not publish the full performance-level split."
+    },
+    "IA": {
+      "below_basic_analog": "100 - Proficient",
+      "tier_logic": "Iowa's official 2025 statewide assessment results report Grade 3 ELA proficiency at 68%. The public statewide summary used here does not expose the full performance-level split."
+    },
+    "ID": {
+      "below_basic_analog": "Level 1",
+      "tier_logic": "Idaho's official 2023-24 ISAT technical report publishes statewide Grade 3 ELA percentages for Levels 1 through 4. This one-year-older state result replaces the older federal proficiency proxy; published level percentages sum to 99% because of rounding."
+    },
+    "IL": {
+      "below_basic_analog": "100 - Proficient",
+      "tier_logic": "Illinois's official 2025 Report Card public dataset reports statewide Grade 3 IAR ELA proficiency at 47.3%. The statewide row used here does not expose the full performance-level split."
+    },
     "IN": {
       "below_basic_analog": "Below Proficiency",
       "tier_logic": "Use Indiana's published statewide Grade 3 ILEARN counts by tier and derive percentages from counts / total tested."
+    },
+    "KS": {
+      "below_basic_analog": "Level 1",
+      "tier_logic": "Kansas's official 2024-25 annual report publishes statewide Grade 3 ELA percentages for Kansas State Assessment Levels 1 through 4."
     },
     "KY": {
       "below_basic_analog": "Novice",
@@ -246,9 +338,25 @@
       "below_basic_analog": "PL 1",
       "tier_logic": "Use Maryland Report Card's public 2025 MCAP Grade 3 English Language Arts endpoint, which reports statewide All Students percentages for PL 1 through PL 4 plus the combined PL 3/4 proficient share."
     },
+    "ME": {
+      "below_basic_analog": "Well Below State Expectations",
+      "tier_logic": "Maine's official Spring 2025 technical report, Table 8.2, publishes statewide Grade 3 Reading percentages for all four achievement levels."
+    },
+    "MI": {
+      "below_basic_analog": "Not Proficient",
+      "tier_logic": "Michigan's official 2025 release reports 38.9% Proficient or Advanced and 24.6% Partially Proficient for Grade 3 M-STEP ELA. Not Proficient is the remaining 36.5%; the state release combines the two upper tiers."
+    },
+    "MO": {
+      "below_basic_analog": "Below Basic",
+      "tier_logic": "Missouri's official preliminary 2024-25 MAP results publish statewide Grade 3 ELA percentages for Below Basic, Basic, Proficient, and Advanced."
+    },
     "MS": {
       "below_basic_analog": "Minimal",
       "tier_logic": "Use Mississippi's reported exact statewide Grade 3 MAAP ELA performance-level percentages from the 2025 executive summary PDF."
+    },
+    "MT": {
+      "below_basic_analog": "Novice",
+      "tier_logic": "Montana's official 2024-25 MAST technical report publishes statewide Grade 3 ELA counts and percentages for Novice through Advanced. Published percentages sum to 100.1% because of rounding."
     },
     "NC": {
       "below_basic_analog": "Not Proficient",
@@ -262,6 +370,10 @@
       "below_basic_analog": "Level 1",
       "tier_logic": "Use New Jersey's reported exact statewide Grade 3 NJSLA ELA performance-level percentages."
     },
+    "NM": {
+      "below_basic_analog": "100 - Proficient",
+      "tier_logic": "New Mexico PED's official 2025 assessment presentation reports Grade 3 literacy proficiency at 41%. The Grade 3 public result used here does not expose the full NM-MSSA performance-level split."
+    },
     "NY": {
       "below_basic_analog": "Level 1",
       "tier_logic": "Use the NYSED Data Site 2024-25 Report Card Database Annual EM ELA table, which reports All Public Schools statewide Grade 3 ELA counts and tested percentages for Levels 1 through 4."
@@ -269,6 +381,14 @@
     "OH": {
       "below_basic_analog": "100 - Percent Proficient or Above",
       "tier_logic": "Use Ohio School Report Cards' 2024-2025 Title 1 Proficiency by Grade workbook as an official proficiency-only source. The public Grade 3 ELA row reports Percent Proficient or Above, while the companion Title 1 Proficiency Levels workbook is not broken out by grade."
+    },
+    "OK": {
+      "below_basic_analog": "Below Basic",
+      "tier_logic": "Oklahoma's official 2024-25 OSTP public CSV reports statewide Grade 3 ELA counts and percentages for Below Basic through Advanced."
+    },
+    "OR": {
+      "below_basic_analog": "Level 1",
+      "tier_logic": "Oregon's official 2024-25 statewide ELA workbook reports Grade 3 OSAS counts and percentages for Levels 1 through 4. Published percentages sum to 100.1% because of rounding."
     },
     "PA": {
       "below_basic_analog": "Below Basic",
@@ -281,6 +401,10 @@
     "SC": {
       "below_basic_analog": "Does Not Meet Expectations",
       "tier_logic": "Use South Carolina's reported exact statewide Grade 3 SC READY ELA performance-level percentages from the public state results page."
+    },
+    "SD": {
+      "below_basic_analog": "Level 1",
+      "tier_logic": "South Dakota's official 2024-25 ELA and mathematics technical report, Table 23, publishes statewide Grade 3 ELA percentages for Levels 1 through 4. Published percentages sum to 101% because of rounding."
     },
     "TN": {
       "below_basic_analog": "Below",
@@ -305,6 +429,10 @@
     "WV": {
       "below_basic_analog": "100 - Meets Standard or above",
       "tier_logic": "Use West Virginia's public 2024 Grade 3 ELA proficiency figure as an official proficiency-only proxy. The public sources used here did not expose the full statewide tier split without an authenticated dashboard session."
+    },
+    "WY": {
+      "below_basic_analog": "100 - Proficient",
+      "tier_logic": "Wyoming's official statewide assessment guidance reports Grade 3 ELA proficiency at 48%. This 2023-24 state result replaces the older federal proxy; the public reference used here does not expose the full WY-TOPP performance-level split."
     }
   }
 }
