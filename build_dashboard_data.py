@@ -15,7 +15,7 @@ DOCS_DIR = REPO_ROOT / "docs"
 DATA_DIR = DOCS_DIR / "data"
 DOWNLOADS_DIR = DOCS_DIR / "downloads"
 ASSET_DIR = DOCS_DIR / "assets"
-DASHBOARD_RELEASE = "20260723-palette1"
+DASHBOARD_RELEASE = "20260723-logo1"
 
 TRACKER_PATH = SUMMARY_DIR / "statewide_grade3_ela_rollout_tracker.csv"
 ANALOG_PATH = SUMMARY_DIR / "statewide_grade3_ela_below_basic_analog.csv"
