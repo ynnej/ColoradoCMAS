@@ -60,21 +60,40 @@ const QUALITY_SORT = {
 
 const state = {
   data: null,
+  activeView: "state",
   activeFilter: "all",
   searchTerm: "",
   selectedCode: "CO",
   sortKey: "name",
   sortDirection: "asc",
+  naepFilter: "all",
+  naepSearchTerm: "",
+  naepSelectedCode: "CO",
+  naepSortKey: "name",
+  naepSortDirection: "asc",
 };
 
 const elements = {
+  dashboardTabs: [...document.querySelectorAll("[data-dashboard-view]")],
+  stateView: document.querySelector("#state-view"),
+  naepView: document.querySelector("#naep-view"),
+  stateNav: document.querySelector("#state-nav"),
+  naepNav: document.querySelector("#naep-nav"),
   tileMap: document.querySelector("#tile-map"),
   detail: document.querySelector("#state-detail"),
   tableBody: document.querySelector("#state-table-body"),
   stateSearch: document.querySelector("#state-search"),
   visibleCount: document.querySelector("#visible-state-count"),
   downloadFiltered: document.querySelector("#download-filtered"),
+  naepTileMap: document.querySelector("#naep-tile-map"),
+  naepDetail: document.querySelector("#naep-detail"),
+  naepTableBody: document.querySelector("#naep-table-body"),
+  naepSearch: document.querySelector("#naep-search"),
+  naepVisibleCount: document.querySelector("#naep-visible-state-count"),
+  downloadNaepFiltered: document.querySelector("#download-naep-filtered"),
   downloadGrid: document.querySelector("#download-grid"),
+  footerScope: document.querySelector("#footer-scope"),
+  backToTop: document.querySelector("#back-to-top"),
 };
 
 function escapeHtml(value) {
@@ -118,6 +137,73 @@ function percentOf(part, total) {
   return total ? Math.round((part / total) * 100) : 0;
 }
 
+function formatSignedNumber(value, digits = 1) {
+  const number = Number(value);
+  if (Number.isNaN(number)) {
+    return "Not available";
+  }
+  if (Math.abs(number) < 0.05) {
+    return "0";
+  }
+  const prefix = number > 0 ? "+" : "";
+  return `${prefix}${formatNumber(number, digits)}`;
+}
+
+function naepDifference(item) {
+  return Number(item.naepValue) - Number(state.data.naep.nationalValue);
+}
+
+function naepFilterKey(item) {
+  const difference = naepDifference(item);
+  if (difference < -2) {
+    return "lower";
+  }
+  if (difference > 2) {
+    return "higher";
+  }
+  return "near";
+}
+
+function naepBand(value) {
+  const number = Number(value);
+  if (number < 35) {
+    return "level-1";
+  }
+  if (number < 40) {
+    return "level-2";
+  }
+  if (number < 45) {
+    return "level-3";
+  }
+  if (number < 50) {
+    return "level-4";
+  }
+  return "level-5";
+}
+
+function naepComparison(item) {
+  const difference = naepDifference(item);
+  if (Math.abs(difference) <= 2) {
+    return {
+      key: "near",
+      label: "Near the U.S. benchmark",
+      detail: `${formatSignedNumber(difference)} percentage points from the U.S.`,
+    };
+  }
+  if (difference < 0) {
+    return {
+      key: "lower",
+      label: "Lower share Below Basic",
+      detail: `${formatNumber(Math.abs(difference))} percentage points below the U.S.`,
+    };
+  }
+  return {
+    key: "higher",
+    label: "Higher share Below Basic",
+    detail: `${formatNumber(difference)} percentage points above the U.S.`,
+  };
+}
+
 function isVisible(item) {
   const matchesFilter =
     state.activeFilter === "all" || item.quality === state.activeFilter;
@@ -129,12 +215,35 @@ function getVisibleStates() {
   return state.data.states.filter(isVisible);
 }
 
+function isNaepVisible(item) {
+  if (item.naepValue === null || item.naepValue === undefined) {
+    return false;
+  }
+  const matchesFilter =
+    state.naepFilter === "all" || naepFilterKey(item) === state.naepFilter;
+  const searchable = `${item.name} ${item.code}`.toLowerCase();
+  return matchesFilter && searchable.includes(state.naepSearchTerm);
+}
+
+function getVisibleNaepStates() {
+  return state.data.states.filter(isNaepVisible);
+}
+
 function selectFallbackState(visibleStates) {
   if (!visibleStates.length) {
     return;
   }
   if (!visibleStates.some((item) => item.code === state.selectedCode)) {
     state.selectedCode = visibleStates[0].code;
+  }
+}
+
+function selectFallbackNaepState(visibleStates) {
+  if (!visibleStates.length) {
+    return;
+  }
+  if (!visibleStates.some((item) => item.code === state.naepSelectedCode)) {
+    state.naepSelectedCode = visibleStates[0].code;
   }
 }
 
@@ -161,6 +270,35 @@ function updateSummary() {
     `${percentOf(counts.state, counts.jurisdictions)}%`;
   document.querySelector("#coverage-federal-bar").style.width =
     `${percentOf(counts.federal, counts.jurisdictions)}%`;
+}
+
+function updateNaepSummary() {
+  const national = Number(state.data.naep.nationalValue);
+  const statesWithNaep = state.data.states.filter(
+    (item) => item.naepValue !== null && item.naepValue !== undefined
+  );
+  const filterCounts = {
+    lower: statesWithNaep.filter((item) => naepFilterKey(item) === "lower").length,
+    near: statesWithNaep.filter((item) => naepFilterKey(item) === "near").length,
+    higher: statesWithNaep.filter((item) => naepFilterKey(item) === "higher").length,
+  };
+
+  document.querySelector("#naep-national-value").textContent = formatNumber(national);
+  document.querySelector("#naep-jurisdiction-count").textContent = statesWithNaep.length;
+  document.querySelector("#naep-below-national-count").textContent =
+    statesWithNaep.filter((item) => Number(item.naepValue) < national).length;
+  document.querySelector("#naep-above-national-count").textContent =
+    statesWithNaep.filter((item) => Number(item.naepValue) > national).length;
+  document.querySelector("#naep-all-filter-count").textContent = statesWithNaep.length;
+  document.querySelector("#naep-lower-filter-count").textContent = filterCounts.lower;
+  document.querySelector("#naep-near-filter-count").textContent = filterCounts.near;
+  document.querySelector("#naep-higher-filter-count").textContent = filterCounts.higher;
+
+  const officialSource = safeUrl(state.data.naep.sourcePageUrl);
+  const officialSourceLink = document.querySelector("#naep-official-source");
+  if (officialSource) {
+    officialSourceLink.href = officialSource;
+  }
 }
 
 function renderMap() {
@@ -375,6 +513,193 @@ function renderExplorer() {
   renderTable();
 }
 
+function renderNaepMap() {
+  const visibleStates = getVisibleNaepStates();
+  selectFallbackNaepState(visibleStates);
+  const visibleCodes = new Set(visibleStates.map((item) => item.code));
+
+  elements.naepTileMap.replaceChildren(
+    ...state.data.states.map((item) => {
+      const [row, column] = MAP_POSITIONS[item.code];
+      const button = document.createElement("button");
+      const comparison = naepComparison(item);
+      button.type = "button";
+      button.className = [
+        "state-tile",
+        "naep-tile",
+        naepBand(item.naepValue),
+        item.code === state.naepSelectedCode ? "selected" : "",
+        visibleCodes.has(item.code) ? "" : "filtered-out",
+      ]
+        .filter(Boolean)
+        .join(" ");
+      button.style.gridRow = row;
+      button.style.gridColumn = column;
+      button.textContent = item.code;
+      button.title = `${item.name}: ${formatNumber(item.naepValue)}% Below Basic`;
+      button.setAttribute(
+        "aria-label",
+        `${item.name}: ${formatNumber(item.naepValue)} percent Below Basic. ${comparison.detail} Select to view details.`
+      );
+      button.setAttribute("aria-pressed", String(item.code === state.naepSelectedCode));
+      button.tabIndex = visibleCodes.has(item.code) ? 0 : -1;
+      button.addEventListener("click", () => {
+        state.naepSelectedCode = item.code;
+        renderNaepExplorer();
+      });
+      return button;
+    })
+  );
+
+  elements.naepVisibleCount.textContent = `${visibleStates.length} shown`;
+}
+
+function renderNaepDetail() {
+  const item = state.data.states.find(
+    (candidate) => candidate.code === state.naepSelectedCode
+  );
+  if (!item || item.naepValue === null || item.naepValue === undefined) {
+    elements.naepDetail.innerHTML =
+      '<p class="detail-loading">Select a jurisdiction to see NAEP details.</p>';
+    return;
+  }
+
+  const national = Number(state.data.naep.nationalValue);
+  const comparison = naepComparison(item);
+  const sourcePageUrl = safeUrl(state.data.naep.sourcePageUrl);
+
+  elements.naepDetail.innerHTML = `
+    <div class="detail-topline">
+      <p class="detail-code">${escapeHtml(item.code)} / UNITED STATES</p>
+      <span class="quality-badge naep">2024 NAEP</span>
+    </div>
+    <h3>${escapeHtml(item.name)}</h3>
+    <p class="detail-meta">Grade 4 Reading · Public schools · Percent Below Basic</p>
+
+    <div class="detail-result naep-detail-result">
+      <p class="detail-result-value">${formatNumber(item.naepValue)}<span>%</span></p>
+      <p class="detail-result-label">
+        <strong>Students Below Basic</strong>
+        2024 NAEP Grade 4 Reading
+      </p>
+    </div>
+
+    <div class="naep-comparison ${escapeHtml(comparison.key)}">
+      <span class="naep-comparison-mark" aria-hidden="true"></span>
+      <div>
+        <strong>${escapeHtml(comparison.label)}</strong>
+        <span>${escapeHtml(comparison.detail)}</span>
+      </div>
+    </div>
+
+    <p class="detail-section-label">State and national comparison</p>
+    <div class="naep-bar-list">
+      <div class="naep-bar-row">
+        <span>${escapeHtml(item.name)}</span>
+        <span class="naep-bar-track" aria-hidden="true">
+          <span class="naep-bar-fill state-value" style="width: ${Math.min(Number(item.naepValue), 100)}%"></span>
+        </span>
+        <strong>${formatNumber(item.naepValue)}%</strong>
+      </div>
+      <div class="naep-bar-row">
+        <span>National public</span>
+        <span class="naep-bar-track" aria-hidden="true">
+          <span class="naep-bar-fill national-value" style="width: ${Math.min(national, 100)}%"></span>
+        </span>
+        <strong>${formatNumber(national)}%</strong>
+      </div>
+    </div>
+
+    <p class="detail-section-label">Interpretation note</p>
+    <p class="detail-note naep-detail-note">
+      This is a descriptive percentage from a representative sample. The dashboard does
+      not test whether the difference from the national result is statistically significant.
+    </p>
+    <div class="detail-links">
+      ${
+        sourcePageUrl
+          ? `<a href="${escapeHtml(sourcePageUrl)}" target="_blank" rel="noopener noreferrer">Official NAEP source ↗</a>`
+          : ""
+      }
+      <a href="${escapeHtml(state.data.naep.downloadFile)}" download>Download NAEP CSV ↓</a>
+    </div>
+  `;
+}
+
+function compareNaepStates(left, right) {
+  const direction = state.naepSortDirection === "asc" ? 1 : -1;
+  const key = state.naepSortKey;
+  let leftValue = key === "naepDifference" ? naepDifference(left) : left[key];
+  let rightValue = key === "naepDifference" ? naepDifference(right) : right[key];
+
+  if (key === "naepValue" || key === "naepDifference") {
+    leftValue = Number(leftValue);
+    rightValue = Number(rightValue);
+  }
+  if (typeof leftValue === "string") {
+    return leftValue.localeCompare(String(rightValue)) * direction;
+  }
+  return (leftValue - rightValue) * direction;
+}
+
+function renderNaepTable() {
+  const items = getVisibleNaepStates().sort(compareNaepStates);
+  if (!items.length) {
+    elements.naepTableBody.innerHTML = `
+      <tr><td colspan="6" class="empty-row">No jurisdictions match this filter.</td></tr>
+    `;
+    return;
+  }
+
+  elements.naepTableBody.innerHTML = items
+    .map((item) => {
+      const difference = naepDifference(item);
+      const comparison = naepComparison(item);
+      return `
+        <tr>
+          <td class="state-name-cell">
+            <strong>${escapeHtml(item.name)}</strong>
+            <span>${escapeHtml(item.code)}</span>
+          </td>
+          <td class="numeric result-cell">${formatNumber(item.naepValue)}%</td>
+          <td class="numeric naep-difference ${escapeHtml(comparison.key)}">
+            ${formatSignedNumber(difference)} pts
+          </td>
+          <td>
+            <span class="naep-table-comparison ${escapeHtml(comparison.key)}">${escapeHtml(comparison.label)}</span>
+          </td>
+          <td class="assessment-cell">
+            NAEP
+            <span>2024 · Grade 4 Reading</span>
+          </td>
+          <td>
+            <button
+              class="row-open-button"
+              type="button"
+              data-naep-state-code="${escapeHtml(item.code)}"
+              aria-label="Open ${escapeHtml(item.name)} NAEP details"
+            >→</button>
+          </td>
+        </tr>
+      `;
+    })
+    .join("");
+
+  elements.naepTableBody.querySelectorAll("[data-naep-state-code]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.naepSelectedCode = button.dataset.naepStateCode;
+      renderNaepExplorer();
+      elements.naepDetail.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  });
+}
+
+function renderNaepExplorer() {
+  renderNaepMap();
+  renderNaepDetail();
+  renderNaepTable();
+}
+
 function renderDownloads() {
   elements.downloadGrid.innerHTML = state.data.downloads
     .map(
@@ -398,6 +723,62 @@ function setFilter(nextFilter) {
     button.setAttribute("aria-pressed", String(isActive));
   });
   renderExplorer();
+}
+
+function setNaepFilter(nextFilter) {
+  state.naepFilter = nextFilter;
+  document.querySelectorAll("[data-naep-filter]").forEach((button) => {
+    const isActive = button.dataset.naepFilter === nextFilter;
+    button.classList.toggle("active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+  renderNaepExplorer();
+}
+
+function viewFromLocation() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("view") === "naep" || window.location.hash.startsWith("#naep")) {
+    return "naep";
+  }
+  return "state";
+}
+
+function setDashboardView(nextView, updateUrl = true) {
+  const nextIsNaep = nextView === "naep";
+  state.activeView = nextIsNaep ? "naep" : "state";
+  elements.stateView.hidden = nextIsNaep;
+  elements.naepView.hidden = !nextIsNaep;
+  elements.stateNav.hidden = nextIsNaep;
+  elements.naepNav.hidden = !nextIsNaep;
+
+  elements.dashboardTabs.forEach((tab) => {
+    const isActive = tab.dataset.dashboardView === state.activeView;
+    tab.classList.toggle("active", isActive);
+    tab.setAttribute("aria-selected", String(isActive));
+    tab.tabIndex = isActive ? 0 : -1;
+  });
+
+  document.title = nextIsNaep
+    ? "NAEP Grade 4 Reading | State Assessment Data Monitor"
+    : "State Assessment Data Monitor";
+  elements.footerScope.textContent = nextIsNaep
+    ? "50 states + DC · 2024 NAEP Grade 4 Reading · Percent Below Basic"
+    : "50 states + DC · Grade 3 ELA · Source quality shown throughout";
+  elements.backToTop.href = nextIsNaep ? "#naep-top" : "#top";
+  if (updateUrl) {
+    const url = new URL(window.location.href);
+    url.hash = "";
+    if (nextIsNaep) {
+      url.searchParams.set("view", "naep");
+    } else {
+      url.searchParams.delete("view");
+    }
+    window.history.replaceState(null, "", `${url.pathname}${url.search}`);
+    document.querySelector(".dashboard-tabs").scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
 }
 
 function csvCell(value) {
@@ -440,14 +821,97 @@ function downloadFilteredCsv() {
   URL.revokeObjectURL(link.href);
 }
 
+function downloadFilteredNaepCsv() {
+  const national = Number(state.data.naep.nationalValue);
+  const items = getVisibleNaepStates().sort((left, right) =>
+    left.name.localeCompare(right.name)
+  );
+  const rows = [
+    [
+      "state",
+      "state_name",
+      "year",
+      "grade",
+      "subject",
+      "metric",
+      "state_pct",
+      "national_public_pct",
+      "difference_from_national_percentage_points",
+      "comparison",
+      "official_source",
+    ],
+    ...items.map((item) => [
+      item.code,
+      item.name,
+      state.data.naep.year,
+      state.data.naep.grade,
+      state.data.naep.subject,
+      state.data.naep.metric,
+      item.naepValue,
+      national,
+      Number(naepDifference(item).toFixed(2)),
+      naepComparison(item).label,
+      state.data.naep.sourcePageUrl,
+    ]),
+  ];
+  const csv = rows.map((row) => row.map(csvCell).join(",")).join("\n");
+  const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = `naep-2024-grade4-reading-${state.naepFilter}-results.csv`;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(link.href);
+}
+
 function bindEvents() {
+  elements.dashboardTabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => {
+      setDashboardView(tab.dataset.dashboardView);
+    });
+    tab.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) {
+        return;
+      }
+      event.preventDefault();
+      let nextIndex = index;
+      if (event.key === "ArrowLeft") {
+        nextIndex = (index - 1 + elements.dashboardTabs.length) % elements.dashboardTabs.length;
+      } else if (event.key === "ArrowRight") {
+        nextIndex = (index + 1) % elements.dashboardTabs.length;
+      } else if (event.key === "Home") {
+        nextIndex = 0;
+      } else if (event.key === "End") {
+        nextIndex = elements.dashboardTabs.length - 1;
+      }
+      const nextTab = elements.dashboardTabs[nextIndex];
+      nextTab.focus();
+      setDashboardView(nextTab.dataset.dashboardView);
+    });
+  });
+
+  document.querySelector(".brand").addEventListener("click", (event) => {
+    event.preventDefault();
+    setDashboardView("state");
+  });
+
   document.querySelectorAll("[data-filter]").forEach((button) => {
     button.addEventListener("click", () => setFilter(button.dataset.filter));
+  });
+
+  document.querySelectorAll("[data-naep-filter]").forEach((button) => {
+    button.addEventListener("click", () => setNaepFilter(button.dataset.naepFilter));
   });
 
   elements.stateSearch.addEventListener("input", (event) => {
     state.searchTerm = event.target.value.trim().toLowerCase();
     renderExplorer();
+  });
+
+  elements.naepSearch.addEventListener("input", (event) => {
+    state.naepSearchTerm = event.target.value.trim().toLowerCase();
+    renderNaepExplorer();
   });
 
   document.querySelectorAll("[data-sort]").forEach((button) => {
@@ -463,7 +927,28 @@ function bindEvents() {
     });
   });
 
+  document.querySelectorAll("[data-naep-sort]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextKey = button.dataset.naepSort;
+      if (state.naepSortKey === nextKey) {
+        state.naepSortDirection = state.naepSortDirection === "asc" ? "desc" : "asc";
+      } else {
+        state.naepSortKey = nextKey;
+        state.naepSortDirection = nextKey === "name" ? "asc" : "desc";
+      }
+      renderNaepTable();
+    });
+  });
+
   elements.downloadFiltered.addEventListener("click", downloadFilteredCsv);
+  elements.downloadNaepFiltered.addEventListener("click", downloadFilteredNaepCsv);
+
+  window.addEventListener("hashchange", () => {
+    const nextView = viewFromLocation();
+    if (nextView !== state.activeView) {
+      setDashboardView(nextView, false);
+    }
+  });
 }
 
 function renderError(error) {
@@ -474,6 +959,13 @@ function renderError(error) {
   `;
   elements.tableBody.innerHTML = `
     <tr><td colspan="7" class="empty-row">Dashboard data unavailable.</td></tr>
+  `;
+  elements.naepDetail.innerHTML = `
+    <p class="detail-loading">The NAEP data could not be loaded.</p>
+    <p class="detail-note">${message}</p>
+  `;
+  elements.naepTableBody.innerHTML = `
+    <tr><td colspan="6" class="empty-row">NAEP data unavailable.</td></tr>
   `;
   elements.downloadGrid.innerHTML =
     '<p class="download-loading">Download links are temporarily unavailable.</p>';
@@ -486,10 +978,23 @@ async function initialize() {
       throw new Error(`Dashboard data request failed with status ${response.status}.`);
     }
     state.data = await response.json();
+    if (
+      !state.data.naep ||
+      state.data.naep.jurisdictions !== 51 ||
+      state.data.states.some(
+        (item) => item.naepValue === null || item.naepValue === undefined
+      )
+    ) {
+      throw new Error("The NAEP data bundle is incomplete.");
+    }
     updateSummary();
+    updateNaepSummary();
     renderExplorer();
+    renderNaepExplorer();
     renderDownloads();
     bindEvents();
+    const initialView = viewFromLocation();
+    setDashboardView(initialView, false);
   } catch (error) {
     renderError(error);
   }

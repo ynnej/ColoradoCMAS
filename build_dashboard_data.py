@@ -21,6 +21,7 @@ REFERENCE_PATH = SUMMARY_DIR / "statewide_grade3_ela_published_reference_bins.cs
 TIERS_PATH = SUMMARY_DIR / "statewide_grade3_ela_tiers.csv"
 LOOKER_PATH = SUMMARY_DIR / "state_assessment_vs_naep_looker_enriched.csv"
 METADATA_PATH = SUMMARY_DIR / "metadata" / "statewide_grade3_ela_sources.json"
+NAEP_DOWNLOAD_FILENAME = "naep_2024_grade4_reading_below_basic.csv"
 
 STATUS_CONFIG = {
     "covered_exact_tiers": {
@@ -88,20 +89,27 @@ def tier_bins(rows: list[dict[str, str]]) -> list[dict[str, object]]:
     ]
 
 
-def build_naep_lookup(rows: list[dict[str, str]]) -> tuple[dict[str, float], float | None]:
+def build_naep_lookup(
+    rows: list[dict[str, str]],
+) -> tuple[dict[str, float], float | None, str, str]:
     state_values: dict[str, float] = {}
     national_value = None
+    source_url = ""
+    source_page_url = ""
     for row in rows:
-        if row.get("metric_id") != "naep_below_basic":
+        metric_id = row.get("metric_id") or row.get("metric_family")
+        if metric_id != "naep_below_basic":
             continue
         value = as_number(row.get("value"))
         if value is None:
             continue
+        source_url = source_url or row.get("source_url", "").strip()
+        source_page_url = source_page_url or row.get("source_page_url", "").strip()
         if row.get("comparison_role") == "naep_state":
             state_values[row["state_code"]] = value
         elif row.get("comparison_role") == "naep_national_public_benchmark":
             national_value = value
-    return state_values, national_value
+    return state_values, national_value, source_url, source_page_url
 
 
 def write_dashboard_csv(states: list[dict[str, object]], destination: Path) -> None:
@@ -135,6 +143,47 @@ def write_dashboard_csv(states: list[dict[str, object]], destination: Path) -> N
             )
 
 
+def write_naep_csv(
+    states: list[dict[str, object]],
+    national_value: float,
+    source_page_url: str,
+    destination: Path,
+) -> None:
+    fieldnames = [
+        "state",
+        "state_name",
+        "year",
+        "grade",
+        "subject",
+        "metric",
+        "state_pct",
+        "national_public_pct",
+        "difference_from_national_percentage_points",
+        "source_page_url",
+    ]
+    with destination.open("w", newline="", encoding="utf-8") as output:
+        writer = csv.DictWriter(output, fieldnames=fieldnames, lineterminator="\n")
+        writer.writeheader()
+        for state in states:
+            value = state["naepValue"]
+            writer.writerow(
+                {
+                    "state": state["code"],
+                    "state_name": state["name"],
+                    "year": 2024,
+                    "grade": 4,
+                    "subject": "Reading",
+                    "metric": "Percent Below Basic",
+                    "state_pct": value,
+                    "national_public_pct": national_value,
+                    "difference_from_national_percentage_points": round(
+                        float(value) - national_value, 2
+                    ),
+                    "source_page_url": source_page_url,
+                }
+            )
+
+
 def main() -> int:
     required_paths = [TRACKER_PATH, ANALOG_PATH, REFERENCE_PATH, TIERS_PATH, LOOKER_PATH, METADATA_PATH]
     missing = [str(path.relative_to(REPO_ROOT)) for path in required_paths if not path.exists()]
@@ -147,7 +196,12 @@ def main() -> int:
     tiers_by_state: dict[str, list[dict[str, str]]] = {}
     for row in read_csv(TIERS_PATH):
         tiers_by_state.setdefault(row["state"], []).append(row)
-    naep_by_state, national_naep = build_naep_lookup(read_csv(LOOKER_PATH))
+    (
+        naep_by_state,
+        national_naep,
+        naep_source_url,
+        naep_source_page_url,
+    ) = build_naep_lookup(read_csv(LOOKER_PATH))
     metadata = json.loads(METADATA_PATH.read_text(encoding="utf-8"))
 
     states: list[dict[str, object]] = []
@@ -202,6 +256,14 @@ def main() -> int:
     if counts != expected_counts:
         raise ValueError(f"Unexpected coverage counts: {counts}; expected {expected_counts}")
 
+    state_codes = {state["code"] for state in states}
+    missing_naep = sorted(state_codes - set(naep_by_state))
+    if national_naep is None or missing_naep:
+        raise ValueError(
+            "NAEP data must include the national public benchmark and all 51 jurisdictions; "
+            f"missing jurisdictions: {', '.join(missing_naep) or 'none'}"
+        )
+
     new_hampshire = next(state for state in states if state["code"] == "NH")
     if (
         new_hampshire["quality"] != "state"
@@ -216,6 +278,8 @@ def main() -> int:
 
     dashboard_csv_path = DOWNLOADS_DIR / "state_assessment_dashboard_results.csv"
     write_dashboard_csv(states, dashboard_csv_path)
+    naep_csv_path = DOWNLOADS_DIR / NAEP_DOWNLOAD_FILENAME
+    write_naep_csv(states, national_naep, naep_source_page_url, naep_csv_path)
     for source in DOWNLOAD_FILES:
         shutil.copyfile(source, DOWNLOADS_DIR / source.name)
 
@@ -225,6 +289,17 @@ def main() -> int:
         "scope": "Statewide Grade 3 English language arts",
         "counts": counts,
         "nationalNaepValue": national_naep,
+        "naep": {
+            "year": 2024,
+            "grade": 4,
+            "subject": "Reading",
+            "metric": "Percent Below Basic",
+            "nationalValue": national_naep,
+            "sourceUrl": naep_source_url,
+            "sourcePageUrl": naep_source_page_url,
+            "jurisdictions": len(naep_by_state),
+            "downloadFile": f"downloads/{NAEP_DOWNLOAD_FILENAME}",
+        },
         "states": states,
         "downloads": [
             {
@@ -251,6 +326,11 @@ def main() -> int:
                 "label": "Exact state tiers",
                 "file": f"downloads/{TIERS_PATH.name}",
                 "description": "Long-form exact performance tiers where available.",
+            },
+            {
+                "label": "NAEP Grade 4 Reading",
+                "file": f"downloads/{NAEP_DOWNLOAD_FILENAME}",
+                "description": "2024 percent Below Basic for every state and DC, with the national benchmark.",
             },
         ],
     }

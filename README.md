@@ -10,6 +10,7 @@ The colleague-facing dashboard is in `docs/` and is designed for GitHub Pages. I
 - a clickable national source-quality map
 - state assessment results, reporting years, source notes, and official links
 - source-quality filters, state search, and a sortable source register
+- a separate 2024 NAEP Grade 4 Reading tab with all 50 states and DC
 - full and filtered CSV downloads
 
 Build its compact data bundle after refreshing the assessment outputs:

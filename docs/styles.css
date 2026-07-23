@@ -12,6 +12,13 @@
   --state-dark: #28675c;
   --federal: #c8a04e;
   --federal-dark: #8f6d28;
+  --naep-blue: #274f67;
+  --naep-blue-dark: #173746;
+  --naep-1: #2d6674;
+  --naep-2: #67968f;
+  --naep-3: #d1b566;
+  --naep-4: #d47a4f;
+  --naep-5: #9f3e36;
   --line: rgba(23, 36, 33, 0.18);
   --line-strong: rgba(23, 36, 33, 0.34);
   --shadow: 0 20px 50px rgba(33, 42, 37, 0.12);
@@ -43,6 +50,10 @@ body {
   font-size: 16px;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
+}
+
+[hidden] {
+  display: none !important;
 }
 
 a {
@@ -191,6 +202,69 @@ input:focus-visible {
   background: transparent;
 }
 
+.dashboard-tabs {
+  position: relative;
+  z-index: 10;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px clamp(24px, 5vw, 76px) 0;
+}
+
+.dashboard-tabs-inner {
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 4px;
+  padding: 4px;
+  background: rgba(233, 226, 211, 0.78);
+  border: 1px solid var(--line);
+  box-shadow: 0 9px 24px rgba(33, 42, 37, 0.07);
+}
+
+.dashboard-tab {
+  display: flex;
+  gap: 3px;
+  align-items: start;
+  flex-direction: column;
+  min-width: 230px;
+  padding: 13px 18px 12px;
+  color: var(--ink-soft);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.dashboard-tab:hover {
+  color: var(--ink);
+  background: rgba(255, 253, 248, 0.7);
+}
+
+.dashboard-tab.active {
+  color: var(--white);
+  background: var(--forest);
+  transform: translateY(-1px);
+}
+
+.dashboard-tab span {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 650;
+  line-height: 1.1;
+}
+
+.dashboard-tab small {
+  color: inherit;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  opacity: 0.66;
+  text-transform: uppercase;
+}
+
 main {
   overflow: hidden;
 }
@@ -198,6 +272,8 @@ main {
 .hero,
 .coverage-section,
 .states-section,
+.naep-overview-section,
+.naep-states-section,
 .methodology-section,
 .downloads-section {
   max-width: 1440px;
@@ -298,6 +374,131 @@ h1 em {
   font-size: 0.82rem;
   font-weight: 800;
   text-underline-offset: 5px;
+}
+
+.naep-hero {
+  position: relative;
+}
+
+.naep-hero::before {
+  position: absolute;
+  z-index: -1;
+  top: 14%;
+  right: clamp(24px, 5vw, 76px);
+  width: min(38vw, 520px);
+  height: min(38vw, 520px);
+  background:
+    repeating-radial-gradient(
+      circle,
+      rgba(39, 79, 103, 0.09) 0,
+      rgba(39, 79, 103, 0.09) 2px,
+      transparent 2px,
+      transparent 24px
+    );
+  border-radius: 50%;
+  content: "";
+}
+
+.naep-hero h1 em {
+  color: var(--naep-blue);
+}
+
+.naep-hero .eyebrow,
+.naep-hero .note-label {
+  color: var(--naep-blue);
+}
+
+.naep-hero-note {
+  border-top-color: var(--naep-blue-dark);
+}
+
+.naep-hero-note::before {
+  background: var(--naep-3);
+}
+
+.naep-overview-section {
+  position: relative;
+  padding-top: clamp(72px, 8vw, 110px);
+  padding-bottom: clamp(70px, 8vw, 110px);
+  color: var(--white);
+  background: var(--naep-blue-dark);
+}
+
+.naep-overview-section::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0 -100vw;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(103, 150, 143, 0.25), transparent 28%),
+    radial-gradient(circle at 88% 75%, rgba(209, 181, 102, 0.19), transparent 24%),
+    var(--naep-blue-dark);
+  content: "";
+}
+
+.naep-overview-section .eyebrow {
+  color: #e6c977;
+}
+
+.naep-overview-section .updated-label strong {
+  color: var(--white);
+}
+
+.naep-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid rgba(255, 255, 255, 0.24);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.naep-metric-card {
+  min-height: 270px;
+  padding: 32px clamp(22px, 2.2vw, 36px);
+  border-right: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.naep-metric-card:last-child {
+  border-right: 0;
+}
+
+.naep-metric-card-primary {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.naep-metric-card-warn {
+  background: rgba(212, 122, 79, 0.12);
+}
+
+.naep-metric-card .metric-kicker {
+  min-height: 32px;
+}
+
+.naep-metric-value {
+  display: flex;
+  gap: 10px;
+  align-items: end;
+  margin: 24px 0 26px;
+  font-family: var(--serif);
+  font-size: clamp(4rem, 6vw, 6.2rem);
+  line-height: 0.72;
+  letter-spacing: -0.05em;
+}
+
+.naep-metric-value small {
+  padding-bottom: 5px;
+  color: rgba(255, 253, 248, 0.62);
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.naep-summary-note {
+  max-width: 720px;
+  margin: 28px 0 0;
+  color: rgba(255, 253, 248, 0.62);
+  font-size: 0.7rem;
+  line-height: 1.55;
 }
 
 .coverage-section {
@@ -521,7 +722,8 @@ h1 em {
   background: var(--federal);
 }
 
-.states-section {
+.states-section,
+.naep-states-section {
   padding-top: clamp(80px, 9vw, 135px);
   padding-bottom: clamp(85px, 9vw, 140px);
 }
@@ -537,6 +739,11 @@ h1 em {
   font-family: var(--serif);
   font-size: 1.2rem;
   line-height: 1.5;
+}
+
+.naep-states-section .eyebrow,
+.naep-states-section .panel-kicker {
+  color: var(--naep-blue);
 }
 
 .filter-bar {
@@ -720,6 +927,27 @@ h1 em {
   background: var(--federal);
 }
 
+.state-tile.naep-tile.level-1 {
+  background: var(--naep-1);
+}
+
+.state-tile.naep-tile.level-2 {
+  background: var(--naep-2);
+}
+
+.state-tile.naep-tile.level-3 {
+  color: #302815;
+  background: var(--naep-3);
+}
+
+.state-tile.naep-tile.level-4 {
+  background: var(--naep-4);
+}
+
+.state-tile.naep-tile.level-5 {
+  background: var(--naep-5);
+}
+
 .state-tile:hover,
 .state-tile.selected {
   z-index: 2;
@@ -746,6 +974,47 @@ h1 em {
   line-height: 1.5;
 }
 
+.naep-map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 14px;
+  color: var(--ink-soft);
+  font-size: 0.62rem;
+  font-weight: 650;
+}
+
+.naep-map-legend span {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.naep-swatch {
+  width: 15px;
+  height: 7px;
+}
+
+.naep-swatch.level-1 {
+  background: var(--naep-1);
+}
+
+.naep-swatch.level-2 {
+  background: var(--naep-2);
+}
+
+.naep-swatch.level-3 {
+  background: var(--naep-3);
+}
+
+.naep-swatch.level-4 {
+  background: var(--naep-4);
+}
+
+.naep-swatch.level-5 {
+  background: var(--naep-5);
+}
+
 .state-detail {
   position: relative;
   padding: clamp(28px, 3.3vw, 48px);
@@ -765,6 +1034,12 @@ h1 em {
   border-radius: 50%;
   content: "";
   pointer-events: none;
+}
+
+.naep-detail {
+  background:
+    linear-gradient(135deg, rgba(39, 79, 103, 0.11), transparent 46%),
+    var(--white);
 }
 
 .detail-loading,
@@ -834,6 +1109,15 @@ h1 em {
 
 .quality-badge.federal::before {
   background: var(--federal);
+}
+
+.quality-badge.naep {
+  color: var(--naep-blue-dark);
+  background: rgba(39, 79, 103, 0.13);
+}
+
+.quality-badge.naep::before {
+  background: var(--naep-blue);
 }
 
 .detail-meta {
@@ -955,6 +1239,98 @@ h1 em {
   white-space: nowrap;
 }
 
+.naep-detail-result {
+  margin-bottom: 18px;
+}
+
+.naep-comparison {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 28px;
+  padding: 13px 14px;
+  background: var(--paper);
+}
+
+.naep-comparison-mark {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 34px;
+  background: var(--naep-3);
+}
+
+.naep-comparison.lower .naep-comparison-mark {
+  background: var(--naep-1);
+}
+
+.naep-comparison.higher .naep-comparison-mark {
+  background: var(--naep-5);
+}
+
+.naep-comparison strong,
+.naep-comparison span {
+  display: block;
+}
+
+.naep-comparison strong {
+  margin-bottom: 2px;
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+.naep-comparison div > span {
+  color: var(--ink-soft);
+  font-size: 0.64rem;
+}
+
+.naep-bar-list {
+  display: grid;
+  gap: 13px;
+  margin-bottom: 28px;
+}
+
+.naep-bar-row {
+  display: grid;
+  grid-template-columns: minmax(90px, 1fr) 1.6fr 50px;
+  gap: 10px;
+  align-items: center;
+  font-size: 0.64rem;
+}
+
+.naep-bar-row > span:first-child {
+  overflow: hidden;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.naep-bar-row strong {
+  font-family: var(--serif);
+  font-size: 0.86rem;
+  font-weight: 650;
+  text-align: right;
+}
+
+.naep-bar-track {
+  height: 8px;
+  overflow: hidden;
+  background: var(--paper-deep);
+}
+
+.naep-bar-fill {
+  display: block;
+  height: 100%;
+}
+
+.naep-bar-fill.state-value {
+  background: var(--naep-blue);
+}
+
+.naep-bar-fill.national-value {
+  background: var(--naep-3);
+}
+
 .detail-note {
   display: -webkit-box;
   margin: 0 0 23px;
@@ -964,6 +1340,10 @@ h1 em {
   line-height: 1.55;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 5;
+}
+
+.detail-note.naep-detail-note {
+  -webkit-line-clamp: 4;
 }
 
 .detail-links {
@@ -1131,6 +1511,49 @@ tbody tr:last-child td {
   background: var(--federal);
 }
 
+.naep-difference {
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.naep-difference.lower {
+  color: var(--naep-1);
+}
+
+.naep-difference.near {
+  color: var(--federal-dark);
+}
+
+.naep-difference.higher {
+  color: var(--naep-5);
+}
+
+.naep-table-comparison {
+  display: inline-flex;
+  padding: 5px 8px;
+  font-size: 0.59rem;
+  font-weight: 750;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.naep-table-comparison.lower {
+  color: var(--naep-blue-dark);
+  background: rgba(45, 102, 116, 0.13);
+}
+
+.naep-table-comparison.near {
+  color: #6f571f;
+  background: rgba(209, 181, 102, 0.24);
+}
+
+.naep-table-comparison.higher {
+  color: #7e2e28;
+  background: rgba(159, 62, 54, 0.13);
+}
+
 .result-cell {
   font-family: var(--serif);
   font-size: 1.05rem;
@@ -1240,6 +1663,57 @@ tbody tr:last-child td {
   color: var(--federal);
 }
 
+.naep-methodology-section {
+  position: relative;
+  background: var(--naep-blue-dark);
+}
+
+.naep-methodology-section::before {
+  background:
+    linear-gradient(125deg, rgba(45, 102, 116, 0.28), transparent 46%),
+    var(--naep-blue-dark);
+}
+
+.naep-methodology-section .methodology-lead .eyebrow,
+.naep-methodology-section .method-number {
+  color: #e6c977;
+}
+
+.naep-methodology-section .method-caution .method-number {
+  color: var(--naep-4);
+}
+
+.naep-source-callout {
+  display: flex;
+  grid-column: 1 / -1;
+  gap: 30px;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.naep-source-callout p {
+  margin: 0;
+  color: rgba(255, 253, 248, 0.68);
+  font-size: 0.72rem;
+}
+
+.naep-source-callout a {
+  flex: 0 0 auto;
+  padding: 10px 13px;
+  color: var(--naep-blue-dark);
+  background: #e6c977;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.naep-source-callout a:hover {
+  color: var(--white);
+  background: var(--naep-4);
+}
+
 .downloads-section {
   padding-top: clamp(80px, 9vw, 135px);
   padding-bottom: clamp(80px, 9vw, 135px);
@@ -1263,7 +1737,7 @@ tbody tr:last-child td {
 
 .download-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border-top: 1px solid var(--line-strong);
 }
 
@@ -1283,7 +1757,7 @@ tbody tr:last-child td {
     transform 180ms ease;
 }
 
-.download-card:last-child {
+.download-card:nth-child(3n) {
   border-right: 0;
 }
 
@@ -1393,15 +1867,18 @@ tbody tr:last-child td {
 }
 
 @media (max-width: 1120px) {
-  .metric-grid {
+  .metric-grid,
+  .naep-metric-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .metric-card:nth-child(2) {
+  .metric-card:nth-child(2),
+  .naep-metric-card:nth-child(2) {
     border-right: 0;
   }
 
-  .metric-card:nth-child(-n + 2) {
+  .metric-card:nth-child(-n + 2),
+  .naep-metric-card:nth-child(-n + 2) {
     border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   }
 
@@ -1421,7 +1898,7 @@ tbody tr:last-child td {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .download-card:nth-child(3) {
+  .download-card:nth-child(3n) {
     border-right: 0;
   }
 }
@@ -1480,6 +1957,11 @@ tbody tr:last-child td {
     grid-template-columns: 1fr;
   }
 
+  .naep-source-callout {
+    align-items: start;
+    flex-direction: column;
+  }
+
   .downloads-heading {
     grid-template-columns: 1fr;
   }
@@ -1511,6 +1993,28 @@ tbody tr:last-child td {
     font-size: 0.7rem !important;
   }
 
+  .dashboard-tabs {
+    padding-top: 16px;
+  }
+
+  .dashboard-tabs-inner {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-tab {
+    min-width: 0;
+    padding: 11px 12px;
+  }
+
+  .dashboard-tab span {
+    font-size: 0.92rem;
+  }
+
+  .dashboard-tab small {
+    font-size: 0.51rem;
+  }
+
   h1 {
     font-size: clamp(3.35rem, 16vw, 5rem);
   }
@@ -1520,17 +2024,20 @@ tbody tr:last-child td {
     padding-bottom: 78px;
   }
 
-  .metric-grid {
+  .metric-grid,
+  .naep-metric-grid {
     grid-template-columns: 1fr;
   }
 
-  .metric-card {
+  .metric-card,
+  .naep-metric-card {
     min-height: 255px;
     border-right: 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   }
 
-  .metric-card:last-child {
+  .metric-card:last-child,
+  .naep-metric-card:last-child {
     border-bottom: 0;
   }
 
@@ -1607,6 +2114,7 @@ tbody tr:last-child td {
 }
 
 @media print {
+  .dashboard-tabs,
   .site-nav,
   .hero-note,
   .filter-bar,

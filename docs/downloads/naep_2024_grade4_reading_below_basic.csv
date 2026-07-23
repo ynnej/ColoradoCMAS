@@ -1,0 +1,52 @@
+state,state_name,year,grade,subject,metric,state_pct,national_public_pct,difference_from_national_percentage_points,source_page_url
+AL,Alabama,2024,4,Reading,Percent Below Basic,42.44,40.67,1.77,https://www.nationsreportcard.gov/profiles/
+AK,Alaska,2024,4,Reading,Percent Below Basic,52.57,40.67,11.9,https://www.nationsreportcard.gov/profiles/
+AZ,Arizona,2024,4,Reading,Percent Below Basic,46.53,40.67,5.86,https://www.nationsreportcard.gov/profiles/
+AR,Arkansas,2024,4,Reading,Percent Below Basic,43.82,40.67,3.15,https://www.nationsreportcard.gov/profiles/
+CA,California,2024,4,Reading,Percent Below Basic,43.74,40.67,3.07,https://www.nationsreportcard.gov/profiles/
+CO,Colorado,2024,4,Reading,Percent Below Basic,35.12,40.67,-5.55,https://www.nationsreportcard.gov/profiles/
+CT,Connecticut,2024,4,Reading,Percent Below Basic,36.79,40.67,-3.88,https://www.nationsreportcard.gov/profiles/
+DE,Delaware,2024,4,Reading,Percent Below Basic,44.62,40.67,3.95,https://www.nationsreportcard.gov/profiles/
+DC,District of Columbia,2024,4,Reading,Percent Below Basic,48.01,40.67,7.34,https://www.nationsreportcard.gov/profiles/
+FL,Florida,2024,4,Reading,Percent Below Basic,37.56,40.67,-3.11,https://www.nationsreportcard.gov/profiles/
+GA,Georgia,2024,4,Reading,Percent Below Basic,40.59,40.67,-0.08,https://www.nationsreportcard.gov/profiles/
+HI,Hawaii,2024,4,Reading,Percent Below Basic,39.05,40.67,-1.62,https://www.nationsreportcard.gov/profiles/
+ID,Idaho,2024,4,Reading,Percent Below Basic,38.6,40.67,-2.07,https://www.nationsreportcard.gov/profiles/
+IL,Illinois,2024,4,Reading,Percent Below Basic,40.68,40.67,0.01,https://www.nationsreportcard.gov/profiles/
+IN,Indiana,2024,4,Reading,Percent Below Basic,34.74,40.67,-5.93,https://www.nationsreportcard.gov/profiles/
+IA,Iowa,2024,4,Reading,Percent Below Basic,39.48,40.67,-1.19,https://www.nationsreportcard.gov/profiles/
+KS,Kansas,2024,4,Reading,Percent Below Basic,40.09,40.67,-0.58,https://www.nationsreportcard.gov/profiles/
+KY,Kentucky,2024,4,Reading,Percent Below Basic,37.7,40.67,-2.97,https://www.nationsreportcard.gov/profiles/
+LA,Louisiana,2024,4,Reading,Percent Below Basic,39.58,40.67,-1.09,https://www.nationsreportcard.gov/profiles/
+ME,Maine,2024,4,Reading,Percent Below Basic,44.48,40.67,3.81,https://www.nationsreportcard.gov/profiles/
+MD,Maryland,2024,4,Reading,Percent Below Basic,40.78,40.67,0.11,https://www.nationsreportcard.gov/profiles/
+MA,Massachusetts,2024,4,Reading,Percent Below Basic,31.72,40.67,-8.95,https://www.nationsreportcard.gov/profiles/
+MI,Michigan,2024,4,Reading,Percent Below Basic,45.38,40.67,4.71,https://www.nationsreportcard.gov/profiles/
+MN,Minnesota,2024,4,Reading,Percent Below Basic,39.12,40.67,-1.55,https://www.nationsreportcard.gov/profiles/
+MS,Mississippi,2024,4,Reading,Percent Below Basic,35.39,40.67,-5.28,https://www.nationsreportcard.gov/profiles/
+MO,Missouri,2024,4,Reading,Percent Below Basic,42.05,40.67,1.38,https://www.nationsreportcard.gov/profiles/
+MT,Montana,2024,4,Reading,Percent Below Basic,37.83,40.67,-2.84,https://www.nationsreportcard.gov/profiles/
+NE,Nebraska,2024,4,Reading,Percent Below Basic,42.18,40.67,1.51,https://www.nationsreportcard.gov/profiles/
+NV,Nevada,2024,4,Reading,Percent Below Basic,41.44,40.67,0.77,https://www.nationsreportcard.gov/profiles/
+NH,New Hampshire,2024,4,Reading,Percent Below Basic,33.27,40.67,-7.4,https://www.nationsreportcard.gov/profiles/
+NJ,New Jersey,2024,4,Reading,Percent Below Basic,33.68,40.67,-6.99,https://www.nationsreportcard.gov/profiles/
+NM,New Mexico,2024,4,Reading,Percent Below Basic,53.13,40.67,12.46,https://www.nationsreportcard.gov/profiles/
+NY,New York,2024,4,Reading,Percent Below Basic,40.69,40.67,0.02,https://www.nationsreportcard.gov/profiles/
+NC,North Carolina,2024,4,Reading,Percent Below Basic,41.74,40.67,1.07,https://www.nationsreportcard.gov/profiles/
+ND,North Dakota,2024,4,Reading,Percent Below Basic,38.43,40.67,-2.24,https://www.nationsreportcard.gov/profiles/
+OH,Ohio,2024,4,Reading,Percent Below Basic,38.2,40.67,-2.47,https://www.nationsreportcard.gov/profiles/
+OK,Oklahoma,2024,4,Reading,Percent Below Basic,46.44,40.67,5.77,https://www.nationsreportcard.gov/profiles/
+OR,Oregon,2024,4,Reading,Percent Below Basic,48.26,40.67,7.59,https://www.nationsreportcard.gov/profiles/
+PA,Pennsylvania,2024,4,Reading,Percent Below Basic,37.8,40.67,-2.87,https://www.nationsreportcard.gov/profiles/
+RI,Rhode Island,2024,4,Reading,Percent Below Basic,39.3,40.67,-1.37,https://www.nationsreportcard.gov/profiles/
+SC,South Carolina,2024,4,Reading,Percent Below Basic,40.33,40.67,-0.34,https://www.nationsreportcard.gov/profiles/
+SD,South Dakota,2024,4,Reading,Percent Below Basic,39.87,40.67,-0.8,https://www.nationsreportcard.gov/profiles/
+TN,Tennessee,2024,4,Reading,Percent Below Basic,38.89,40.67,-1.78,https://www.nationsreportcard.gov/profiles/
+TX,Texas,2024,4,Reading,Percent Below Basic,42.89,40.67,2.22,https://www.nationsreportcard.gov/profiles/
+UT,Utah,2024,4,Reading,Percent Below Basic,35.55,40.67,-5.12,https://www.nationsreportcard.gov/profiles/
+VT,Vermont,2024,4,Reading,Percent Below Basic,41.84,40.67,1.17,https://www.nationsreportcard.gov/profiles/
+VA,Virginia,2024,4,Reading,Percent Below Basic,41.53,40.67,0.86,https://www.nationsreportcard.gov/profiles/
+WA,Washington,2024,4,Reading,Percent Below Basic,39.5,40.67,-1.17,https://www.nationsreportcard.gov/profiles/
+WV,West Virginia,2024,4,Reading,Percent Below Basic,47.36,40.67,6.69,https://www.nationsreportcard.gov/profiles/
+WI,Wisconsin,2024,4,Reading,Percent Below Basic,38.84,40.67,-1.83,https://www.nationsreportcard.gov/profiles/
+WY,Wyoming,2024,4,Reading,Percent Below Basic,32.23,40.67,-8.44,https://www.nationsreportcard.gov/profiles/

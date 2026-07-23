@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="A source-quality-first view of statewide Grade 3 English language arts assessment results."
+      content="State assessment and NAEP reading results for all 50 states and the District of Columbia."
     >
     <meta name="theme-color" content="#142f2b">
     <title>State Assessment Data Monitor</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-      href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,650&family=Public+Sans:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,650&amp;family=Public+Sans:wght@400;500;600;700;800&amp;display=swap"
       rel="stylesheet"
     >
     <link rel="stylesheet" href="styles.css">
@@ -31,16 +31,55 @@
           <span class="brand-subtitle">Data Monitor</span>
         </span>
       </a>
-      <nav class="site-nav" aria-label="Primary navigation">
+      <nav class="site-nav" id="state-nav" aria-label="State assessment navigation">
         <a href="#coverage">Coverage</a>
         <a href="#states">States</a>
         <a href="#methodology">Methodology</a>
         <a class="nav-download" href="#downloads">Get the data</a>
       </nav>
+      <nav class="site-nav" id="naep-nav" aria-label="NAEP navigation" hidden>
+        <a href="#naep-overview">Overview</a>
+        <a href="#naep-states">States</a>
+        <a href="#naep-methodology">Methodology</a>
+        <a class="nav-download" href="downloads/naep_2024_grade4_reading_below_basic.csv" download>
+          Get NAEP data
+        </a>
+      </nav>
     </header>
 
     <main id="main-content">
-      <section class="hero" id="top" aria-labelledby="page-title">
+      <nav class="dashboard-tabs" aria-label="Dashboard views">
+        <div class="dashboard-tabs-inner" role="tablist" aria-label="Choose a dashboard">
+          <button
+            class="dashboard-tab active"
+            id="state-tab"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="state-view"
+            data-dashboard-view="state"
+          >
+            <span>State assessments</span>
+            <small>Grade 3 ELA</small>
+          </button>
+          <button
+            class="dashboard-tab"
+            id="naep-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="naep-view"
+            data-dashboard-view="naep"
+            tabindex="-1"
+          >
+            <span>NAEP</span>
+            <small>2024 Grade 4 Reading</small>
+          </button>
+        </div>
+      </nav>
+
+      <div id="state-view" role="tabpanel" aria-labelledby="state-tab">
+        <section class="hero" id="top" aria-labelledby="page-title">
         <div class="hero-copy">
           <p class="eyebrow">Statewide Grade 3 English language arts</p>
           <h1 id="page-title">The data is national.<br><em>The sources are not equal.</em></h1>
@@ -57,9 +96,9 @@
           </p>
           <a href="#methodology">Read the methodology <span aria-hidden="true">↘</span></a>
         </aside>
-      </section>
+        </section>
 
-      <section class="coverage-section" id="coverage" aria-labelledby="coverage-heading">
+        <section class="coverage-section" id="coverage" aria-labelledby="coverage-heading">
         <div class="section-heading-row">
           <div>
             <p class="eyebrow">Coverage at a glance</p>
@@ -117,9 +156,9 @@
             <span><i class="legend-dot federal"></i>Federal proxy</span>
           </div>
         </div>
-      </section>
+        </section>
 
-      <section class="states-section" id="states" aria-labelledby="states-heading">
+        <section class="states-section" id="states" aria-labelledby="states-heading">
         <div class="section-heading-row states-heading-row">
           <div>
             <p class="eyebrow">Explore the states</p>
@@ -217,9 +256,9 @@
             </table>
           </div>
         </div>
-      </section>
+        </section>
 
-      <section class="methodology-section" id="methodology" aria-labelledby="methodology-heading">
+        <section class="methodology-section" id="methodology" aria-labelledby="methodology-heading">
         <div class="methodology-lead">
           <p class="eyebrow">Methodology</p>
           <h2 id="methodology-heading">Comparable enough to use.<br>Different enough to explain.</h2>
@@ -263,9 +302,9 @@
             </p>
           </article>
         </div>
-      </section>
+        </section>
 
-      <section class="downloads-section" id="downloads" aria-labelledby="downloads-heading">
+        <section class="downloads-section" id="downloads" aria-labelledby="downloads-heading">
         <div class="downloads-heading">
           <div>
             <p class="eyebrow">Open data</p>
@@ -279,13 +318,248 @@
         <div class="download-grid" id="download-grid">
           <p class="download-loading">Loading files…</p>
         </div>
-      </section>
+        </section>
+      </div>
+
+      <div id="naep-view" role="tabpanel" aria-labelledby="naep-tab" hidden>
+        <section class="hero naep-hero" id="naep-top" aria-labelledby="naep-page-title">
+          <div class="hero-copy">
+            <p class="eyebrow">The Nation’s Report Card</p>
+            <h1 id="naep-page-title">One assessment.<br><em>A common yardstick.</em></h1>
+            <p class="hero-deck">
+              2024 NAEP Grade 4 Reading results for every state and DC, shown as the
+              share of public-school students performing Below Basic.
+            </p>
+          </div>
+          <aside class="hero-note naep-hero-note">
+            <p class="note-label">How to read this</p>
+            <p>
+              Lower percentages mean fewer students scored Below Basic. NAEP uses the
+              same framework across jurisdictions, but small differences may not be
+              statistically significant.
+            </p>
+            <a href="#naep-methodology">Read the NAEP notes <span aria-hidden="true">↘</span></a>
+          </aside>
+        </section>
+
+        <section
+          class="naep-overview-section"
+          id="naep-overview"
+          aria-labelledby="naep-overview-heading"
+        >
+          <div class="section-heading-row">
+            <div>
+              <p class="eyebrow">National snapshot</p>
+              <h2 id="naep-overview-heading">The same measure, across every jurisdiction.</h2>
+            </div>
+            <p class="updated-label">Assessment year <strong>2024</strong></p>
+          </div>
+
+          <div class="naep-metric-grid" aria-label="NAEP summary">
+            <article class="naep-metric-card naep-metric-card-primary">
+              <p class="metric-kicker">National public benchmark</p>
+              <p class="naep-metric-value"><span id="naep-national-value">--</span><small>%</small></p>
+              <p class="metric-caption">Grade 4 public-school students performing Below Basic in Reading.</p>
+            </article>
+            <article class="naep-metric-card">
+              <p class="metric-kicker">Jurisdictions included</p>
+              <p class="naep-metric-value"><span id="naep-jurisdiction-count">--</span><small>of 51</small></p>
+              <p class="metric-caption">All 50 states and the District of Columbia.</p>
+            </article>
+            <article class="naep-metric-card">
+              <p class="metric-kicker">Numerically below U.S.</p>
+              <p class="naep-metric-value"><span id="naep-below-national-count">--</span><small>jurisdictions</small></p>
+              <p class="metric-caption">A lower share Below Basic than the national public benchmark.</p>
+            </article>
+            <article class="naep-metric-card naep-metric-card-warn">
+              <p class="metric-kicker">Numerically above U.S.</p>
+              <p class="naep-metric-value"><span id="naep-above-national-count">--</span><small>jurisdictions</small></p>
+              <p class="metric-caption">A higher share Below Basic than the national public benchmark.</p>
+            </article>
+          </div>
+          <p class="naep-summary-note">
+            “Below” and “above” describe the published percentages only. They do not indicate
+            whether the difference is statistically significant.
+          </p>
+        </section>
+
+        <section class="naep-states-section" id="naep-states" aria-labelledby="naep-states-heading">
+          <div class="section-heading-row states-heading-row">
+            <div>
+              <p class="eyebrow">Explore NAEP</p>
+              <h2 id="naep-states-heading">Every state against the same benchmark.</h2>
+            </div>
+            <p class="section-intro">
+              Select a jurisdiction to compare its 2024 Grade 4 Reading result with the
+              national public-school percentage.
+            </p>
+          </div>
+
+          <div class="filter-bar naep-filter-bar" aria-label="NAEP state filters">
+            <div class="filter-group" role="group" aria-label="Filter by difference from national">
+              <button class="filter-button active" type="button" data-naep-filter="all" aria-pressed="true">
+                All <span id="naep-all-filter-count">51</span>
+              </button>
+              <button class="filter-button" type="button" data-naep-filter="lower" aria-pressed="false">
+                Lower share <span id="naep-lower-filter-count">--</span>
+              </button>
+              <button class="filter-button" type="button" data-naep-filter="near" aria-pressed="false">
+                Near U.S. <span id="naep-near-filter-count">--</span>
+              </button>
+              <button class="filter-button" type="button" data-naep-filter="higher" aria-pressed="false">
+                Higher share <span id="naep-higher-filter-count">--</span>
+              </button>
+            </div>
+            <label class="search-box">
+              <span class="visually-hidden">Search NAEP states</span>
+              <span aria-hidden="true">Find</span>
+              <input id="naep-search" type="search" placeholder="Search a state" autocomplete="off">
+            </label>
+          </div>
+
+          <div class="explorer-grid naep-explorer-grid">
+            <article class="map-panel" aria-labelledby="naep-map-heading">
+              <div class="panel-heading">
+                <div>
+                  <p class="panel-kicker">Performance map</p>
+                  <h3 id="naep-map-heading">Percent Below Basic</h3>
+                </div>
+                <p id="naep-visible-state-count" class="visible-count" aria-live="polite">51 shown</p>
+              </div>
+              <div class="map-scroller">
+                <div
+                  id="naep-tile-map"
+                  class="tile-map naep-tile-map"
+                  role="group"
+                  aria-label="Clickable tile map of 2024 NAEP Grade 4 Reading results"
+                ></div>
+              </div>
+              <div class="naep-map-legend" aria-label="Percent Below Basic legend">
+                <span><i class="naep-swatch level-1"></i>Under 35%</span>
+                <span><i class="naep-swatch level-2"></i>35–39.9%</span>
+                <span><i class="naep-swatch level-3"></i>40–44.9%</span>
+                <span><i class="naep-swatch level-4"></i>45–49.9%</span>
+                <span><i class="naep-swatch level-5"></i>50%+</span>
+              </div>
+              <p class="map-footnote">
+                Color represents the published percentage Below Basic. Lower is better for this measure.
+              </p>
+            </article>
+
+            <aside
+              class="state-detail naep-detail"
+              id="naep-detail"
+              aria-live="polite"
+              aria-label="Selected NAEP state details"
+            >
+              <div class="detail-loading">Loading NAEP details…</div>
+            </aside>
+          </div>
+
+          <div class="table-panel naep-table-panel">
+            <div class="panel-heading table-heading">
+              <div>
+                <p class="panel-kicker">All jurisdictions</p>
+                <h3>NAEP results register</h3>
+              </div>
+              <button class="text-button" id="download-naep-filtered" type="button">
+                Download filtered CSV <span aria-hidden="true">↓</span>
+              </button>
+            </div>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">
+                      <button type="button" data-naep-sort="name">State <span aria-hidden="true">↕</span></button>
+                    </th>
+                    <th scope="col" class="numeric">
+                      <button type="button" data-naep-sort="naepValue">Below Basic <span aria-hidden="true">↕</span></button>
+                    </th>
+                    <th scope="col" class="numeric">
+                      <button type="button" data-naep-sort="naepDifference">Difference from U.S. <span aria-hidden="true">↕</span></button>
+                    </th>
+                    <th scope="col">Comparison</th>
+                    <th scope="col">Assessment</th>
+                    <th scope="col"><span class="visually-hidden">Open NAEP state details</span></th>
+                  </tr>
+                </thead>
+                <tbody id="naep-table-body">
+                  <tr><td colspan="6" class="table-loading">Loading NAEP results…</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="methodology-section naep-methodology-section"
+          id="naep-methodology"
+          aria-labelledby="naep-methodology-heading"
+        >
+          <div class="methodology-lead">
+            <p class="eyebrow">NAEP methodology</p>
+            <h2 id="naep-methodology-heading">Comparable by design.<br>Careful by necessity.</h2>
+            <p>
+              NAEP assesses a representative sample using a common national framework. These
+              results describe jurisdictions and student groups, not individual students or schools.
+            </p>
+          </div>
+          <div class="methodology-grid">
+            <article>
+              <span class="method-number">01</span>
+              <h3>Common measure</h3>
+              <p>
+                Every jurisdiction shown here uses the 2024 NAEP Grade 4 Reading framework,
+                unlike state assessments built around different state standards.
+              </p>
+            </article>
+            <article>
+              <span class="method-number">02</span>
+              <h3>Below Basic</h3>
+              <p>
+                The displayed value is 100 minus the official percentage at or above NAEP Basic.
+                NAEP achievement levels are not equivalent to state proficiency categories.
+              </p>
+            </article>
+            <article>
+              <span class="method-number">03</span>
+              <h3>Public-school benchmark</h3>
+              <p>
+                The national comparison is the 2024 public-school result, matching the population
+                represented in the state-level NAEP rows.
+              </p>
+            </article>
+            <article class="method-caution">
+              <span class="method-number">!</span>
+              <h3>Not a significance test</h3>
+              <p>
+                Small percentage differences may reflect sampling variation. This view does not
+                claim that every ordered difference is statistically significant.
+              </p>
+            </article>
+          </div>
+          <div class="naep-source-callout">
+            <p>
+              Source: National Center for Education Statistics, 2024 NAEP Grade 4 Reading.
+            </p>
+            <a
+              id="naep-official-source"
+              href="https://www.nationsreportcard.gov/profiles/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open The Nation’s Report Card ↗
+            </a>
+          </div>
+        </section>
+      </div>
     </main>
 
     <footer class="site-footer">
       <p>State Assessment Data Monitor</p>
-      <p>50 states + DC · Grade 3 ELA · Source quality shown throughout</p>
-      <a href="#top">Back to top ↑</a>
+      <p id="footer-scope">50 states + DC · Grade 3 ELA · Source quality shown throughout</p>
+      <a id="back-to-top" href="#top">Back to top ↑</a>
     </footer>
 
     <noscript>
