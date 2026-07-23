@@ -1,0 +1,23 @@
+{
+  "build_date": "2026-07-23",
+  "description": "Looker-ready long tables combining state assessment Grade 3 ELA rows with 2024 NAEP Grade 4 Reading below-basic comparison rows.",
+  "naep_logic": {
+    "derivation": "100 - percent at or above Basic from the official NAEP 2024 Grade 4 Reading state data table.",
+    "metric": "Percent Below Basic",
+    "repeated_national_benchmark": true
+  },
+  "outputs": {
+    "looker_enriched_csv": "datasets/summary/state_assessment_vs_naep_looker_enriched.csv",
+    "looker_minimal_csv": "datasets/summary/state_assessment_vs_naep_looker_minimal.csv",
+    "naep_raw_json": "datasets/naep/2024/raw/naep_2024_grade4_reading_state_map_datatable.json"
+  },
+  "sources": {
+    "naep_query_url": "https://www.nationsreportcard.gov/NDEDataService/ChartHandler.aspx?type=sp_state_map_datatable&subject=RED&cohort=1&year=2024R3&wantse=false&wantextdecplaces=false",
+    "naep_source_page_url": "https://www.nationsreportcard.gov/profiles/"
+  },
+  "state_assessment_logic": {
+    "below_basic_analog_rows": "Use the strict below-basic analog rows already defined in statewide_grade3_ela_below_basic_analog.csv.",
+    "exact_tier_rows": "Use exact statewide Grade 3 ELA tiers where available.",
+    "published_reference_rows": "Add source-bin rows only when they provide additional context beyond exact tiers, such as Texas published thresholds or West Virginia's proficiency-only public reference."
+  }
+}

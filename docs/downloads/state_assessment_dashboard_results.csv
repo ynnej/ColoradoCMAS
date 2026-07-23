@@ -1,0 +1,52 @@
+state,state_name,data_quality,assessment,school_year,reported_measure,below_basic_analog_pct,naep_2024_grade4_reading_below_basic_pct,source_page_url
+AL,Alabama,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,45.7,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+AK,Alaska,Exact state tiers,AK STAR,2024-2025,Needs Support,36.3,,https://education.alaska.gov/assessment-results/Statewide/StatewideResults?isScience=False&schoolYear=2024-2025
+AZ,Arizona,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,59.3,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+AR,Arkansas,Exact state tiers,ATLAS,2024-2025,Level 1,29.3,,https://dese.ade.arkansas.gov/Offices/public-school-accountability/assessment-test-scores/2025
+CA,California,Official state proficiency,CAASPP,2024-2025,100 - Standard Met/Exceeded,56.0,,https://www.cde.ca.gov/ta/tg/ca/caaspp2025datasummary.asp
+CO,Colorado,Exact state tiers,CMAS,2024-2025,Did Not Yet Meet Expectations,22.4,,https://ed.cde.state.co.us/assessment/cmas-dataandresults-2025
+CT,Connecticut,Exact state tiers,Smarter Balanced,2024-2025,Level 1 Not Met,30.7,,https://public-edsight.ct.gov/performance/smarter-balanced-achievement-participation
+DE,Delaware,Official state proficiency,Smarter Balanced,2024-2025,100 - Met Achievement Standard,61.28,,https://education.delaware.gov/educators/academic-support/standards-and-assessments/english-and-language-arts/assessments/
+DC,District of Columbia,Exact state tiers,DC CAPE,2024-2025,Did Not Yet Meet Expectations,34.4,,https://osse.dc.gov/node/1794106
+FL,Florida,Exact state tiers,FAST,2024-2025,Level 1,22.0,,https://www.fldoe.org/accountability/assessments/k-12-student-assessment/results/2025.stml
+GA,Georgia,Exact state tiers,Georgia Milestones,2024-2025,Beginning Learner,36.9,,https://gadoe.org/assessment-accountability/georgia-milestones/
+HI,Hawaii,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,51.6,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+ID,Idaho,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,50.8,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+IL,Illinois,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,72.7,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+IN,Indiana,Exact state tiers,ILEARN,2024-2025,Below Proficiency,39.18,,https://secure.in.gov/doe/it/data-center-and-reports/
+IA,Iowa,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,35.8,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+KS,Kansas,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,62.0,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+KY,Kentucky,Exact state tiers,KSA,2023-2024,Novice,24.8,,https://www.education.ky.gov/AA/Assessments/Pages/KentuckySummativeAssessment-.aspx
+LA,Louisiana,Exact state tiers,LEAP,2024-2025,Unsatisfactory,17.0,,https://doe.louisiana.gov/resources/library/test-results
+ME,Maine,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,17.3,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+MD,Maryland,Exact state tiers,MCAP,2024-2025,PL 1,7.3,,https://reportcard.msde.maryland.gov/Graphs/#/Assessments/ELAPerformance
+MA,Massachusetts,Exact state tiers,MCAS,2024-2025,Not Meeting Expectations,19.0,,https://profiles.doe.mass.edu/mcas/achievement_level.aspx?linkid=32&orgcode=00000000&orgtypecode=0&
+MI,Michigan,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,58.2,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+MN,Minnesota,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,51.9,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+MS,Mississippi,Exact state tiers,MAAP,2024-2025,Minimal,10.7,,https://mdek12.org/wp-content/uploads/sites/33/2025/08/MAAP-2025-Results-Executive-Summary.pdf
+MO,Missouri,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,58.6,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+MT,Montana,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,55.8,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+NE,Nebraska,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,50.0,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+NV,Nevada,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,59.1,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+NH,New Hampshire,Official state proficiency,NH SAS,2024-2025,100 - Percent Proficient,51.0,,https://my.doe.nh.gov/iPlatform/Report/DataReportsSubCategory?reportSubCategoryId=20
+NJ,New Jersey,Exact state tiers,NJSLA,2024-2025,Level 1,19.0,,https://www.nj.gov/education/assessment/results/reports/2425/index.shtml
+NM,New Mexico,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,68.2,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+NY,New York,Exact state tiers,Grades 3-8 ELA,2024-2025,Level 1,20.0,,https://data.nysed.gov/downloads.php
+NC,North Carolina,Official state source bins,NC EOG,2024-2025,Not Proficient,53.4,,https://www.dpi.nc.gov/districts-schools/accountability-and-testing/school-accountability-and-reporting/accountability-data-sets-and-reports
+ND,North Dakota,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,61.5,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+OH,Ohio,Official state proficiency,Ohio State Tests,2024-2025,100 - Percent Proficient or Above,38.7,,https://reportcard.education.ohio.gov/download
+OK,Oklahoma,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,71.2,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+OR,Oregon,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,60.4,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+PA,Pennsylvania,Exact state tiers,PSSA,2024-2025,Below Basic,20.3,,https://www.pa.gov/agencies/education/data-and-reporting/assessment-reporting
+RI,Rhode Island,Exact state tiers,RICAS,2024-2025,Not Meeting Expectations,21.5,,https://www3.ride.ri.gov/ADP
+SC,South Carolina,Exact state tiers,SC READY,2024-2025,Does Not Meet Expectations,14.4,,https://ed.sc.gov/data/test-scores/state-assessments/sc-ready/2025/state-scores-by-grade-level-and-demographic/?districtCode=9999&schoolCode=1001
+SD,South Dakota,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,52.8,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+TN,Tennessee,Exact state tiers,TCAP,2024-2025,Below,22.9,,https://www.tn.gov/content/tn/education/districts/federal-programs-and-oversight/data/data-downloads.html
+TX,Texas,Exact state tiers,STAAR,2023-2024,Did Not Meet Grade Level,26.0,,https://rptsvr1.tea.texas.gov/perfreport/tapr/2024/Basic%20Download/DownloadSelData.html
+UT,Utah,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2020-2021,100 - Percent Proficient,57.7,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+VT,Vermont,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,58.7,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool
+VA,Virginia,Official state source bins,SOL,2024-2025,Failed,33.0,,https://schoolquality.virginia.gov/virginia-state-quality-profile
+WA,Washington,Exact state tiers,SBAC,2024-2025,Level 1,28.32,,https://data.wa.gov/api/views/h5d9-vgwi
+WV,West Virginia,Official state proficiency,WVGSA,2023-2024,100 - Meets Standard or above,49.0,,https://wvde.us/events/2024/8/august-2024-board-meeting
+WI,Wisconsin,Exact state tiers,Forward Exam,2024-2025,Developing,17.81,,https://dpi.wi.gov/wise-downloads/forwardcertified2024-25
+WY,Wyoming,Ed Data Express proxy,Statewide RLA Assessment (Ed Data Express),2021-2022,100 - Percent Proficient,52.1,,https://eddataexpress.ed.gov/download/data-builder/data-download-tool

@@ -1,0 +1,1570 @@
+{
+  "title": "State Assessment Data Monitor",
+  "buildDate": "2026-07-23",
+  "scope": "Statewide Grade 3 English language arts",
+  "counts": {
+    "jurisdictions": 51,
+    "exact": 22,
+    "state": 7,
+    "federal": 22,
+    "statePublished": 29
+  },
+  "nationalNaepValue": null,
+  "states": [
+    {
+      "code": "AL",
+      "name": "Alabama",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 45.7,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3AALABAMA",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 54.3
+        }
+      ]
+    },
+    {
+      "code": "AK",
+      "name": "Alaska",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "AK STAR",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Needs Support",
+      "analogValue": 36.3,
+      "naepValue": null,
+      "sourceNotes": "Alaska publishes exact statewide Grade 3 AK STAR ELA performance-level percentages in the 2025 assessment brief. The companion statewide results page reports the Grade 3 Advanced/Proficient share, enrollment, and participation rate. The published exact bins sum to 28.7 percent proficient or advanced, consistent with the results page's 28.68 percent.",
+      "sourceUrl": "https://education.alaska.gov/akassessments/AKAssessment_Brief_2025.pdf",
+      "sourcePageUrl": "https://education.alaska.gov/assessment-results/Statewide/StatewideResults?isScience=False&schoolYear=2024-2025",
+      "bins": [
+        {
+          "label": "Needs Support",
+          "value": 36.3,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Approaching Proficient",
+          "value": 35.0,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Proficient",
+          "value": 18.8,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Advanced",
+          "value": 9.9,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "AZ",
+      "name": "Arizona",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 59.3,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3AARIZONA",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 40.7
+        }
+      ]
+    },
+    {
+      "code": "AR",
+      "name": "Arkansas",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "ATLAS",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Level 1",
+      "analogValue": 29.3,
+      "naepValue": null,
+      "sourceNotes": "Arkansas publishes exact statewide Grade 3 ATLAS ELA performance-level percentages in the annual summary workbook.",
+      "sourceUrl": "https://dese.ade.arkansas.gov/Files/Atlas_Summary_Post-Corrections_Scores_Spring_2025_PSA.xlsx",
+      "sourcePageUrl": "https://dese.ade.arkansas.gov/Offices/public-school-accountability/assessment-test-scores/2025",
+      "bins": [
+        {
+          "label": "Level 1",
+          "value": 29.3,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Level 2",
+          "value": 34.8,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Level 3",
+          "value": 21.1,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Level 4",
+          "value": 14.8,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "CA",
+      "name": "California",
+      "status": "covered_official_proficiency_proxy",
+      "quality": "state",
+      "qualityLabel": "Official state proficiency",
+      "qualityShortLabel": "State source",
+      "assessment": "CAASPP",
+      "schoolYear": "2024-2025",
+      "analogLabel": "100 - Standard Met/Exceeded",
+      "analogValue": 56.0,
+      "naepValue": null,
+      "sourceNotes": "California's 2025 CAASPP ELA statewide Grade 3 workbook publishes WithScores and Standard Met/Exceeded only. The public workbook used here does not expose the full statewide performance-level split. The below-basic analog remains a not-met proxy defined here as 100 - Standard Met/Exceeded.",
+      "sourceUrl": "https://www.cde.ca.gov/ta/tg/ca/documents/elaallall2025.xlsx",
+      "sourcePageUrl": "https://www.cde.ca.gov/ta/tg/ca/caaspp2025datasummary.asp",
+      "bins": [
+        {
+          "label": "Standard Met/Exceeded",
+          "value": 44.0
+        }
+      ]
+    },
+    {
+      "code": "CO",
+      "name": "Colorado",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "CMAS",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Did Not Yet Meet Expectations",
+      "analogValue": 22.4,
+      "naepValue": null,
+      "sourceNotes": "Exact tier percentages are reported directly in the Colorado CMAS statewide workbook.",
+      "sourceUrl": "https://resources.finalsite.net/files/t_file_download/v1776115348/cdestatecous/rrkmbmijrknlrhuvzk4e/2025CMASMathELACSLADistrictandSchoolSummaryAchievementResults.xlsx",
+      "sourcePageUrl": "https://ed.cde.state.co.us/assessment/cmas-dataandresults-2025",
+      "bins": [
+        {
+          "label": "Did Not Yet Meet Expectations",
+          "value": 22.4,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Partially Met Expectations",
+          "value": 15.7,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Approached Expectations",
+          "value": 19.9,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Met Expectations",
+          "value": 37.7,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Exceeded Expectations",
+          "value": 4.3,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "CT",
+      "name": "Connecticut",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "Smarter Balanced",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Level 1 Not Met",
+      "analogValue": 30.7,
+      "naepValue": null,
+      "sourceNotes": "Connecticut EdSight's public Smarter Balanced report publishes the statewide Grade 3 ELA performance-level percentages directly for All Students. The saved extract also reports 36945.0 total students, 36719.0 tested, 36713.0 scored tests, and an average VSS of 2420.0.",
+      "sourceUrl": "https://edsight.ct.gov/SASStoredProcess/guest?_grade=3&_year=2024-25&_district=State+of+Connecticut&_school=&_subject=ELA&_subgroup=All+Students&_program=%2FCTDOE%2FEdSight%2FRelease%2FReporting%2FPublic%2FReports%2FStoredProcesses%2FSmarterBalancedAssessmentReport_SiteCore&_select=Submit",
+      "sourcePageUrl": "https://public-edsight.ct.gov/performance/smarter-balanced-achievement-participation",
+      "bins": [
+        {
+          "label": "Level 1 Not Met",
+          "value": 30.7,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Level 2 Approaching",
+          "value": 22.4,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Level 3 Met",
+          "value": 20.8,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Level 4 Exceeded",
+          "value": 26.0,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "DE",
+      "name": "Delaware",
+      "status": "covered_official_proficiency_proxy",
+      "quality": "state",
+      "qualityLabel": "Official state proficiency",
+      "qualityShortLabel": "State source",
+      "assessment": "Smarter Balanced",
+      "schoolYear": "2024-2025",
+      "analogLabel": "100 - Met Achievement Standard",
+      "analogValue": 61.28,
+      "naepValue": null,
+      "sourceNotes": "Delaware's public statewide Grade 3 ELA rows expose a proficiency figure but not the full statewide performance-level split, so the below-basic analog is filled as 100 - Met Achievement Standard.",
+      "sourceUrl": "https://data.delaware.gov/api/views/ms6b-mt82/rows.csv?accessType=DOWNLOAD",
+      "sourcePageUrl": "https://education.delaware.gov/educators/academic-support/standards-and-assessments/english-and-language-arts/assessments/",
+      "bins": [
+        {
+          "label": "Met Achievement Standard (proficient)",
+          "value": 38.72
+        }
+      ]
+    },
+    {
+      "code": "DC",
+      "name": "District of Columbia",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "DC CAPE",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Did Not Yet Meet Expectations",
+      "analogValue": 34.4,
+      "naepValue": null,
+      "sourceNotes": "OSSE publishes exact statewide Grade 3 DC CAPE ELA performance levels on the Performance Level sheet. Those exact tiers are DC CAPE-only; OSSE's separate Meeting/Exceeding tab combines DC CAPE and MSAA, so its 30.4 percent proficiency figure is slightly above the DC CAPE-only Level 4+5 total. The companion all-tests Meeting/Exceeding row reports 30.4 percent proficient across DC CAPE plus MSAA.",
+      "sourceUrl": "https://app.box.com/index.php?rm=box_download_shared_file&shared_name=l1fz6ucfcut7q7pg8qzbo3l9ffb19pmm&file_id=f_1962534999838",
+      "sourcePageUrl": "https://osse.dc.gov/node/1794106",
+      "bins": [
+        {
+          "label": "Did Not Yet Meet Expectations",
+          "value": 34.4,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Partially Met Expectations",
+          "value": 17.1,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Approached Expectations",
+          "value": 18.3,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Met Expectations",
+          "value": 26.2,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Exceeded Expectations",
+          "value": 4.0,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "FL",
+      "name": "Florida",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "FAST",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Level 1",
+      "analogValue": 22.0,
+      "naepValue": null,
+      "sourceNotes": "Florida publishes exact statewide Grade 3 FAST ELA PM3 percentages for Levels 1 through 5 in the statewide district workbook.",
+      "sourceUrl": "https://origin.fldoe.org/core/fileparse.php/5668/urlt/3ELA03SRDSpring25.xls",
+      "sourcePageUrl": "https://www.fldoe.org/accountability/assessments/k-12-student-assessment/results/2025.stml",
+      "bins": [
+        {
+          "label": "Level 1",
+          "value": 22.0,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Level 2",
+          "value": 21.0,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Level 3",
+          "value": 23.0,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Level 4",
+          "value": 21.0,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Level 5",
+          "value": 14.0,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "GA",
+      "name": "Georgia",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "Georgia Milestones",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Beginning Learner",
+      "analogValue": 36.9,
+      "naepValue": null,
+      "sourceNotes": "Georgia publishes exact statewide Grade 3 Georgia Milestones ELA performance-level percentages in the state summary workbook.",
+      "sourceUrl": "https://url.gadoe.org/r9zz0",
+      "sourcePageUrl": "https://gadoe.org/assessment-accountability/georgia-milestones/",
+      "bins": [
+        {
+          "label": "Beginning Learner",
+          "value": 36.9,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Developing Learner",
+          "value": 28.18,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Proficient Learner",
+          "value": 23.63,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Distinguished Learner",
+          "value": 11.29,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "HI",
+      "name": "Hawaii",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 51.6,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3AHAWAII",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 48.4
+        }
+      ]
+    },
+    {
+      "code": "ID",
+      "name": "Idaho",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 50.8,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3AIDAHO",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 49.2
+        }
+      ]
+    },
+    {
+      "code": "IL",
+      "name": "Illinois",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 72.7,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3AILLINOIS",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 27.3
+        }
+      ]
+    },
+    {
+      "code": "IN",
+      "name": "Indiana",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "ILEARN",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Below Proficiency",
+      "analogValue": 39.18,
+      "naepValue": null,
+      "sourceNotes": "Indiana publishes statewide Grade 3 ILEARN counts by performance level in the statewide summary workbook.",
+      "sourceUrl": "https://secure.in.gov/doe/files/ILEARN-2025-Grade3-8-Final-Statewide-Summary_20250714.xlsx",
+      "sourcePageUrl": "https://secure.in.gov/doe/it/data-center-and-reports/",
+      "bins": [
+        {
+          "label": "Below Proficiency",
+          "value": 39.18,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Approaching Proficiency",
+          "value": 20.56,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "At Proficiency",
+          "value": 23.26,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Above Proficiency",
+          "value": 17.0,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "IA",
+      "name": "Iowa",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 35.8,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3AIOWA",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 64.2
+        }
+      ]
+    },
+    {
+      "code": "KS",
+      "name": "Kansas",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 62.0,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3AKANSAS",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 38.0
+        }
+      ]
+    },
+    {
+      "code": "KY",
+      "name": "Kentucky",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "KSA",
+      "schoolYear": "2023-2024",
+      "analogLabel": "Novice",
+      "analogValue": 24.8,
+      "naepValue": null,
+      "sourceNotes": "Kentucky publishes exact Grade 3 Reading performance-level percentages in the KSA yearbook.",
+      "sourceUrl": "https://www.education.ky.gov/AA/Reports/Documents/KY1161534_KY_SP25_Yearbook.pdf",
+      "sourcePageUrl": "https://www.education.ky.gov/AA/Assessments/Pages/KentuckySummativeAssessment-.aspx",
+      "bins": [
+        {
+          "label": "Novice",
+          "value": 24.8,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Apprentice",
+          "value": 28.3,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Proficient",
+          "value": 28.8,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Distinguished",
+          "value": 18.1,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "LA",
+      "name": "Louisiana",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "LEAP",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Unsatisfactory",
+      "analogValue": 17.0,
+      "naepValue": null,
+      "sourceNotes": "Louisiana publishes exact statewide Grade 3 LEAP ELA achievement-level percentages in the State LEA achievement summary workbook.",
+      "sourceUrl": "https://doe.louisiana.gov/docs/default-source/data-management/spring-2025-leap-2025-state-lea-achievement-level-summary.xlsx?sfvrsn=bdc2fd31_7",
+      "sourcePageUrl": "https://doe.louisiana.gov/resources/library/test-results",
+      "bins": [
+        {
+          "label": "Unsatisfactory",
+          "value": 17.0,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Approaching Basic",
+          "value": 18.0,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Basic",
+          "value": 22.0,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Mastery",
+          "value": 36.0,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Advanced",
+          "value": 7.0,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "ME",
+      "name": "Maine",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 17.3,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3AMAINE",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 82.7
+        }
+      ]
+    },
+    {
+      "code": "MD",
+      "name": "Maryland",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "MCAP",
+      "schoolYear": "2024-2025",
+      "analogLabel": "PL 1",
+      "analogValue": 7.3,
+      "naepValue": null,
+      "sourceNotes": "Maryland Report Card's public 2025 MCAP English Language Arts endpoint publishes the statewide Grade 3 All Students performance-level percentages directly.",
+      "sourceUrl": "https://reportcard.msde.maryland.gov/Assessments/GetELAPerformanceBarChart",
+      "sourcePageUrl": "https://reportcard.msde.maryland.gov/Graphs/#/Assessments/ELAPerformance",
+      "bins": [
+        {
+          "label": "PL 1",
+          "value": 7.3,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "PL 2",
+          "value": 42.7,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "PL 3",
+          "value": 44.1,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "PL 4",
+          "value": 6.0,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "MA",
+      "name": "Massachusetts",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "MCAS",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Not Meeting Expectations",
+      "analogValue": 19.0,
+      "naepValue": null,
+      "sourceNotes": "Massachusetts School and District Profiles publishes the statewide 2025 MCAS Grade 3 ELA achievement-level split directly on the state profile page, including Exceeding, Meeting, Partially Meeting, and Not Meeting Expectations. The page also reports the combined Meeting or Exceeding Expectations rate directly.",
+      "sourceUrl": "https://profiles.doe.mass.edu/mcas/achievement_level.aspx?linkid=32&orgcode=00000000&orgtypecode=0&",
+      "sourcePageUrl": "https://profiles.doe.mass.edu/mcas/achievement_level.aspx?linkid=32&orgcode=00000000&orgtypecode=0&",
+      "bins": [
+        {
+          "label": "Not Meeting Expectations",
+          "value": 19.0,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Partially Meeting Expectations",
+          "value": 39.0,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Meeting Expectations",
+          "value": 37.0,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Exceeding Expectations",
+          "value": 6.0,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "MI",
+      "name": "Michigan",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 58.2,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3AMICHIGAN",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 41.8
+        }
+      ]
+    },
+    {
+      "code": "MN",
+      "name": "Minnesota",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 51.9,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3AMINNESOTA",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 48.1
+        }
+      ]
+    },
+    {
+      "code": "MS",
+      "name": "Mississippi",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "MAAP",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Minimal",
+      "analogValue": 10.7,
+      "naepValue": null,
+      "sourceNotes": "Mississippi publishes exact statewide Grade 3 MAAP ELA performance-level percentages in the 2025 executive summary PDF.",
+      "sourceUrl": "https://mdek12.org/wp-content/uploads/sites/33/2025/08/MAAP-2025-Results-Executive-Summary.pdf",
+      "sourcePageUrl": "https://mdek12.org/wp-content/uploads/sites/33/2025/08/MAAP-2025-Results-Executive-Summary.pdf",
+      "bins": [
+        {
+          "label": "Minimal",
+          "value": 10.7,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Basic",
+          "value": 13.7,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Pass",
+          "value": 26.3,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Proficient",
+          "value": 35.5,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Advanced",
+          "value": 13.9,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "MO",
+      "name": "Missouri",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 58.6,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3AMISSOURI",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 41.4
+        }
+      ]
+    },
+    {
+      "code": "MT",
+      "name": "Montana",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 55.8,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3AMONTANA",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 44.2
+        }
+      ]
+    },
+    {
+      "code": "NE",
+      "name": "Nebraska",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 50.0,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3ANEBRASKA",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 50.0
+        }
+      ]
+    },
+    {
+      "code": "NV",
+      "name": "Nevada",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 59.1,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3ANEVADA",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 40.9
+        }
+      ]
+    },
+    {
+      "code": "NH",
+      "name": "New Hampshire",
+      "status": "covered_official_proficiency_proxy",
+      "quality": "state",
+      "qualityLabel": "Official state proficiency",
+      "qualityShortLabel": "State source",
+      "assessment": "NH SAS",
+      "schoolYear": "2024-2025",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 51.0,
+      "naepValue": null,
+      "sourceNotes": "New Hampshire's official iPlatform assessment report publishes the statewide 2025 Grade 3 NH SAS ELA proficiency rate. The public result used here exposes proficiency, not the full four-level statewide split. The below-basic analog remains a not-proficient proxy defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://my.doe.nh.gov/iPlatform/Report/DataReportsSubCategory?reportSubCategoryId=20",
+      "sourcePageUrl": "https://my.doe.nh.gov/iPlatform/Report/DataReportsSubCategory?reportSubCategoryId=20",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 49.0
+        }
+      ]
+    },
+    {
+      "code": "NJ",
+      "name": "New Jersey",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "NJSLA",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Level 1",
+      "analogValue": 19.0,
+      "naepValue": null,
+      "sourceNotes": "New Jersey publishes exact statewide Grade 3 NJSLA ELA performance-level percentages in the spring results workbook.",
+      "sourceUrl": "https://www.nj.gov/education/assessment/results/reports/2425/spring/ELA03%20NJSLA%20DATA%202024-25.xlsx",
+      "sourcePageUrl": "https://www.nj.gov/education/assessment/results/reports/2425/index.shtml",
+      "bins": [
+        {
+          "label": "Level 1",
+          "value": 19.0,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Level 2",
+          "value": 16.0,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Level 3",
+          "value": 20.1,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Level 4",
+          "value": 37.0,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Level 5",
+          "value": 7.9,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "NM",
+      "name": "New Mexico",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 68.2,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3ANEW+MEXICO",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 31.8
+        }
+      ]
+    },
+    {
+      "code": "NY",
+      "name": "New York",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "Grades 3-8 ELA",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Level 1",
+      "analogValue": 20.0,
+      "naepValue": null,
+      "sourceNotes": "NYSED Data Site's 2024-25 Report Card Database publishes All Public Schools statewide Grade 3 ELA counts and tested percentages for Levels 1 through 4 in the Annual EM ELA table.",
+      "sourceUrl": "https://data.nysed.gov/files/essa/24-25/SRC2025.zip",
+      "sourcePageUrl": "https://data.nysed.gov/downloads.php",
+      "bins": [
+        {
+          "label": "Level 1",
+          "value": 20.0,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Level 2",
+          "value": 26.0,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Level 3",
+          "value": 33.0,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Level 4",
+          "value": 22.0,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "NC",
+      "name": "North Carolina",
+      "status": "covered_source_bins",
+      "quality": "state",
+      "qualityLabel": "Official state source bins",
+      "qualityShortLabel": "State source",
+      "assessment": "NC EOG",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Not Proficient",
+      "analogValue": 53.4,
+      "naepValue": null,
+      "sourceNotes": "North Carolina's statewide Grade 3 reading row publishes Not Proficient plus Levels 3, 4, and 5. The Not Proficient bin aggregates Levels 1 and 2.",
+      "sourceUrl": "https://www.dpi.nc.gov/2024-25-school-assessment-and-other-indicator-data-0/download?attachment",
+      "sourcePageUrl": "https://www.dpi.nc.gov/districts-schools/accountability-and-testing/school-accountability-and-reporting/accountability-data-sets-and-reports",
+      "bins": [
+        {
+          "label": "Not Proficient (Levels 1 and 2 combined)",
+          "value": 53.4
+        },
+        {
+          "label": "Level 3",
+          "value": 21.6
+        },
+        {
+          "label": "Level 4",
+          "value": 14.8
+        },
+        {
+          "label": "Level 5",
+          "value": 10.2
+        }
+      ]
+    },
+    {
+      "code": "ND",
+      "name": "North Dakota",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 61.5,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3ANORTH+DAKOTA",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 38.5
+        }
+      ]
+    },
+    {
+      "code": "OH",
+      "name": "Ohio",
+      "status": "covered_official_proficiency_proxy",
+      "quality": "state",
+      "qualityLabel": "Official state proficiency",
+      "qualityShortLabel": "State source",
+      "assessment": "Ohio State Tests",
+      "schoolYear": "2024-2025",
+      "analogLabel": "100 - Percent Proficient or Above",
+      "analogValue": 38.7,
+      "naepValue": null,
+      "sourceNotes": "Ohio School Report Cards publishes a statewide Title 1 Proficiency by Grade workbook with the Grade 3 English Language Arts Percent Proficient or Above value. The companion Title 1 Proficiency Levels workbook is statewide by student group rather than by grade, so Ohio remains an official proficiency-only source here. The below-basic analog remains a not-proficient proxy defined here as 100 - Percent Proficient or Above.",
+      "sourceUrl": "https://edu-prd-reportcard-datarefresh-api.azurewebsites.net/api/v2/CategoriesFileTypes/2025/0/0",
+      "sourcePageUrl": "https://reportcard.education.ohio.gov/download",
+      "bins": [
+        {
+          "label": "Percent Proficient or Above",
+          "value": 61.3
+        }
+      ]
+    },
+    {
+      "code": "OK",
+      "name": "Oklahoma",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 71.2,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3AOKLAHOMA",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 28.8
+        }
+      ]
+    },
+    {
+      "code": "OR",
+      "name": "Oregon",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 60.4,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3AOREGON",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 39.6
+        }
+      ]
+    },
+    {
+      "code": "PA",
+      "name": "Pennsylvania",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "PSSA",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Below Basic",
+      "analogValue": 20.3,
+      "naepValue": null,
+      "sourceNotes": "Pennsylvania's official assessment reporting page publishes statewide Grade 3 PSSA ELA percentages for Advanced, Proficient, Basic, and Below Basic directly in the public HTML table.",
+      "sourceUrl": "https://www.pa.gov/agencies/education/data-and-reporting/assessment-reporting",
+      "sourcePageUrl": "https://www.pa.gov/agencies/education/data-and-reporting/assessment-reporting",
+      "bins": [
+        {
+          "label": "Below Basic",
+          "value": 20.3,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Basic",
+          "value": 31.1,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Proficient",
+          "value": 38.1,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Advanced",
+          "value": 10.5,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "RI",
+      "name": "Rhode Island",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "RICAS",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Not Meeting Expectations",
+      "analogValue": 21.5,
+      "naepValue": null,
+      "sourceNotes": "Rhode Island's public Assessment Data Portal publishes statewide Grade 3 RICAS ELA performance-level percentages directly for All Students. The saved extract also reports 9850.0 students tested and an average scale score of 490.0.",
+      "sourceUrl": "https://www3.ride.ri.gov/ADP/Default/_Data?assessment=5&lea=00&sch=&grade=03&supergroup=0&schYear=2024-25&compareWith=&ADA=false&Growth=false&Performance=false",
+      "sourcePageUrl": "https://www3.ride.ri.gov/ADP",
+      "bins": [
+        {
+          "label": "Not Meeting Expectations",
+          "value": 21.5,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Partially Meeting Expectations",
+          "value": 41.8,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Meeting Expectations",
+          "value": 31.8,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Exceeding Expectations",
+          "value": 4.9,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "SC",
+      "name": "South Carolina",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "SC READY",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Does Not Meet Expectations",
+      "analogValue": 14.4,
+      "naepValue": null,
+      "sourceNotes": "South Carolina publishes exact statewide Grade 3 SC READY ELA performance-level percentages on the public state results page.",
+      "sourceUrl": "https://ed.sc.gov/data/test-scores/state-assessments/sc-ready/2025/state-scores-by-grade-level-and-demographic/?districtCode=9999&schoolCode=1001",
+      "sourcePageUrl": "https://ed.sc.gov/data/test-scores/state-assessments/sc-ready/2025/state-scores-by-grade-level-and-demographic/?districtCode=9999&schoolCode=1001",
+      "bins": [
+        {
+          "label": "Does Not Meet Expectations",
+          "value": 14.4,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Approaches Expectations",
+          "value": 23.8,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Meets Expectations",
+          "value": 30.8,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Exceeds Expectations",
+          "value": 31.0,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "SD",
+      "name": "South Dakota",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 52.8,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3ASOUTH+DAKOTA",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 47.2
+        }
+      ]
+    },
+    {
+      "code": "TN",
+      "name": "Tennessee",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "TCAP",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Below",
+      "analogValue": 22.9,
+      "naepValue": null,
+      "sourceNotes": "Tennessee publishes exact statewide Grade 3 TCAP ELA tier percentages in the state assessment file.",
+      "sourceUrl": "https://www.tn.gov/content/dam/tn/education/accountability/2025/state_assessment_file_suppressed_2025.xlsx",
+      "sourcePageUrl": "https://www.tn.gov/content/tn/education/districts/federal-programs-and-oversight/data/data-downloads.html",
+      "bins": [
+        {
+          "label": "Below",
+          "value": 22.9,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Approaching",
+          "value": 35.5,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Met Expectations",
+          "value": 27.4,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Exceeded Expectations",
+          "value": 14.2,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "TX",
+      "name": "Texas",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "STAAR",
+      "schoolYear": "2023-2024",
+      "analogLabel": "Did Not Meet Grade Level",
+      "analogValue": 26.0,
+      "naepValue": null,
+      "sourceNotes": "Texas publishes cumulative threshold rates, so exact tiers are derived by subtraction from the statewide TAPR Grade 3 STAAR export.",
+      "sourceUrl": "https://rptsvr1.tea.texas.gov/cgi/sas/broker?_service=marykay&year4=2024&year2=&prgopt=2024/tapr/Basic%20Download/xplore/getdata2.sas&_program=perfrept.perfmast.sas&_debug=0&step=1&steps=2&sumlev=S&dsname=SSTAAR_GR3",
+      "sourcePageUrl": "https://rptsvr1.tea.texas.gov/perfreport/tapr/2024/Basic%20Download/DownloadSelData.html",
+      "bins": [
+        {
+          "label": "Did Not Meet Grade Level",
+          "value": 26.0,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Approaches Grade Level Only",
+          "value": 26.0,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Meets Grade Level Only",
+          "value": 27.0,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Masters Grade Level",
+          "value": 21.0,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "UT",
+      "name": "Utah",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2020-2021",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 57.7,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient. Utah is a 2020-2021 fallback because the 2021-2022 row is suppressed in the public federal release.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2020-2021&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3AUTAH",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 42.3
+        }
+      ]
+    },
+    {
+      "code": "VT",
+      "name": "Vermont",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 58.7,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3AVERMONT",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 41.3
+        }
+      ]
+    },
+    {
+      "code": "VA",
+      "name": "Virginia",
+      "status": "covered_source_bins",
+      "quality": "state",
+      "qualityLabel": "Official state source bins",
+      "qualityShortLabel": "State source",
+      "assessment": "SOL",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Failed",
+      "analogValue": 33.0,
+      "naepValue": null,
+      "sourceNotes": "Virginia School Quality Profiles publishes statewide Grade 3 English Reading percentages for Advanced, Proficient, Passed, and Failed. Failed is used here as the below-basic analog because the public source does not split non-passing students into finer statewide tiers.",
+      "sourceUrl": "https://schoolquality.virginia.gov/virginia-state-quality-profile",
+      "sourcePageUrl": "https://schoolquality.virginia.gov/virginia-state-quality-profile",
+      "bins": [
+        {
+          "label": "Advanced",
+          "value": 10.0
+        },
+        {
+          "label": "Proficient",
+          "value": 57.0
+        },
+        {
+          "label": "Passed",
+          "value": 67.0
+        },
+        {
+          "label": "Failed",
+          "value": 33.0
+        }
+      ]
+    },
+    {
+      "code": "WA",
+      "name": "Washington",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "SBAC",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Level 1",
+      "analogValue": 28.32,
+      "naepValue": null,
+      "sourceNotes": "Washington publishes statewide Grade 3 SBAC ELA level shares as fractions of all expected students, so the exact tier percentages here are renormalized on a tested-only denominator.",
+      "sourceUrl": "https://data.wa.gov/api/views/h5d9-vgwi/rows.csv?accessType=DOWNLOAD",
+      "sourcePageUrl": "https://data.wa.gov/api/views/h5d9-vgwi",
+      "bins": [
+        {
+          "label": "Level 1",
+          "value": 28.32,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Level 2",
+          "value": 22.73,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Level 3",
+          "value": 21.15,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Level 4",
+          "value": 27.8,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "WV",
+      "name": "West Virginia",
+      "status": "covered_official_proficiency_proxy",
+      "quality": "state",
+      "qualityLabel": "Official state proficiency",
+      "qualityShortLabel": "State source",
+      "assessment": "WVGSA",
+      "schoolYear": "2023-2024",
+      "analogLabel": "100 - Meets Standard or above",
+      "analogValue": 49.0,
+      "naepValue": null,
+      "sourceNotes": "West Virginia's public statewide Grade 3 ELA materials expose proficiency but not the full statewide performance-level split, so the below-basic analog is filled as 100 - Meets Standard or above.",
+      "sourceUrl": "https://wvde.us/sites/default/files/2024-09/2024-Accountability-Assessment-Results-Document.pdf",
+      "sourcePageUrl": "https://wvde.us/events/2024/8/august-2024-board-meeting",
+      "bins": [
+        {
+          "label": "Meets Standard or above (proficient)",
+          "value": 51.0
+        }
+      ]
+    },
+    {
+      "code": "WI",
+      "name": "Wisconsin",
+      "status": "covered_exact_tiers",
+      "quality": "exact",
+      "qualityLabel": "Exact state tiers",
+      "qualityShortLabel": "Exact tiers",
+      "assessment": "Forward Exam",
+      "schoolYear": "2024-2025",
+      "analogLabel": "Developing",
+      "analogValue": 17.81,
+      "naepValue": null,
+      "sourceNotes": "Wisconsin publishes statewide Grade 3 Forward ELA percentages on a denominator that includes No Test, so the exact tier percentages here are renormalized on a tested-only denominator.",
+      "sourceUrl": "https://dpi.wi.gov/sites/default/files/wise/downloads/forward_certified_2024-25.zip",
+      "sourcePageUrl": "https://dpi.wi.gov/wise-downloads/forwardcertified2024-25",
+      "bins": [
+        {
+          "label": "Developing",
+          "value": 17.81,
+          "isBelowBasicAnalog": true
+        },
+        {
+          "label": "Approaching",
+          "value": 30.05,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Meeting",
+          "value": 38.88,
+          "isBelowBasicAnalog": false
+        },
+        {
+          "label": "Advanced",
+          "value": 13.26,
+          "isBelowBasicAnalog": false
+        }
+      ]
+    },
+    {
+      "code": "WY",
+      "name": "Wyoming",
+      "status": "covered_federal_proficiency_proxy",
+      "quality": "federal",
+      "qualityLabel": "Ed Data Express proxy",
+      "qualityShortLabel": "Federal proxy",
+      "assessment": "Statewide RLA Assessment (Ed Data Express)",
+      "schoolYear": "2021-2022",
+      "analogLabel": "100 - Percent Proficient",
+      "analogValue": 52.1,
+      "naepValue": null,
+      "sourceNotes": "Ed Data Express publishes a statewide Grade 3 reading/language arts Percent Proficient row for the state assessment at the SEA level. The below-basic analog is defined here as 100 - Percent Proficient.",
+      "sourceUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool?f%5B0%5D=program%3ATitle+I%2C+Part+A&f%5B1%5D=school_year%3A2021-2022&f%5B2%5D=type_of_data%3APerformance&f%5B3%5D=level%3AState+Education+Agency&f%5B4%5D=all_students%3AAll+Students+in+SEA&f%5B5%5D=age_grade%3AGrade+3&f%5B6%5D=data_group_id%3A584&f%5B7%5D=file_spec%3A178&f%5B8%5D=state_name%3AWYOMING",
+      "sourcePageUrl": "https://eddataexpress.ed.gov/download/data-builder/data-download-tool",
+      "bins": [
+        {
+          "label": "Percent Proficient",
+          "value": 47.9
+        }
+      ]
+    }
+  ],
+  "downloads": [
+    {
+      "label": "Dashboard results",
+      "file": "downloads/state_assessment_dashboard_results.csv",
+      "description": "One concise row per state or jurisdiction."
+    },
+    {
+      "label": "Coverage tracker",
+      "file": "downloads/statewide_grade3_ela_rollout_tracker.csv",
+      "description": "Source quality, assessment, year, and notes for all jurisdictions."
+    },
+    {
+      "label": "Below-basic analog",
+      "file": "downloads/statewide_grade3_ela_below_basic_analog.csv",
+      "description": "Cross-state analytical measure and source fields."
+    },
+    {
+      "label": "Published source bins",
+      "file": "downloads/statewide_grade3_ela_published_reference_bins.csv",
+      "description": "State-published tiers, bins, or proficiency values."
+    },
+    {
+      "label": "Exact state tiers",
+      "file": "downloads/statewide_grade3_ela_tiers.csv",
+      "description": "Long-form exact performance tiers where available."
+    }
+  ]
+}

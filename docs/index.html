@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="A source-quality-first view of statewide Grade 3 English language arts assessment results."
+    >
+    <meta name="theme-color" content="#142f2b">
+    <title>State Assessment Data Monitor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,650&family=Public+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to dashboard</a>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="State Assessment Data Monitor home">
+        <span class="brand-mark" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+        <span class="brand-copy">
+          <span class="brand-name">State Assessment</span>
+          <span class="brand-subtitle">Data Monitor</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#coverage">Coverage</a>
+        <a href="#states">States</a>
+        <a href="#methodology">Methodology</a>
+        <a class="nav-download" href="#downloads">Get the data</a>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" id="top" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Statewide Grade 3 English language arts</p>
+          <h1 id="page-title">The data is national.<br><em>The sources are not equal.</em></h1>
+          <p class="hero-deck">
+            A transparent view of student performance across all 50 states and DC,
+            with the quality and age of every source kept in plain sight.
+          </p>
+        </div>
+        <aside class="hero-note">
+          <p class="note-label">How to read this</p>
+          <p>
+            Start with the source color. State-published results are current and preferred.
+            Federal proxy values preserve coverage where a comparable state source is still being located.
+          </p>
+          <a href="#methodology">Read the methodology <span aria-hidden="true">↘</span></a>
+        </aside>
+      </section>
+
+      <section class="coverage-section" id="coverage" aria-labelledby="coverage-heading">
+        <div class="section-heading-row">
+          <div>
+            <p class="eyebrow">Coverage at a glance</p>
+            <h2 id="coverage-heading">A complete map, with honest labels.</h2>
+          </div>
+          <p class="updated-label">Data build <time id="build-date">Loading</time></p>
+        </div>
+
+        <div class="metric-grid" aria-label="Coverage summary">
+          <article class="metric-card metric-card-primary">
+            <p class="metric-kicker">State-published data</p>
+            <p class="metric-value"><span id="state-published-count">--</span><small>of 51</small></p>
+            <p class="metric-caption">
+              Current results obtained from state education agencies.
+            </p>
+            <div class="metric-rule" aria-hidden="true"></div>
+            <p class="metric-share" id="state-published-share">--%</p>
+          </article>
+          <article class="metric-card">
+            <p class="metric-kicker">Exact performance tiers</p>
+            <p class="metric-value"><span id="exact-count">--</span><small>jurisdictions</small></p>
+            <p class="metric-caption">
+              The strongest comparison: each state’s lowest reported performance level.
+            </p>
+          </article>
+          <article class="metric-card">
+            <p class="metric-kicker">Official state references</p>
+            <p class="metric-value"><span id="state-reference-count">--</span><small>jurisdictions</small></p>
+            <p class="metric-caption">
+              State proficiency rates or combined bins where exact tiers are unavailable.
+            </p>
+          </article>
+          <article class="metric-card metric-card-warn">
+            <p class="metric-kicker">Federal proxy remaining</p>
+            <p class="metric-value"><span id="federal-count">--</span><small>jurisdictions</small></p>
+            <p class="metric-caption">
+              Older Ed Data Express results, calculated as 100 minus percent proficient.
+            </p>
+          </article>
+        </div>
+
+        <div class="coverage-strip" aria-label="Share of jurisdictions by source quality">
+          <div class="coverage-strip-copy">
+            <strong id="coverage-share-label">Loading coverage</strong>
+            <span>of jurisdictions now use a state-published source</span>
+          </div>
+          <div class="coverage-bar" aria-hidden="true">
+            <span class="coverage-exact" id="coverage-exact-bar"></span>
+            <span class="coverage-state" id="coverage-state-bar"></span>
+            <span class="coverage-federal" id="coverage-federal-bar"></span>
+          </div>
+          <div class="legend" aria-label="Map legend">
+            <span><i class="legend-dot exact"></i>Exact state tiers</span>
+            <span><i class="legend-dot state"></i>Other state-published</span>
+            <span><i class="legend-dot federal"></i>Federal proxy</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="states-section" id="states" aria-labelledby="states-heading">
+        <div class="section-heading-row states-heading-row">
+          <div>
+            <p class="eyebrow">Explore the states</p>
+            <h2 id="states-heading">Every result, back to its source.</h2>
+          </div>
+          <p class="section-intro">
+            Select a state to see its assessment, reporting year, available performance bins,
+            and official source.
+          </p>
+        </div>
+
+        <div class="filter-bar" aria-label="State filters">
+          <div class="filter-group" role="group" aria-label="Filter by data source quality">
+            <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">
+              All <span id="all-filter-count">51</span>
+            </button>
+            <button class="filter-button" type="button" data-filter="exact" aria-pressed="false">
+              Exact tiers <span id="exact-filter-count">--</span>
+            </button>
+            <button class="filter-button" type="button" data-filter="state" aria-pressed="false">
+              State references <span id="state-filter-count">--</span>
+            </button>
+            <button class="filter-button" type="button" data-filter="federal" aria-pressed="false">
+              Federal proxy <span id="federal-filter-count">--</span>
+            </button>
+          </div>
+          <label class="search-box">
+            <span class="visually-hidden">Search states</span>
+            <span aria-hidden="true">Find</span>
+            <input id="state-search" type="search" placeholder="Search a state" autocomplete="off">
+          </label>
+        </div>
+
+        <div class="explorer-grid">
+          <article class="map-panel" aria-labelledby="map-heading">
+            <div class="panel-heading">
+              <div>
+                <p class="panel-kicker">Coverage map</p>
+                <h3 id="map-heading">Source quality by jurisdiction</h3>
+              </div>
+              <p id="visible-state-count" class="visible-count" aria-live="polite">51 shown</p>
+            </div>
+            <div class="map-scroller">
+              <div
+                id="tile-map"
+                class="tile-map"
+                role="group"
+                aria-label="Clickable tile map of the United States and District of Columbia"
+              ></div>
+            </div>
+            <p class="map-footnote">
+              Tile placement is geographic shorthand. Color represents source quality, not student performance.
+            </p>
+          </article>
+
+          <aside class="state-detail" id="state-detail" aria-live="polite" aria-label="Selected state details">
+            <div class="detail-loading">Loading state details…</div>
+          </aside>
+        </div>
+
+        <div class="table-panel">
+          <div class="panel-heading table-heading">
+            <div>
+              <p class="panel-kicker">All jurisdictions</p>
+              <h3>Assessment source register</h3>
+            </div>
+            <button class="text-button" id="download-filtered" type="button">
+              Download filtered CSV <span aria-hidden="true">↓</span>
+            </button>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <button type="button" data-sort="name">State <span aria-hidden="true">↕</span></button>
+                  </th>
+                  <th scope="col">
+                    <button type="button" data-sort="quality">Source quality <span aria-hidden="true">↕</span></button>
+                  </th>
+                  <th scope="col">Assessment</th>
+                  <th scope="col">
+                    <button type="button" data-sort="schoolYear">Year <span aria-hidden="true">↕</span></button>
+                  </th>
+                  <th scope="col">Reported measure</th>
+                  <th scope="col" class="numeric">
+                    <button type="button" data-sort="analogValue">Result <span aria-hidden="true">↕</span></button>
+                  </th>
+                  <th scope="col"><span class="visually-hidden">Open state details</span></th>
+                </tr>
+              </thead>
+              <tbody id="state-table-body">
+                <tr><td colspan="7" class="table-loading">Loading assessment register…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="methodology-section" id="methodology" aria-labelledby="methodology-heading">
+        <div class="methodology-lead">
+          <p class="eyebrow">Methodology</p>
+          <h2 id="methodology-heading">Comparable enough to use.<br>Different enough to explain.</h2>
+          <p>
+            States set their own tests and performance labels. This project preserves those original
+            labels, then identifies the closest available indicator of students performing at the
+            lowest level.
+          </p>
+        </div>
+        <div class="methodology-grid">
+          <article>
+            <span class="method-number">01</span>
+            <h3>Exact state tiers</h3>
+            <p>
+              We use the share in the state’s lowest published performance tier, such as Level 1,
+              Novice, or Does Not Meet Expectations.
+            </p>
+          </article>
+          <article>
+            <span class="method-number">02</span>
+            <h3>Other state sources</h3>
+            <p>
+              Where the state publishes only a proficiency rate or a combined non-proficient bin,
+              we retain it with a distinct label rather than presenting it as an exact tier.
+            </p>
+          </article>
+          <article>
+            <span class="method-number">03</span>
+            <h3>Federal fallback</h3>
+            <p>
+              Ed Data Express fills remaining gaps as 100 minus percent proficient. These older
+              values provide coverage, but they are not a strict below-basic measure.
+            </p>
+          </article>
+          <article class="method-caution">
+            <span class="method-number">!</span>
+            <h3>Do not rank without context</h3>
+            <p>
+              Assessment standards, years, and reporting structures vary. Use this dashboard to
+              compare coverage and reported outcomes, not as a precise league table.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="downloads-section" id="downloads" aria-labelledby="downloads-heading">
+        <div class="downloads-heading">
+          <div>
+            <p class="eyebrow">Open data</p>
+            <h2 id="downloads-heading">Take the work with you.</h2>
+          </div>
+          <p>
+            Every chart and state profile is backed by downloadable CSV files with source URLs,
+            notes, assessment years, and original published labels.
+          </p>
+        </div>
+        <div class="download-grid" id="download-grid">
+          <p class="download-loading">Loading files…</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>State Assessment Data Monitor</p>
+      <p>50 states + DC · Grade 3 ELA · Source quality shown throughout</p>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+
+    <noscript>
+      <div class="noscript-message">
+        This dashboard needs JavaScript to load the state assessment data. The downloadable CSV files
+        remain available in the <code>downloads</code> directory.
+      </div>
+    </noscript>
+  </body>
+</html>

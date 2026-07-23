@@ -1,0 +1,296 @@
+state,year,grade,subject,source,assessment,metric,value
+Alabama,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,45.7
+Alabama,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),54.3
+Alabama,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Alabama,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,42.44
+Alaska,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Alaska,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,52.57
+Alaska,2025,3,ELA,AK STAR,AK STAR,Percent in Below-Basic Analog Tier,36.3
+Alaska,2025,3,ELA,AK STAR,AK STAR,Percent Needs Support,36.3
+Alaska,2025,3,ELA,AK STAR,AK STAR,Percent Approaching Proficient,35.0
+Alaska,2025,3,ELA,AK STAR,AK STAR,Percent Proficient,18.8
+Alaska,2025,3,ELA,AK STAR,AK STAR,Percent Advanced,9.9
+Arizona,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,59.3
+Arizona,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),40.7
+Arizona,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Arizona,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,46.53
+Arkansas,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Arkansas,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,43.82
+Arkansas,2025,3,ELA,ATLAS,ATLAS,Percent in Below-Basic Analog Tier,29.3
+Arkansas,2025,3,ELA,ATLAS,ATLAS,Percent Level 1,29.3
+Arkansas,2025,3,ELA,ATLAS,ATLAS,Percent Level 2,34.8
+Arkansas,2025,3,ELA,ATLAS,ATLAS,Percent Level 3,21.1
+Arkansas,2025,3,ELA,ATLAS,ATLAS,Percent Level 4,14.8
+California,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+California,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,43.74
+California,2025,3,ELA,CAASPP,CAASPP,Percent in Below-Basic Analog Tier,56.0
+California,2025,3,ELA,CAASPP,CAASPP,Percent Standard Met/Exceeded (Public Reference),44.0
+Colorado,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Colorado,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,35.12
+Colorado,2025,3,ELA,CMAS,CMAS,Percent in Below-Basic Analog Tier,22.4
+Colorado,2025,3,ELA,CMAS,CMAS,Percent Did Not Yet Meet Expectations,22.4
+Colorado,2025,3,ELA,CMAS,CMAS,Percent Partially Met Expectations,15.7
+Colorado,2025,3,ELA,CMAS,CMAS,Percent Approached Expectations,19.9
+Colorado,2025,3,ELA,CMAS,CMAS,Percent Met Expectations,37.7
+Colorado,2025,3,ELA,CMAS,CMAS,Percent Exceeded Expectations,4.3
+Connecticut,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Connecticut,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,36.79
+Connecticut,2025,3,ELA,Smarter Balanced,Smarter Balanced,Percent in Below-Basic Analog Tier,30.7
+Connecticut,2025,3,ELA,Smarter Balanced,Smarter Balanced,Percent Level 1 Not Met,30.7
+Connecticut,2025,3,ELA,Smarter Balanced,Smarter Balanced,Percent Level 2 Approaching,22.4
+Connecticut,2025,3,ELA,Smarter Balanced,Smarter Balanced,Percent Level 3 Met,20.8
+Connecticut,2025,3,ELA,Smarter Balanced,Smarter Balanced,Percent Level 4 Exceeded,26.0
+Delaware,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Delaware,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,44.62
+Delaware,2025,3,ELA,Smarter Balanced,Smarter Balanced,Percent in Below-Basic Analog Tier,61.28
+Delaware,2025,3,ELA,Smarter Balanced,Smarter Balanced,Percent Met Achievement Standard (proficient) (Public Reference),38.72
+District of Columbia,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+District of Columbia,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,48.01
+District of Columbia,2025,3,ELA,DC CAPE,DC CAPE,Percent in Below-Basic Analog Tier,34.4
+District of Columbia,2025,3,ELA,DC CAPE,DC CAPE,Percent Did Not Yet Meet Expectations,34.4
+District of Columbia,2025,3,ELA,DC CAPE,DC CAPE,Percent Partially Met Expectations,17.1
+District of Columbia,2025,3,ELA,DC CAPE,DC CAPE,Percent Approached Expectations,18.3
+District of Columbia,2025,3,ELA,DC CAPE,DC CAPE,Percent Met Expectations,26.2
+District of Columbia,2025,3,ELA,DC CAPE,DC CAPE,Percent Exceeded Expectations,4.0
+Florida,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Florida,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,37.56
+Florida,2025,3,ELA,FAST,FAST,Percent in Below-Basic Analog Tier,22.0
+Florida,2025,3,ELA,FAST,FAST,Percent Level 1,22.0
+Florida,2025,3,ELA,FAST,FAST,Percent Level 2,21.0
+Florida,2025,3,ELA,FAST,FAST,Percent Level 3,23.0
+Florida,2025,3,ELA,FAST,FAST,Percent Level 4,21.0
+Florida,2025,3,ELA,FAST,FAST,Percent Level 5,14.0
+Georgia,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Georgia,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,40.59
+Georgia,2025,3,ELA,Georgia Milestones,Georgia Milestones,Percent in Below-Basic Analog Tier,36.9
+Georgia,2025,3,ELA,Georgia Milestones,Georgia Milestones,Percent Beginning Learner,36.9
+Georgia,2025,3,ELA,Georgia Milestones,Georgia Milestones,Percent Developing Learner,28.18
+Georgia,2025,3,ELA,Georgia Milestones,Georgia Milestones,Percent Proficient Learner,23.63
+Georgia,2025,3,ELA,Georgia Milestones,Georgia Milestones,Percent Distinguished Learner,11.29
+Hawaii,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,51.6
+Hawaii,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),48.4
+Hawaii,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Hawaii,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,39.05
+Idaho,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,50.8
+Idaho,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),49.2
+Idaho,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Idaho,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,38.6
+Illinois,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,72.7
+Illinois,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),27.3
+Illinois,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Illinois,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,40.68
+Indiana,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Indiana,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,34.74
+Indiana,2025,3,ELA,ILEARN,ILEARN,Percent in Below-Basic Analog Tier,39.18
+Indiana,2025,3,ELA,ILEARN,ILEARN,Percent Below Proficiency,39.18
+Indiana,2025,3,ELA,ILEARN,ILEARN,Percent Approaching Proficiency,20.56
+Indiana,2025,3,ELA,ILEARN,ILEARN,Percent At Proficiency,23.26
+Indiana,2025,3,ELA,ILEARN,ILEARN,Percent Above Proficiency,17.0
+Iowa,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,35.8
+Iowa,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),64.2
+Iowa,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Iowa,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,39.48
+Kansas,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,62.0
+Kansas,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),38.0
+Kansas,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Kansas,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,40.09
+Kentucky,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Kentucky,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,37.7
+Kentucky,2024,3,ELA,KSA,KSA,Percent in Below-Basic Analog Tier,24.8
+Kentucky,2024,3,ELA,KSA,KSA,Percent Novice,24.8
+Kentucky,2024,3,ELA,KSA,KSA,Percent Apprentice,28.3
+Kentucky,2024,3,ELA,KSA,KSA,Percent Proficient,28.8
+Kentucky,2024,3,ELA,KSA,KSA,Percent Distinguished,18.1
+Louisiana,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Louisiana,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,39.58
+Louisiana,2025,3,ELA,LEAP,LEAP,Percent in Below-Basic Analog Tier,17.0
+Louisiana,2025,3,ELA,LEAP,LEAP,Percent Unsatisfactory,17.0
+Louisiana,2025,3,ELA,LEAP,LEAP,Percent Approaching Basic,18.0
+Louisiana,2025,3,ELA,LEAP,LEAP,Percent Basic,22.0
+Louisiana,2025,3,ELA,LEAP,LEAP,Percent Mastery,36.0
+Louisiana,2025,3,ELA,LEAP,LEAP,Percent Advanced,7.0
+Maine,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,17.3
+Maine,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),82.7
+Maine,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Maine,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,44.48
+Maryland,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Maryland,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,40.78
+Maryland,2025,3,ELA,MCAP,MCAP,Percent in Below-Basic Analog Tier,7.3
+Maryland,2025,3,ELA,MCAP,MCAP,Percent PL 1,7.3
+Maryland,2025,3,ELA,MCAP,MCAP,Percent PL 2,42.7
+Maryland,2025,3,ELA,MCAP,MCAP,Percent PL 3,44.1
+Maryland,2025,3,ELA,MCAP,MCAP,Percent PL 4,6.0
+Massachusetts,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Massachusetts,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,31.72
+Massachusetts,2025,3,ELA,MCAS,MCAS,Percent in Below-Basic Analog Tier,19.0
+Massachusetts,2025,3,ELA,MCAS,MCAS,Percent Not Meeting Expectations,19.0
+Massachusetts,2025,3,ELA,MCAS,MCAS,Percent Partially Meeting Expectations,39.0
+Massachusetts,2025,3,ELA,MCAS,MCAS,Percent Meeting Expectations,37.0
+Massachusetts,2025,3,ELA,MCAS,MCAS,Percent Exceeding Expectations,6.0
+Michigan,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,58.2
+Michigan,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),41.8
+Michigan,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Michigan,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,45.38
+Minnesota,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,51.9
+Minnesota,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),48.1
+Minnesota,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Minnesota,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,39.12
+Mississippi,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Mississippi,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,35.39
+Mississippi,2025,3,ELA,MAAP,MAAP,Percent in Below-Basic Analog Tier,10.7
+Mississippi,2025,3,ELA,MAAP,MAAP,Percent Minimal,10.7
+Mississippi,2025,3,ELA,MAAP,MAAP,Percent Basic,13.7
+Mississippi,2025,3,ELA,MAAP,MAAP,Percent Pass,26.3
+Mississippi,2025,3,ELA,MAAP,MAAP,Percent Proficient,35.5
+Mississippi,2025,3,ELA,MAAP,MAAP,Percent Advanced,13.9
+Missouri,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,58.6
+Missouri,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),41.4
+Missouri,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Missouri,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,42.05
+Montana,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,55.8
+Montana,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),44.2
+Montana,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Montana,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,37.83
+Nebraska,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,50.0
+Nebraska,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),50.0
+Nebraska,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Nebraska,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,42.18
+Nevada,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,59.1
+Nevada,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),40.9
+Nevada,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Nevada,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,41.44
+New Hampshire,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+New Hampshire,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,33.27
+New Hampshire,2025,3,ELA,NH SAS,NH SAS,Percent in Below-Basic Analog Tier,51.0
+New Hampshire,2025,3,ELA,NH SAS,NH SAS,Percent Proficient (Public Reference),49.0
+New Jersey,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+New Jersey,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,33.68
+New Jersey,2025,3,ELA,NJSLA,NJSLA,Percent in Below-Basic Analog Tier,19.0
+New Jersey,2025,3,ELA,NJSLA,NJSLA,Percent Level 1,19.0
+New Jersey,2025,3,ELA,NJSLA,NJSLA,Percent Level 2,16.0
+New Jersey,2025,3,ELA,NJSLA,NJSLA,Percent Level 3,20.1
+New Jersey,2025,3,ELA,NJSLA,NJSLA,Percent Level 4,37.0
+New Jersey,2025,3,ELA,NJSLA,NJSLA,Percent Level 5,7.9
+New Mexico,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,68.2
+New Mexico,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),31.8
+New Mexico,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+New Mexico,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,53.13
+New York,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+New York,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,40.69
+New York,2025,3,ELA,Grades 3-8 ELA,Grades 3-8 ELA,Percent in Below-Basic Analog Tier,20.0
+New York,2025,3,ELA,Grades 3-8 ELA,Grades 3-8 ELA,Percent Level 1,20.0
+New York,2025,3,ELA,Grades 3-8 ELA,Grades 3-8 ELA,Percent Level 2,26.0
+New York,2025,3,ELA,Grades 3-8 ELA,Grades 3-8 ELA,Percent Level 3,33.0
+New York,2025,3,ELA,Grades 3-8 ELA,Grades 3-8 ELA,Percent Level 4,22.0
+North Carolina,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+North Carolina,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,41.74
+North Carolina,2025,3,ELA,NC EOG,NC EOG,Percent in Below-Basic Analog Tier,53.4
+North Carolina,2025,3,ELA,NC EOG,NC EOG,Percent Not Proficient (Levels 1 and 2 combined),53.4
+North Carolina,2025,3,ELA,NC EOG,NC EOG,Percent Level 3,21.6
+North Carolina,2025,3,ELA,NC EOG,NC EOG,Percent Level 4,14.8
+North Carolina,2025,3,ELA,NC EOG,NC EOG,Percent Level 5,10.2
+North Dakota,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,61.5
+North Dakota,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),38.5
+North Dakota,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+North Dakota,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,38.43
+Ohio,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Ohio,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,38.2
+Ohio,2025,3,ELA,Ohio State Tests,Ohio State Tests,Percent in Below-Basic Analog Tier,38.7
+Ohio,2025,3,ELA,Ohio State Tests,Ohio State Tests,Percent Proficient or Above (Public Reference),61.3
+Oklahoma,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,71.2
+Oklahoma,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),28.8
+Oklahoma,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Oklahoma,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,46.44
+Oregon,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,60.4
+Oregon,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),39.6
+Oregon,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Oregon,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,48.26
+Pennsylvania,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Pennsylvania,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,37.8
+Pennsylvania,2025,3,ELA,PSSA,PSSA,Percent in Below-Basic Analog Tier,20.3
+Pennsylvania,2025,3,ELA,PSSA,PSSA,Percent Below Basic,20.3
+Pennsylvania,2025,3,ELA,PSSA,PSSA,Percent Basic,31.1
+Pennsylvania,2025,3,ELA,PSSA,PSSA,Percent Proficient,38.1
+Pennsylvania,2025,3,ELA,PSSA,PSSA,Percent Advanced,10.5
+Rhode Island,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Rhode Island,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,39.3
+Rhode Island,2025,3,ELA,RICAS,RICAS,Percent in Below-Basic Analog Tier,21.5
+Rhode Island,2025,3,ELA,RICAS,RICAS,Percent Not Meeting Expectations,21.5
+Rhode Island,2025,3,ELA,RICAS,RICAS,Percent Partially Meeting Expectations,41.8
+Rhode Island,2025,3,ELA,RICAS,RICAS,Percent Meeting Expectations,31.8
+Rhode Island,2025,3,ELA,RICAS,RICAS,Percent Exceeding Expectations,4.9
+South Carolina,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+South Carolina,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,40.33
+South Carolina,2025,3,ELA,SC READY,SC READY,Percent in Below-Basic Analog Tier,14.4
+South Carolina,2025,3,ELA,SC READY,SC READY,Percent Does Not Meet Expectations,14.4
+South Carolina,2025,3,ELA,SC READY,SC READY,Percent Approaches Expectations,23.8
+South Carolina,2025,3,ELA,SC READY,SC READY,Percent Meets Expectations,30.8
+South Carolina,2025,3,ELA,SC READY,SC READY,Percent Exceeds Expectations,31.0
+South Dakota,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,52.8
+South Dakota,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),47.2
+South Dakota,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+South Dakota,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,39.87
+Tennessee,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Tennessee,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,38.89
+Tennessee,2025,3,ELA,TCAP,TCAP,Percent in Below-Basic Analog Tier,22.9
+Tennessee,2025,3,ELA,TCAP,TCAP,Percent Below,22.9
+Tennessee,2025,3,ELA,TCAP,TCAP,Percent Approaching,35.5
+Tennessee,2025,3,ELA,TCAP,TCAP,Percent Met Expectations,27.4
+Tennessee,2025,3,ELA,TCAP,TCAP,Percent Exceeded Expectations,14.2
+Texas,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Texas,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,42.89
+Texas,2024,3,ELA,STAAR,STAAR,Percent in Below-Basic Analog Tier,26.0
+Texas,2024,3,ELA,STAAR,STAAR,Percent Did Not Meet Grade Level,26.0
+Texas,2024,3,ELA,STAAR,STAAR,Percent Approaches Grade Level Only,26.0
+Texas,2024,3,ELA,STAAR,STAAR,Percent Meets Grade Level Only,27.0
+Texas,2024,3,ELA,STAAR,STAAR,Percent Masters Grade Level,21.0
+Texas,2024,3,ELA,STAAR,STAAR,Percent Approaches Grade Level or above (Published Source Bin),74.0
+Texas,2024,3,ELA,STAAR,STAAR,Percent Meets Grade Level or above (Published Source Bin),48.0
+Texas,2024,3,ELA,STAAR,STAAR,Percent Masters Grade Level (Published Source Bin),21.0
+Utah,2021,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,57.7
+Utah,2021,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),42.3
+Utah,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Utah,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,35.55
+Vermont,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,58.7
+Vermont,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),41.3
+Vermont,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Vermont,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,41.84
+Virginia,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Virginia,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,41.53
+Virginia,2025,3,ELA,SOL,SOL,Percent in Below-Basic Analog Tier,33.0
+Virginia,2025,3,ELA,SOL,SOL,Percent Advanced (Published Source Bin),10.0
+Virginia,2025,3,ELA,SOL,SOL,Percent Proficient (Published Source Bin),57.0
+Virginia,2025,3,ELA,SOL,SOL,Percent Passed (Published Source Bin),67.0
+Virginia,2025,3,ELA,SOL,SOL,Percent Failed (Published Source Bin),33.0
+Washington,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Washington,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,39.5
+Washington,2025,3,ELA,SBAC,SBAC,Percent in Below-Basic Analog Tier,28.32
+Washington,2025,3,ELA,SBAC,SBAC,Percent Level 1,28.32
+Washington,2025,3,ELA,SBAC,SBAC,Percent Level 2,22.73
+Washington,2025,3,ELA,SBAC,SBAC,Percent Level 3,21.15
+Washington,2025,3,ELA,SBAC,SBAC,Percent Level 4,27.8
+Washington,2025,3,ELA,SBAC,SBAC,Percent Level 1,27.64
+Washington,2025,3,ELA,SBAC,SBAC,Percent Level 2,22.18
+Washington,2025,3,ELA,SBAC,SBAC,Percent Level 3,20.64
+Washington,2025,3,ELA,SBAC,SBAC,Percent Level 4,27.12
+Washington,2025,3,ELA,SBAC,SBAC,Percent No Score,2.42
+West Virginia,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+West Virginia,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,47.36
+West Virginia,2024,3,ELA,WVGSA,WVGSA,Percent in Below-Basic Analog Tier,49.0
+West Virginia,2024,3,ELA,WVGSA,WVGSA,Percent Meets Standard or above (proficient) (Public Reference),51.0
+Wisconsin,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Wisconsin,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,38.84
+Wisconsin,2025,3,ELA,Forward Exam,Forward Exam,Percent in Below-Basic Analog Tier,17.81
+Wisconsin,2025,3,ELA,Forward Exam,Forward Exam,Percent Developing,17.81
+Wisconsin,2025,3,ELA,Forward Exam,Forward Exam,Percent Approaching,30.05
+Wisconsin,2025,3,ELA,Forward Exam,Forward Exam,Percent Meeting,38.88
+Wisconsin,2025,3,ELA,Forward Exam,Forward Exam,Percent Advanced,13.26
+Wisconsin,2025,3,ELA,Forward Exam,Forward Exam,Percent Developing,17.47
+Wisconsin,2025,3,ELA,Forward Exam,Forward Exam,Percent Approaching,29.49
+Wisconsin,2025,3,ELA,Forward Exam,Forward Exam,Percent Meeting,38.15
+Wisconsin,2025,3,ELA,Forward Exam,Forward Exam,Percent Advanced,13.01
+Wisconsin,2025,3,ELA,Forward Exam,Forward Exam,Percent No Test,1.89
+Wyoming,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent in Below-Basic Analog Tier,52.1
+Wyoming,2022,3,ELA,Statewide RLA Assessment (Ed Data Express),Statewide RLA Assessment (Ed Data Express),Percent Proficient (Federal Proxy Source),47.9
+Wyoming,2024,4,Reading,NAEP (National Public),NAEP,Percent Below Basic,40.67
+Wyoming,2024,4,Reading,NAEP (State),NAEP,Percent Below Basic,32.23
