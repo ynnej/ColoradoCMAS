@@ -973,7 +973,7 @@ function renderError(error) {
 
 async function initialize() {
   try {
-    const response = await fetch("data/dashboard.json");
+    const response = await fetch("data/dashboard.json?v=20260723-naep1");
     if (!response.ok) {
       throw new Error(`Dashboard data request failed with status ${response.status}.`);
     }
