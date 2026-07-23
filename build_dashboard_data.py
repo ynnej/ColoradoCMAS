@@ -14,6 +14,8 @@ SUMMARY_DIR = REPO_ROOT / "datasets" / "summary"
 DOCS_DIR = REPO_ROOT / "docs"
 DATA_DIR = DOCS_DIR / "data"
 DOWNLOADS_DIR = DOCS_DIR / "downloads"
+ASSET_DIR = DOCS_DIR / "assets"
+DASHBOARD_RELEASE = "20260723-naep1"
 
 TRACKER_PATH = SUMMARY_DIR / "statewide_grade3_ela_rollout_tracker.csv"
 ANALOG_PATH = SUMMARY_DIR / "statewide_grade3_ela_below_basic_analog.csv"
@@ -275,6 +277,7 @@ def main() -> int:
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     DOWNLOADS_DIR.mkdir(parents=True, exist_ok=True)
+    ASSET_DIR.mkdir(parents=True, exist_ok=True)
 
     dashboard_csv_path = DOWNLOADS_DIR / "state_assessment_dashboard_results.csv"
     write_dashboard_csv(states, dashboard_csv_path)
@@ -282,6 +285,14 @@ def main() -> int:
     write_naep_csv(states, national_naep, naep_source_page_url, naep_csv_path)
     for source in DOWNLOAD_FILES:
         shutil.copyfile(source, DOWNLOADS_DIR / source.name)
+    shutil.copyfile(
+        DOCS_DIR / "app.js",
+        ASSET_DIR / f"dashboard-{DASHBOARD_RELEASE}.js",
+    )
+    shutil.copyfile(
+        DOCS_DIR / "styles.css",
+        ASSET_DIR / f"dashboard-{DASHBOARD_RELEASE}.css",
+    )
 
     payload = {
         "title": "State Assessment Data Monitor",
@@ -334,10 +345,12 @@ def main() -> int:
             },
         ],
     }
-    (DATA_DIR / "dashboard.json").write_text(
-        json.dumps(payload, indent=2, ensure_ascii=True) + "\n",
-        encoding="utf-8",
-    )
+    payload_text = json.dumps(payload, indent=2, ensure_ascii=True) + "\n"
+    for destination in [
+        DATA_DIR / "dashboard.json",
+        DATA_DIR / f"dashboard-{DASHBOARD_RELEASE}.json",
+    ]:
+        destination.write_text(payload_text, encoding="utf-8")
 
     print(
         "Dashboard data built: "
