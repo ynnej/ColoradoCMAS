@@ -15,8 +15,8 @@
       href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,650&amp;family=Public+Sans:wght@400;500;600;700;800&amp;display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="assets/dashboard-20260724-state3.css">
-    <script src="assets/dashboard-20260724-state3.js" defer></script>
+    <link rel="stylesheet" href="assets/dashboard-20260724-together1.css">
+    <script src="assets/dashboard-20260724-together1.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to dashboard</a>
@@ -121,7 +121,7 @@
             <p class="metric-kicker">Exact performance tiers</p>
             <p class="metric-value"><span id="exact-count">--</span><small>jurisdictions</small></p>
             <p class="metric-caption">
-              The strongest comparison: each state’s lowest reported performance level.
+              Detailed tiers show both the combined below-proficiency share and its lowest tier.
             </p>
           </article>
           <article class="metric-card">
@@ -244,9 +244,9 @@
                   <th scope="col">
                     <button type="button" data-sort="schoolYear">Year <span aria-hidden="true">↕</span></button>
                   </th>
-                  <th scope="col">Reported measure</th>
+                  <th scope="col">Lowest tier / source basis</th>
                   <th scope="col" class="numeric">
-                    <button type="button" data-sort="analogValue">Result <span aria-hidden="true">↕</span></button>
+                    <button type="button" data-sort="notProficientValue">Not meeting proficiency <span aria-hidden="true">↕</span></button>
                   </th>
                   <th scope="col"><span class="visually-hidden">Open state details</span></th>
                 </tr>
@@ -265,8 +265,8 @@
           <h2 id="methodology-heading">Comparable enough to use.<br>Different enough to explain.</h2>
           <p>
             States set their own tests and performance labels. This project preserves those original
-            labels, then identifies the closest available indicator of students performing at the
-            lowest level.
+            labels. The headline result combines every available performance tier below the state’s
+            proficiency standard, while the detailed view keeps the lowest tier visible.
           </p>
         </div>
         <div class="methodology-grid">
@@ -274,8 +274,8 @@
             <span class="method-number">01</span>
             <h3>Exact state tiers</h3>
             <p>
-              We use the share in the state’s lowest published performance tier, such as Level 1,
-              Novice, or Does Not Meet Expectations.
+              We add the published tiers below proficiency for the headline “together” result, then
+              separately show the lowest tier and the other below-proficiency tiers.
             </p>
           </article>
           <article>
@@ -283,7 +283,7 @@
             <h3>Other state sources</h3>
             <p>
               Where the state publishes only a proficiency rate or a combined non-proficient bin,
-              we retain it with a distinct label rather than presenting it as an exact tier.
+              we calculate the same combined result but do not imply that a lower-tier split exists.
             </p>
           </article>
           <article>

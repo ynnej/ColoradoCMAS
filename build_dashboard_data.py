@@ -15,7 +15,7 @@ DOCS_DIR = REPO_ROOT / "docs"
 DATA_DIR = DOCS_DIR / "data"
 DOWNLOADS_DIR = DOCS_DIR / "downloads"
 ASSET_DIR = DOCS_DIR / "assets"
-DASHBOARD_RELEASE = "20260724-state3"
+DASHBOARD_RELEASE = "20260724-together1"
 
 TRACKER_PATH = SUMMARY_DIR / "statewide_grade3_ela_rollout_tracker.csv"
 ANALOG_PATH = SUMMARY_DIR / "statewide_grade3_ela_below_basic_analog.csv"
@@ -55,6 +55,51 @@ STATUS_CONFIG = {
     },
 }
 
+# Exact-tier records use state-specific names for the proficiency threshold.
+# Michigan also publishes additive lower tiers, so its combined value can be
+# calculated from the official Proficient or Advanced share.
+PROFICIENCY_FIELD_BY_STATE = {
+    "AK": "official_statewide_grade3_ela_advanced_or_proficient_pct",
+    "AL": "official_statewide_grade3_ela_percent_proficient_pct",
+    "AR": "official_statewide_grade3_ela_level3_or_4_pct",
+    "AZ": "official_statewide_grade3_ela_percent_proficient_pct",
+    "CO": "official_statewide_grade3_ela_met_or_exceeded_pct",
+    "CT": "official_statewide_grade3_ela_met_or_exceeded_pct",
+    "DC": "official_statewide_grade3_ela_level4_or_5_pct",
+    "FL": "official_statewide_grade3_ela_level3_or_above_pct",
+    "GA": "official_statewide_grade3_ela_proficient_or_distinguished_pct",
+    "ID": "official_statewide_grade3_ela_percent_proficient_pct",
+    "IN": "official_statewide_grade3_ela_at_or_above_proficiency_pct",
+    "KS": "official_statewide_grade3_ela_percent_proficient_pct",
+    "KY": "official_statewide_grade3_reading_proficient_or_distinguished_pct",
+    "LA": "official_statewide_grade3_ela_mastery_or_advanced_pct",
+    "MA": "official_statewide_grade3_ela_met_or_exceeded_pct",
+    "MD": "official_statewide_grade3_ela_proficient_pct",
+    "ME": "official_statewide_grade3_ela_percent_proficient_pct",
+    "MI": "official_statewide_grade3_ela_percent_proficient_pct",
+    "MN": "official_statewide_grade3_ela_percent_proficient_pct",
+    "MO": "official_statewide_grade3_ela_percent_proficient_pct",
+    "MS": "official_statewide_grade3_ela_proficient_or_advanced_pct",
+    "MT": "official_statewide_grade3_ela_percent_proficient_pct",
+    "ND": "official_statewide_grade3_ela_percent_proficient_pct",
+    "NE": "official_statewide_grade3_ela_percent_proficient_pct",
+    "NJ": "official_statewide_grade3_ela_level4_or_5_pct",
+    "NV": "official_statewide_grade3_ela_percent_proficient_pct",
+    "NY": "official_statewide_grade3_ela_level3_or_4_pct",
+    "OK": "official_statewide_grade3_ela_percent_proficient_pct",
+    "OR": "official_statewide_grade3_ela_percent_proficient_pct",
+    "PA": "official_statewide_grade3_ela_proficient_or_advanced_pct",
+    "RI": "official_statewide_grade3_ela_met_or_exceeded_pct",
+    "SC": "official_statewide_grade3_ela_meets_or_exceeds_pct",
+    "SD": "official_statewide_grade3_ela_percent_proficient_pct",
+    "TN": "official_statewide_grade3_ela_met_or_exceeded_pct",
+    "TX": "official_statewide_grade3_rla_meets_or_above_pct",
+    "UT": "official_statewide_grade3_ela_percent_proficient_pct",
+    "VT": "official_statewide_grade3_ela_percent_proficient_pct",
+    "WA": "official_statewide_grade3_ela_level3_or_4_tested_only_pct",
+    "WI": "official_statewide_grade3_ela_meeting_or_advanced_tested_only_pct",
+}
+
 DOWNLOAD_FILES = [
     TRACKER_PATH,
     ANALOG_PATH,
@@ -83,7 +128,14 @@ def reference_bins(row: dict[str, str] | None) -> list[dict[str, object]]:
         label = row.get(f"source_bin_{index}_label", "").strip()
         value = as_number(row.get(f"source_bin_{index}_pct"))
         if label and value is not None:
-            bins.append({"label": label, "value": value})
+            bins.append(
+                {
+                    "label": label,
+                    "value": value,
+                    "isBelowBasicAnalog": False,
+                    "isBelowProficiency": False,
+                }
+            )
     return bins
 
 
@@ -93,9 +145,64 @@ def tier_bins(rows: list[dict[str, str]]) -> list[dict[str, object]]:
             "label": row["tier_label"].strip(),
             "value": as_number(row["pct_students"]),
             "isBelowBasicAnalog": row["is_below_basic_analog"].strip().lower() == "true",
+            "isBelowProficiency": False,
         }
         for row in sorted(rows, key=lambda item: int(item["tier_rank"]))
     ]
+
+
+def state_proficiency_value(
+    state_code: str,
+    analog: dict[str, str],
+    analog_value: float,
+) -> float:
+    field = PROFICIENCY_FIELD_BY_STATE.get(state_code)
+    if field is None:
+        return round(100.0 - analog_value, 2)
+    value = as_number(analog.get(field))
+    if value is None:
+        raise ValueError(f"Missing official proficiency value for {state_code}: {field}")
+    return value
+
+
+def annotate_state_bins(
+    state_code: str,
+    status: str,
+    bins: list[dict[str, object]],
+    analog_label: str,
+    analog_value: float,
+    not_proficient_value: float,
+) -> None:
+    for bin_item in bins:
+        if (
+            str(bin_item["label"]).casefold() == analog_label.casefold()
+            and abs(float(bin_item["value"]) - analog_value) <= 0.02
+        ):
+            bin_item["isBelowBasicAnalog"] = True
+
+    # Exact tiers and the additive Michigan/North Carolina source bins are
+    # ordered from lowest to highest. Mark the prefix that best reconstructs
+    # the state-published not-proficient share.
+    if status == "covered_exact_tiers" or state_code in {"MI", "NC"}:
+        candidates: list[tuple[float, int]] = []
+        running_total = 0.0
+        for index, bin_item in enumerate(bins[:-1], start=1):
+            running_total += float(bin_item["value"])
+            candidates.append((abs(running_total - not_proficient_value), index))
+        if not candidates:
+            raise ValueError(f"No lower-tier bins available for {state_code}")
+        difference, prefix_length = min(candidates)
+        if difference > 1.1:
+            raise ValueError(
+                f"Published lower tiers for {state_code} do not reconstruct the "
+                f"not-proficient share; difference is {difference:.2f} points."
+            )
+        for bin_item in bins[:prefix_length]:
+            bin_item["isBelowProficiency"] = True
+    elif status == "covered_source_bins":
+        for bin_item in bins:
+            if bin_item["isBelowBasicAnalog"]:
+                bin_item["isBelowProficiency"] = True
 
 
 def build_naep_lookup(
@@ -171,6 +278,8 @@ def write_dashboard_csv(states: list[dict[str, object]], destination: Path) -> N
         "school_year",
         "reported_measure",
         "below_basic_analog_pct",
+        "not_meeting_proficiency_pct",
+        "state_proficiency_pct",
         "naep_2024_grade4_reading_below_basic_pct",
         "naep_2024_grade4_reading_below_proficient_pct",
         "source_page_url",
@@ -188,6 +297,8 @@ def write_dashboard_csv(states: list[dict[str, object]], destination: Path) -> N
                     "school_year": state["schoolYear"],
                     "reported_measure": state["analogLabel"],
                     "below_basic_analog_pct": state["analogValue"],
+                    "not_meeting_proficiency_pct": state["notProficientValue"],
+                    "state_proficiency_pct": state["proficiencyValue"],
                     "naep_2024_grade4_reading_below_basic_pct": state["naepValue"],
                     "naep_2024_grade4_reading_below_proficient_pct": state[
                         "naepBelowProficientValue"
@@ -281,6 +392,16 @@ def main() -> int:
     naep_source_page_url = naep_lookup["sourcePageUrl"]
     metadata = json.loads(METADATA_PATH.read_text(encoding="utf-8"))
 
+    exact_codes = {
+        row["state"] for row in tracker_rows if row["status"] == "covered_exact_tiers"
+    }
+    missing_proficiency_fields = exact_codes - set(PROFICIENCY_FIELD_BY_STATE)
+    if missing_proficiency_fields:
+        raise ValueError(
+            "Exact-tier states need an explicit proficiency threshold: "
+            f"{', '.join(sorted(missing_proficiency_fields))}"
+        )
+
     states: list[dict[str, object]] = []
     for tracker in tracker_rows:
         code = tracker["state"]
@@ -295,6 +416,52 @@ def main() -> int:
         if not bins:
             bins = reference_bins(reference_by_state.get(code))
 
+        analog_label = analog["below_basic_analog_label"]
+        analog_value = as_number(analog["below_basic_analog_pct"])
+        if analog_value is None:
+            raise ValueError(f"No numeric statewide below-basic analog for {code}")
+        proficiency_value = state_proficiency_value(code, analog, analog_value)
+        not_proficient_value = round(100.0 - proficiency_value, 2)
+        annotate_state_bins(
+            code,
+            tracker["status"],
+            bins,
+            analog_label,
+            analog_value,
+            not_proficient_value,
+        )
+
+        has_breakdown = tracker["status"] == "covered_exact_tiers" or code == "MI"
+        if tracker["status"] == "covered_exact_tiers" or code in {"MI", "NC"}:
+            # The headline is literally the published below-proficiency buckets
+            # together. This preserves state rounding instead of forcing the
+            # tiers to equal exactly 100 minus the proficiency rate.
+            not_proficient_value = round(
+                sum(
+                    float(bin_item["value"])
+                    for bin_item in bins
+                    if bin_item["isBelowProficiency"]
+                ),
+                2,
+            )
+        if not 0 <= not_proficient_value <= 100:
+            raise ValueError(f"Invalid not-proficient value for {code}: {not_proficient_value}")
+        other_below_proficient_value = (
+            round(not_proficient_value - analog_value, 2)
+            if has_breakdown
+            else None
+        )
+        other_labels = [
+            str(bin_item["label"])
+            for bin_item in bins
+            if bin_item["isBelowProficiency"] and not bin_item["isBelowBasicAnalog"]
+        ]
+        other_below_proficient_label = (
+            " + ".join(other_labels)
+            if other_labels
+            else "No additional below-proficiency tier"
+        )
+
         states.append(
             {
                 "code": code,
@@ -305,8 +472,14 @@ def main() -> int:
                 "qualityShortLabel": status["short_label"],
                 "assessment": tracker["assessment"],
                 "schoolYear": tracker["school_year"],
-                "analogLabel": analog["below_basic_analog_label"],
-                "analogValue": as_number(analog["below_basic_analog_pct"]),
+                "analogLabel": analog_label,
+                "analogValue": analog_value,
+                "proficiencyValue": proficiency_value,
+                "notProficientLabel": "Not meeting proficiency",
+                "notProficientValue": not_proficient_value,
+                "hasBelowProficiencyBreakdown": has_breakdown,
+                "otherBelowProficientLabel": other_below_proficient_label,
+                "otherBelowProficientValue": other_below_proficient_value,
                 "naepValue": naep_by_state.get(code),
                 "naepBelowProficientValue": naep_below_proficient_by_state.get(code),
                 "naepLevels": naep_levels_by_state.get(code, []),
@@ -373,6 +546,15 @@ def main() -> int:
         if abs(below_proficient - float(state["naepBelowProficientValue"])) > 0.02:
             raise ValueError(f"NAEP Below Proficient is inconsistent for {state['code']}.")
 
+        if state["hasBelowProficiencyBreakdown"]:
+            reconstructed = float(state["analogValue"]) + float(
+                state["otherBelowProficientValue"]
+            )
+            if abs(reconstructed - float(state["notProficientValue"])) > 0.02:
+                raise ValueError(
+                    f"State below-proficiency breakdown is inconsistent for {state['code']}."
+                )
+
     national_level_total = sum(float(level["value"]) for level in national_naep_levels)
     if abs(national_level_total - 100.0) > 0.1:
         raise ValueError(
@@ -387,6 +569,18 @@ def main() -> int:
         or new_hampshire["bins"][0]["value"] != 49.0
     ):
         raise ValueError("New Hampshire must be an official state proficiency source with 49% proficient.")
+
+    massachusetts = next(state for state in states if state["code"] == "MA")
+    if (
+        massachusetts["notProficientValue"] != 58.0
+        or massachusetts["analogValue"] != 19.0
+        or massachusetts["otherBelowProficientValue"] != 39.0
+    ):
+        raise ValueError("Massachusetts must show 19% + 39% = 58% not meeting proficiency.")
+
+    michigan = next(state for state in states if state["code"] == "MI")
+    if michigan["notProficientValue"] != 61.1:
+        raise ValueError("Michigan must combine Not Proficient and Partially Proficient.")
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     DOWNLOADS_DIR.mkdir(parents=True, exist_ok=True)
@@ -438,7 +632,7 @@ def main() -> int:
             {
                 "label": "Dashboard results",
                 "file": "downloads/state_assessment_dashboard_results.csv",
-                "description": "One concise row per state or jurisdiction.",
+                "description": "Combined not-meeting result and lowest-tier context for every jurisdiction.",
             },
             {
                 "label": "Coverage tracker",
