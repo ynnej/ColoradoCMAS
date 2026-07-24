@@ -305,10 +305,14 @@ EXACT_TIER_STATES = {
     "MA",
     "MD",
     "ME",
+    "MN",
     "MS",
     "MO",
     "MT",
+    "ND",
+    "NE",
     "NJ",
+    "NV",
     "NY",
     "OK",
     "OR",
@@ -318,6 +322,8 @@ EXACT_TIER_STATES = {
     "SD",
     "TN",
     "TX",
+    "UT",
+    "VT",
     "WA",
     "WI",
 }
@@ -570,6 +576,37 @@ OFFICIAL_STATE_RECORDS: dict[str, dict[str, object]] = {
             "the state release combines the two upper tiers."
         ),
     },
+    "MN": {
+        "state_name": "Minnesota",
+        "assessment": "MCA/MTAS",
+        "program": "MCA_MTAS",
+        "school_year": "2024-2025",
+        "administration_year": 2025,
+        "record_kind": "exact_tiers",
+        "bins": [
+            ("does_not_meet_standards", "Does Not Meet Standards", 37.47),
+            ("partially_meets_standards", "Partially Meets Standards", 16.39),
+            ("meets_standards", "Meets Standards", 36.44),
+            ("exceeds_standards", "Exceeds Standards", 9.70),
+        ],
+        "below_basic_label": "Does Not Meet Standards",
+        "proficient_pct": 46.14,
+        "valid_test_takers": 62993,
+        "output_path": Path(
+            "datasets/mn/mca_mtas/2024_2025/processed/"
+            "mca_mtas_2025_statewide_grade3_reading_tiers.csv"
+        ),
+        "source_url": (
+            "https://education.mn.gov/mdeprod/idcplg?IdcService=GET_FILE&"
+            "Rendition=primary&RevisionSelectionMethod=latestReleased&dDocName=PROD087032"
+        ),
+        "source_page_url": "https://education.mn.gov/MDE/fam/tests/Assessmentresults/",
+        "notes": (
+            "Minnesota's official 2025 public Reading MCA/MTAS workbook reports the statewide "
+            "Grade 3 All Students row for Does Not Meet, Partially Meets, Meets, and Exceeds "
+            "Standards. Percentages are based on 62,993 tested students."
+        ),
+    },
     "MO": {
         "state_name": "Missouri",
         "assessment": "MAP",
@@ -633,6 +670,68 @@ OFFICIAL_STATE_RECORDS: dict[str, dict[str, object]] = {
             "100.1% because of rounding."
         ),
     },
+    "NE": {
+        "state_name": "Nebraska",
+        "assessment": "NSCAS",
+        "program": "NSCAS",
+        "school_year": "2024-2025",
+        "administration_year": 2025,
+        "record_kind": "exact_tiers",
+        "bins": [
+            ("developing", "Developing", 42.55),
+            ("on_track", "On Track", 39.23),
+            ("advanced", "Advanced", 18.23),
+        ],
+        "below_basic_label": "Developing",
+        "proficient_pct": 57.46,
+        "valid_test_takers": 23973,
+        "output_path": Path(
+            "datasets/ne/nscas/2024_2025/processed/nscas_2025_statewide_grade3_ela_tiers.csv"
+        ),
+        "source_url": (
+            "https://nepdata.education.ne.gov/api/v1/data/downloads/data-file?"
+            "dataYear=20242025&fileName=NSCAS_ELA_Proficient_20242025.csv"
+        ),
+        "source_page_url": "https://nep.education.ne.gov/data-downloads",
+        "notes": (
+            "Nebraska Education Profile's official 2024-25 NSCAS ELA download reports the "
+            "statewide Grade 3 All Students row for Developing, On Track, and Advanced. "
+            "Published percentages sum to 100.01% because of rounding."
+        ),
+    },
+    "NV": {
+        "state_name": "Nevada",
+        "assessment": "Smarter Balanced",
+        "program": "SBAC",
+        "school_year": "2024-2025",
+        "administration_year": 2025,
+        "record_kind": "exact_tiers",
+        "bins": [
+            ("ed", "ED", 31.2),
+            ("as", "AS", 23.6),
+            ("ms", "MS", 21.6),
+            ("es", "ES", 23.4),
+        ],
+        "below_basic_label": "ED",
+        "proficient_pct": 45.0,
+        "valid_test_takers": 35483,
+        "output_path": Path(
+            "datasets/nv/sbac/2024_2025/processed/sbac_2025_statewide_grade3_ela_tiers.csv"
+        ),
+        "source_url": (
+            "https://nevadareportcard.nv.gov/di/report/summary_1?report=summary_1&"
+            "scope=e24.y22&organization=c2269&scores=N_MA%2CMA_NotTested%2CMA_Tested%2C"
+            "MA_pass%2CMA_level%2CN_RD%2CRD_NotTested%2CRD_Tested%2CRD_pass%2CRD_level&"
+            "filterdata=grade_03&filterkey=grade.03&filterrelation=and&num=20&page=1&"
+            "pagesize=20&domain=assessment&"
+        ),
+        "source_page_url": "https://nevadareportcard.nv.gov/DI/main/assessment",
+        "notes": (
+            "Nevada's official Accountability Portal reports the 2024-25 statewide Grade 3 "
+            "ELA row for performance levels ED, AS, MS, and ES. Published percentages sum "
+            "to 99.8% because of rounding."
+        ),
+    },
     "NM": {
         "state_name": "New Mexico",
         "assessment": "NM-MSSA",
@@ -658,6 +757,33 @@ OFFICIAL_STATE_RECORDS: dict[str, dict[str, object]] = {
             "New Mexico PED's official 2025 assessment presentation reports Grade 3 literacy "
             "proficiency at 41%. The Grade 3 public result used here does not expose the full "
             "NM-MSSA performance-level split."
+        ),
+    },
+    "ND": {
+        "state_name": "North Dakota",
+        "assessment": "ND A+",
+        "program": "ND_A_PLUS",
+        "school_year": "2024-2025",
+        "administration_year": 2025,
+        "record_kind": "exact_tiers",
+        "bins": [
+            ("novice", "Novice", 18.0),
+            ("partially_proficient", "Partially Proficient", 44.0),
+            ("proficient", "Proficient", 32.0),
+            ("advanced", "Advanced", 6.0),
+        ],
+        "below_basic_label": "Novice",
+        "proficient_pct": 38.0,
+        "output_path": Path(
+            "datasets/nd/nd_a_plus/2024_2025/processed/"
+            "nd_a_plus_2025_statewide_grade3_reading_tiers.csv"
+        ),
+        "source_url": "https://insights.nd.gov/ShowFile?f=10006_6_csv_2024-2025",
+        "source_page_url": "https://insights.nd.gov/ndinsights/Data",
+        "notes": (
+            "North Dakota Insights' official 2024-25 Assessment Performance download reports "
+            "the State of North Dakota Grade 3 Reading combined-assessment All Students row "
+            "for Novice, Partially Proficient, Proficient, and Advanced."
         ),
     },
     "OK": {
@@ -749,6 +875,76 @@ OFFICIAL_STATE_RECORDS: dict[str, dict[str, object]] = {
             "South Dakota's official 2024-25 ELA and mathematics technical report, Table 23, "
             "publishes statewide Grade 3 ELA percentages for Levels 1 through 4. Published "
             "percentages sum to 101% because of rounding."
+        ),
+    },
+    "UT": {
+        "state_name": "Utah",
+        "assessment": "RISE",
+        "program": "RISE",
+        "school_year": "2024-2025",
+        "administration_year": 2025,
+        "record_kind": "exact_tiers",
+        "bins": [
+            ("below_proficient", "Below Proficient", 27.90),
+            ("approaching_proficient", "Approaching Proficient", 26.98),
+            ("proficient", "Proficient", 26.64),
+            ("highly_proficient", "Highly Proficient", 18.18),
+        ],
+        "below_basic_label": "Below Proficient",
+        "proficient_pct": 44.82,
+        "output_path": Path(
+            "datasets/ut/rise/2024_2025/processed/rise_2025_statewide_grade3_ela_tiers.csv"
+        ),
+        "source_url": (
+            "https://schools.utah.gov/datastatistics/_datastatisticsfiles_/_reports_/"
+            "_assessments_/RISEAspireProficiencyLevels2025.xlsx"
+        ),
+        "source_page_url": "https://schools.utah.gov/datastatistics/reports",
+        "notes": (
+            "Utah State Board of Education's official 2025 RISE/Utah Aspire Plus proficiency-"
+            "level workbook reports the State Grade 3 Language Arts row for Below Proficient "
+            "through Highly Proficient. Published percentages sum to 99.7%."
+        ),
+    },
+    "VT": {
+        "state_name": "Vermont",
+        "assessment": "VTCAP",
+        "program": "VTCAP",
+        "school_year": "2024-2025",
+        "administration_year": 2025,
+        "record_kind": "exact_tiers",
+        "bins": [
+            (
+                "substantially_below_proficient",
+                "Substantially Below Proficient",
+                17.64,
+            ),
+            ("partially_proficient", "Partially Proficient", 34.48),
+            ("proficient", "Proficient", 14.27),
+            (
+                "proficient_with_distinction",
+                "Proficient with Distinction",
+                33.61,
+            ),
+        ],
+        "below_basic_label": "Substantially Below Proficient",
+        "proficient_pct": 47.88,
+        "valid_test_takers": 5591,
+        "output_path": Path(
+            "datasets/vt/vtcap/2024_2025/processed/vtcap_2025_statewide_grade3_ela_tiers.csv"
+        ),
+        "source_url": (
+            "https://data.vermont.gov/resource/c874-7tma.csv?schoolidentifier=VT001&"
+            "testname=English%20Language%20Arts%20Grade%2003&%24limit=5000"
+        ),
+        "source_page_url": (
+            "https://data.vermont.gov/Education/"
+            "Vermont-Education-Dashboard-General-Assessment-202/c874-7tma/about_data"
+        ),
+        "notes": (
+            "Vermont's official 2025 General Assessment open dataset reports the State of "
+            "Vermont Grade 3 ELA All Students values for Substantially Below Proficient, "
+            "Partially Proficient, Proficient, and Proficient with Distinction."
         ),
     },
     "WY": {

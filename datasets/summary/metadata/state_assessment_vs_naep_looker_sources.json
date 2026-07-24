@@ -1,5 +1,5 @@
 {
-  "build_date": "2026-07-23",
+  "build_date": "2026-07-24",
   "description": "Looker-ready long tables combining state assessment Grade 3 ELA rows with 2024 NAEP Grade 4 Reading achievement-level and below-proficient comparison rows.",
   "naep_logic": {
     "achievement_levels": "Official discrete or cumulative achievement-level percentages from the NAEP 2024 Grade 4 Reading data service.",

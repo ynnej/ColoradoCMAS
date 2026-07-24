@@ -1,5 +1,5 @@
 {
-  "build_date": "2026-07-23",
+  "build_date": "2026-07-24",
   "description": "Cross-state Grade 3 ELA performance tiers and statewide source-bin references with a derived below-basic analog.",
   "federal_proxy_fill_rule": {
     "description": "Where newer exact statewide tiers were not loaded, fill the below-basic analog from the public Ed Data Express Grade 3 SEA reading/language arts Percent Proficient row as 100 - Percent Proficient.",
@@ -7,14 +7,7 @@
       "UT": "2020-2021"
     },
     "latest_public_school_year_for_this_filter": "2021-2022",
-    "states_filled_from_proxy": [
-      "MN",
-      "ND",
-      "NE",
-      "NV",
-      "UT",
-      "VT"
-    ],
+    "states_filled_from_proxy": [],
     "still_missing_after_proxy_check": []
   },
   "outputs": {
@@ -46,13 +39,17 @@
     "me_statewide_tiers_csv": "datasets/me/mtya/2024_2025/processed/mtya_2025_statewide_grade3_reading_tiers.csv",
     "mi_public_reference_csv": "datasets/mi/mstep/2024_2025/processed/mstep_2025_statewide_grade3_ela_public_bins.csv",
     "mississippi_statewide_tiers_csv": "datasets/ms/maap/2024_2025/processed/maap_2025_statewide_grade3_ela_tiers.csv",
+    "mn_statewide_tiers_csv": "datasets/mn/mca_mtas/2024_2025/processed/mca_mtas_2025_statewide_grade3_reading_tiers.csv",
     "mo_statewide_tiers_csv": "datasets/mo/map/2024_2025/processed/map_2025_statewide_grade3_ela_tiers.csv",
     "mt_statewide_tiers_csv": "datasets/mt/mast/2024_2025/processed/mast_2025_statewide_grade3_ela_tiers.csv",
+    "nd_statewide_tiers_csv": "datasets/nd/nd_a_plus/2024_2025/processed/nd_a_plus_2025_statewide_grade3_reading_tiers.csv",
+    "ne_statewide_tiers_csv": "datasets/ne/nscas/2024_2025/processed/nscas_2025_statewide_grade3_ela_tiers.csv",
     "new_hampshire_public_reference_csv": "datasets/nh/nh_sas/2024_2025/processed/nh_sas_2025_statewide_grade3_ela_public_reference.csv",
     "new_jersey_statewide_tiers_csv": "datasets/nj/njsla/2024_2025/processed/njsla_2025_statewide_grade3_ela_tiers.csv",
     "new_york_statewide_tiers_csv": "datasets/ny/nysed_report_card/2024_2025/processed/nysed_2025_statewide_grade3_ela_tiers.csv",
     "nm_public_reference_csv": "datasets/nm/nm_mssa/2024_2025/processed/nm_mssa_2025_statewide_grade3_ela_public_reference.csv",
     "north_carolina_public_bins_csv": "datasets/nc/eog/2024_2025/processed/eog_2025_statewide_grade3_reading_public_bins.csv",
+    "nv_statewide_tiers_csv": "datasets/nv/sbac/2024_2025/processed/sbac_2025_statewide_grade3_ela_tiers.csv",
     "ohio_public_reference_csv": "datasets/oh/ost/2024_2025/processed/ost_2025_statewide_grade3_ela_public_reference.csv",
     "ok_statewide_tiers_csv": "datasets/ok/ostp/2024_2025/processed/ostp_2025_statewide_grade3_ela_tiers.csv",
     "or_statewide_tiers_csv": "datasets/or/osas/2024_2025/processed/osas_2025_statewide_grade3_ela_tiers.csv",
@@ -64,7 +61,9 @@
     "tennessee_statewide_tiers_csv": "datasets/tn/tcap/2024_2025/processed/tcap_2025_statewide_grade3_ela_tiers.csv",
     "texas_field_guide_csv": "datasets/tx/staar/2023_2024/metadata/staar_grade3_field_guide.csv",
     "texas_statewide_tiers_csv": "datasets/tx/staar/2023_2024/processed/staar_2024_statewide_grade3_rla_tiers.csv",
+    "ut_statewide_tiers_csv": "datasets/ut/rise/2024_2025/processed/rise_2025_statewide_grade3_ela_tiers.csv",
     "virginia_public_bins_csv": "datasets/va/sol/2024_2025/processed/sol_2025_statewide_grade3_reading_public_bins.csv",
+    "vt_statewide_tiers_csv": "datasets/vt/vtcap/2024_2025/processed/vtcap_2025_statewide_grade3_ela_tiers.csv",
     "washington_statewide_tiers_csv": "datasets/wa/sbac/2024_2025/processed/sbac_2025_statewide_grade3_ela_tiers.csv",
     "west_virginia_public_reference_csv": "datasets/wv/wvgsa/2023_2024/processed/wvgsa_2024_statewide_grade3_ela_public_reference.csv",
     "wisconsin_statewide_tiers_csv": "datasets/wi/forward/2024_2025/processed/forward_2025_statewide_grade3_ela_tiers.csv",
@@ -167,6 +166,10 @@
       "source_download_url": "https://www.michigan.gov/mde/news-and-information/press-releases/2025/08/27/michigan-students-perform-better-on-most-tests",
       "source_page_url": "https://www.michigan.gov/mde/news-and-information/press-releases/2025/08/27/michigan-students-perform-better-on-most-tests"
     },
+    "MN": {
+      "source_download_url": "https://education.mn.gov/mdeprod/idcplg?IdcService=GET_FILE&Rendition=primary&RevisionSelectionMethod=latestReleased&dDocName=PROD087032",
+      "source_page_url": "https://education.mn.gov/MDE/fam/tests/Assessmentresults/"
+    },
     "MO": {
       "source_download_url": "https://dese.mo.gov/sites/g/files/zuston521/files/media/pdf/2025/08/2024-25%20Preliminary%20MAP%20Results%2008.22.2025.pdf",
       "source_page_url": "https://dese.mo.gov/media/pdf/report-2024-25-preliminary-academic-performance"
@@ -183,6 +186,14 @@
       "source_download_url": "https://www.dpi.nc.gov/2024-25-school-assessment-and-other-indicator-data-0/download?attachment",
       "source_page_url": "https://www.dpi.nc.gov/districts-schools/accountability-and-testing/school-accountability-and-reporting/accountability-data-sets-and-reports"
     },
+    "ND": {
+      "source_download_url": "https://insights.nd.gov/ShowFile?f=10006_6_csv_2024-2025",
+      "source_page_url": "https://insights.nd.gov/ndinsights/Data"
+    },
+    "NE": {
+      "source_download_url": "https://nepdata.education.ne.gov/api/v1/data/downloads/data-file?dataYear=20242025&fileName=NSCAS_ELA_Proficient_20242025.csv",
+      "source_page_url": "https://nep.education.ne.gov/data-downloads"
+    },
     "NH": {
       "source_download_url": "https://my.doe.nh.gov/iPlatform/Report/DataReportsSubCategory?reportSubCategoryId=20",
       "source_page_url": "https://my.doe.nh.gov/iPlatform/Report/DataReportsSubCategory?reportSubCategoryId=20"
@@ -194,6 +205,10 @@
     "NM": {
       "source_download_url": "https://web.ped.nm.gov/wp-content/uploads/2025/10/PED-Assessment-Presentation-for-LESC_101525.pdf",
       "source_page_url": "https://web.ped.nm.gov/bureaus/accountability/achievement-data-by-year/"
+    },
+    "NV": {
+      "source_download_url": "https://nevadareportcard.nv.gov/di/report/summary_1?report=summary_1&scope=e24.y22&organization=c2269&scores=N_MA%2CMA_NotTested%2CMA_Tested%2CMA_pass%2CMA_level%2CN_RD%2CRD_NotTested%2CRD_Tested%2CRD_pass%2CRD_level&filterdata=grade_03&filterkey=grade.03&filterrelation=and&num=20&page=1&pagesize=20&domain=assessment&",
+      "source_page_url": "https://nevadareportcard.nv.gov/DI/main/assessment"
     },
     "OH": {
       "source_download_url": "https://edu-prd-reportcard-datarefresh-api.azurewebsites.net/api/v2/CategoriesFileTypes/2025/0/0",
@@ -231,9 +246,17 @@
       "source_download_url": "https://rptsvr1.tea.texas.gov/cgi/sas/broker?_service=marykay&year4=2024&year2=&prgopt=2024/tapr/Basic%20Download/xplore/getdata2.sas&_program=perfrept.perfmast.sas&_debug=0&step=1&steps=2&sumlev=S&dsname=SSTAAR_GR3",
       "source_page_url": "https://rptsvr1.tea.texas.gov/perfreport/tapr/2024/Basic%20Download/DownloadSelData.html"
     },
+    "UT": {
+      "source_download_url": "https://schools.utah.gov/datastatistics/_datastatisticsfiles_/_reports_/_assessments_/RISEAspireProficiencyLevels2025.xlsx",
+      "source_page_url": "https://schools.utah.gov/datastatistics/reports"
+    },
     "VA": {
       "source_download_url": "https://schoolquality.virginia.gov/virginia-state-quality-profile",
       "source_page_url": "https://schoolquality.virginia.gov/virginia-state-quality-profile"
+    },
+    "VT": {
+      "source_download_url": "https://data.vermont.gov/resource/c874-7tma.csv?schoolidentifier=VT001&testname=English%20Language%20Arts%20Grade%2003&%24limit=5000",
+      "source_page_url": "https://data.vermont.gov/Education/Vermont-Education-Dashboard-General-Assessment-202/c874-7tma/about_data"
     },
     "WA": {
       "source_download_url": "https://data.wa.gov/api/views/h5d9-vgwi/rows.csv?accessType=DOWNLOAD",
@@ -346,6 +369,10 @@
       "below_basic_analog": "Not Proficient",
       "tier_logic": "Michigan's official 2025 release reports 38.9% Proficient or Advanced and 24.6% Partially Proficient for Grade 3 M-STEP ELA. Not Proficient is the remaining 36.5%; the state release combines the two upper tiers."
     },
+    "MN": {
+      "below_basic_analog": "Does Not Meet Standards",
+      "tier_logic": "Minnesota's official 2025 public Reading MCA/MTAS workbook reports the statewide Grade 3 All Students row for Does Not Meet, Partially Meets, Meets, and Exceeds Standards. Percentages are based on 62,993 tested students."
+    },
     "MO": {
       "below_basic_analog": "Below Basic",
       "tier_logic": "Missouri's official preliminary 2024-25 MAP results publish statewide Grade 3 ELA percentages for Below Basic, Basic, Proficient, and Advanced."
@@ -362,6 +389,14 @@
       "below_basic_analog": "Not Proficient",
       "tier_logic": "Use North Carolina's public statewide Grade 3 reading bins, where Not Proficient aggregates Levels 1 and 2 and Levels 3 through 5 are published separately."
     },
+    "ND": {
+      "below_basic_analog": "Novice",
+      "tier_logic": "North Dakota Insights' official 2024-25 Assessment Performance download reports the State of North Dakota Grade 3 Reading combined-assessment All Students row for Novice, Partially Proficient, Proficient, and Advanced."
+    },
+    "NE": {
+      "below_basic_analog": "Developing",
+      "tier_logic": "Nebraska Education Profile's official 2024-25 NSCAS ELA download reports the statewide Grade 3 All Students row for Developing, On Track, and Advanced. Published percentages sum to 100.01% because of rounding."
+    },
     "NH": {
       "below_basic_analog": "100 - Percent Proficient",
       "tier_logic": "Use New Hampshire's official iPlatform 2025 Grade 3 NH SAS ELA proficiency rate as an official proficiency-only source. The below-basic analog remains 100 - Percent Proficient because the public result used here does not expose the full statewide performance-level split."
@@ -373,6 +408,10 @@
     "NM": {
       "below_basic_analog": "100 - Proficient",
       "tier_logic": "New Mexico PED's official 2025 assessment presentation reports Grade 3 literacy proficiency at 41%. The Grade 3 public result used here does not expose the full NM-MSSA performance-level split."
+    },
+    "NV": {
+      "below_basic_analog": "ED",
+      "tier_logic": "Nevada's official Accountability Portal reports the 2024-25 statewide Grade 3 ELA row for performance levels ED, AS, MS, and ES. Published percentages sum to 99.8% because of rounding."
     },
     "NY": {
       "below_basic_analog": "Level 1",
@@ -414,9 +453,17 @@
       "below_basic_analog": "Did Not Meet Grade Level",
       "tier_logic": "Use Texas statewide TAPR Grade 3 RLA thresholds and derive exact tiers by subtraction: did_not_meet = 100 - approaches_or_above; approaches_only = approaches_or_above - meets_or_above; meets_only = meets_or_above - masters; masters = masters."
     },
+    "UT": {
+      "below_basic_analog": "Below Proficient",
+      "tier_logic": "Utah State Board of Education's official 2025 RISE/Utah Aspire Plus proficiency-level workbook reports the State Grade 3 Language Arts row for Below Proficient through Highly Proficient. Published percentages sum to 99.7%."
+    },
     "VA": {
       "below_basic_analog": "Failed",
       "tier_logic": "Use Virginia School Quality Profiles Grade 3 English Reading statewide bins. The public state profile reports Advanced, Proficient, Passed, and Failed; Failed is used as the below-basic analog because the public source does not split non-passing students further."
+    },
+    "VT": {
+      "below_basic_analog": "Substantially Below Proficient",
+      "tier_logic": "Vermont's official 2025 General Assessment open dataset reports the State of Vermont Grade 3 ELA All Students values for Substantially Below Proficient, Partially Proficient, Proficient, and Proficient with Distinction."
     },
     "WA": {
       "below_basic_analog": "Level 1",
